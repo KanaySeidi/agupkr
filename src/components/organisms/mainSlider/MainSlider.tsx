@@ -7,9 +7,9 @@ import {
 } from "@/components/ui/carousel";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
-import agu from "@/assets/img/agu.jpg";
-import agu1 from "@/assets/img/agu1.jpg";
-import agu2 from "@/assets/img/agu3.jpg";
+import agu from "@/assets/img/agu1.webp";
+import agu1 from "@/assets/img/agu2.webp";
+import agu2 from "@/assets/img/agu3.webp";
 import { useTranslation } from "react-i18next";
 
 const MainSlider = () => {
@@ -40,7 +40,7 @@ const MainSlider = () => {
   const autoplay = useRef(
     Autoplay({
       delay: 4000,
-      stopOnInteraction: true, // останавливать при клике/перетаскивании
+      stopOnInteraction: true,
     })
   );
 
@@ -69,13 +69,13 @@ const MainSlider = () => {
                   <img
                     src={item.img}
                     alt={item.title}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover blur-sm transition-all duration-300"
+                    loading="lazy"
+                    onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
                   />
 
-                  {/* затемняющий градиент по всему слайду */}
                   <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />
 
-                  {/* читаемый блок текста */}
                   <div className="absolute bottom-6 left-6 right-6 md:left-8 md:right-auto">
                     <div className="max-w-2xl bg-black/55 backdrop-blur-[2px] rounded-xl p-5 md:p-6 shadow-xl">
                       <p className="text-gray-200 text-sm md:text-base mb-1 drop-shadow">
