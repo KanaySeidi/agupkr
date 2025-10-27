@@ -1,3 +1,4 @@
+import AboutAGU from "@/components/organisms/aboutAGU/AboutAGU";
 import Announcement from "@/components/organisms/announcement/Announcement";
 import MainSlider from "@/components/organisms/mainSlider/MainSlider";
 
@@ -9,6 +10,7 @@ const Main = () => {
           <MainSlider />
           <Announcement />
         </div>
+        <AboutAGU />
       </div>
     </>
   );

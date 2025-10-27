@@ -24,5 +24,18 @@
         "announ1" : "Guidelines for implementing the Academic Innovation Fund Grant Program",
         "announ2" : "Student Academic Mobility Program 2024/2025",
         "announ3" : "Invitation to participate in the Young Researchers Conference"
-    }
+    },
+    "AGU": {
+        "title": "About the Academy",
+        "subTitle": "Academy of Public Administration under the President of the Kyrgyz Republic (hereinafter APAKR)",
+        "description1": "It is the only specialized educational institution in Kyrgyzstan for training management personnel for state and local government bodies of the Kyrgyz Republic.",
+        "description2": "APAKR has a high scientific and educational potential and a highly qualified teaching staff, leading domestic and foreign lecturers and experts, and broad opportunities for internships and further studies abroad.",
+        "button": "About the Academy",
+        "stats": {
+          "teachers": "Teachers",
+          "doctors": "Doctors of Science and Professionals",
+          "graduates": "Graduates",
+          "success": "Success in Their Field"
+        }
+      }
 }
