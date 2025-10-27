@@ -1,0 +1,28 @@
+{
+    "header" : {
+        "line1" : "THE ACADEMY OF PUBLIC ADMINISTRATION",
+        "line2" : "UNDER THE PRESIDENT OF THE KYRGYZ REPUBLIC",
+        "line3" : "named after ZH.ABDRAHMANOV",
+        "avn" : "Enter to AVN",
+        "schedule" : "Schedule",
+        "library" : "Electronic library",
+        "navs" : {
+            "nav1" : "Home",
+            "nav2" : "About the Academy",
+            "nav3" : "Education and Science",
+            "nav4" : "Professional Development",
+            "nav5" : "Applicant-2025!",
+            "nav6" : "News and Announcements",
+            "nav7" : "Contacts"
+        }
+    },
+    "errorPageTitle" : "It look like you're lost ...",
+    "errorBtn" : "Go back home",
+    "announcement" : {
+        "univerTitle" : "University Announcement",
+        "mounth" : "Octoberv",
+        "announ1" : "Guidelines for implementing the Academic Innovation Fund Grant Program",
+        "announ2" : "Student Academic Mobility Program 2024/2025",
+        "announ3" : "Invitation to participate in the Young Researchers Conference"
+    }
+}
