@@ -3,6 +3,11 @@
         "line1" : "THE ACADEMY OF PUBLIC ADMINISTRATION",
         "line2" : "UNDER THE PRESIDENT OF THE KYRGYZ REPUBLIC",
         "line3" : "named after ZH.ABDRAHMANOV",
+        "line4" : "The Academy",
+        "line5" : "Of Public",
+        "line6" : "Administration",
+        "line7" : "UNDER THE PRESIDENT OF THE KYRGYZ REPUBLIC",
+        "line8" : "named after ZH.ABDRAHMANOV",
         "avn" : "Enter to AVN",
         "schedule" : "Schedule",
         "library" : "Electronic library",
@@ -37,5 +42,29 @@
           "graduates": "Graduates",
           "success": "Success in Their Field"
         }
-      }
+      },
+    "quick" : {
+        "sectionTitle": "Quick access",
+        "about": {
+            "title": "About the academy",
+            "charter": "Charter",
+            "mission": "Academy mission",
+            "logo": "Academy logo",
+            "structure": "Structure",
+            "international": "International cooperation"
+        },
+        "study": {
+            "title": "Study",
+            "charter": "Charter",
+            "mission": "Academy mission",
+            "logo": "Academy logo",
+            "structure": "Structure",
+            "international": "International cooperation"
+        }
+    },
+    "navbar" : {
+      "home" : "Home",
+      "forward" : "Forward",
+      "back" : "Back"
+    }  
 }

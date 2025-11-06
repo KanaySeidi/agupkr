@@ -9,12 +9,9 @@ const AboutAGU = () => {
   return (
     <>
       <div className="w-screen mt-10">
-        <div className="w-11/12 mx-auto shadow-2xl rounded-md">
+        <div className="w-11/12 mx-auto rounded-md">
           <div className="w-11/12 mx-auto py-20">
-            <div className="flex items-center gap-2">
-              <Line />
-              <p className="text-2xl">{t("AGU.title")}</p>
-            </div>
+            <Line title={t("AGU.title")} />
             <div className="flex flex-col gap-10 mt-10">
               <p className="text-4xl w-3/4">{t("AGU.subTitle")}</p>
               <p className="text-xl text-[#4C4C4C]">{t("AGU.description1")}</p>
@@ -23,7 +20,7 @@ const AboutAGU = () => {
                 {t("AGU.button")}
                 <ArrowToTop width={30} height={30} />
               </button>
-              <div className="w-full flex justify-between divide-x divide-gray-300">
+              <div className="grid grid-cols-4 divide-x divide-gray-300">
                 <div className="flex flex-col text-sinii gap-2 px-6">
                   <CountUp
                     from={0}
@@ -31,7 +28,7 @@ const AboutAGU = () => {
                     separator=","
                     direction="up"
                     duration={2}
-                    className="count-up-text font-semibold text-5xl"
+                    className="count-up-text font-semibold text-5xl relative after:content-['+'] after:ml-1 after:text-4xl after:font-semibold"
                   />
                   <p>{t("AGU.stats.teachers")}</p>
                 </div>
@@ -52,10 +49,10 @@ const AboutAGU = () => {
                     to={10000}
                     separator=","
                     direction="up"
-                    duration={2}
+                    duration={1}
                     className="count-up-text font-semibold text-5xl"
                   />
-                  <p>{t("AGU.stats.graduates")}</p>
+                  <p className="block">{t("AGU.stats.graduates")}</p>
                 </div>
                 <div className="flex flex-col text-sinii gap-2 px-6">
                   <CountUp
@@ -64,7 +61,7 @@ const AboutAGU = () => {
                     separator=","
                     direction="up"
                     duration={2}
-                    className="count-up-text font-semibold text-5xl"
+                    className="count-up-text font-semibold text-5xl relative after:content-['%'] after:ml-1 after:text-4xl after:font-semibold"
                   />
                   <p>{t("AGU.stats.success")}</p>
                 </div>

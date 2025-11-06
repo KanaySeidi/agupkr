@@ -3,13 +3,14 @@ import logo from "@/assets/icon/Vector.svg";
 import lng from "@/assets/icon/Icon.svg";
 import { useTranslation } from "react-i18next";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { t } = useTranslation();
 
   return (
     <>
-      <div className="w-screen">
+      <div className="w-full h-40 fixed inset-x-0 top-0 z-20 backdrop-blur-md bg-white/70">
         <div className="w-11/12 mx-auto py-2 flex justify-between items-center">
           <div className="flex items-center">
             <img className="size-20" src={logo} alt="logo" />
@@ -33,13 +34,14 @@ const Header = () => {
               {t("header.library")}
             </button>
 
-            <div className="flex gap-1 itemce-center">
+            <div className="flex gap-1 items-center">
               <img src={lng} alt="lng icon" />
               <LanguageSwitcher />
             </div>
           </div>
         </div>
-        <div className="w-full h-12 shadow-2xl">
+
+        <div className="w-full h-12 shadow-md">
           <div
             className={` ${
               localStorage.getItem("language") === "ky"
@@ -50,22 +52,36 @@ const Header = () => {
             <p className="block font-medium text-black uppercase hover:text-blue-400 cursor-pointer">
               {t("header.navs.nav1")}
             </p>
+
             <Popover>
-              <PopoverButton className="block  text-black uppercase font-medium focus:outline-none data-active:text-primary data-focus:outline data-focus:outline-primary data-hover:text-primary cursor-pointer">
-                {t("header.navs.nav2")}
-              </PopoverButton>
-              <PopoverPanel
-                transition
-                anchor="bottom"
-                className="divide-y divide-blue-400 rounded-xl bg-primary text-sm/6 transition duration-200 ease-in-out [--anchor-gap:--spacing(5)] data-closed:-translate-y-1 data-closed:opacity-0"
-              >
-                <div className="p-3">
-                  <p className="font-semibold text-white block rounded-lg px-3 py-2 transition hover:hover-primary cursor-pointer">
-                    Insights
-                  </p>
-                </div>
-              </PopoverPanel>
+              {({ close }) => (
+                <>
+                  <PopoverButton className="block text-black uppercase font-medium focus:outline-none data-open:text-primary data-focus:outline data-focus:outline-primary data-hover:text-primary cursor-pointer">
+                    {t("header.navs.nav2")}
+                  </PopoverButton>
+
+                  <PopoverPanel
+                    transition
+                    anchor="bottom"
+                    className="divide-y divide-blue-400 rounded-xl bg-primary z-50 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:--spacing(5)] data-closed:-translate-y-1 data-closed:opacity-0"
+                  >
+                    <div className="p-3">
+                      <Link to="/about/ustav" onClick={() => close()}>
+                        <p className="font-semibold text-white block rounded-lg px-3 py-2 transition hover:hover-primary cursor-pointer">
+                          {t("header.navs.nav2")}
+                        </p>
+                      </Link>
+                      <Link to="/about/logotip" onClick={() => close()}>
+                        <p className="font-semibold text-white block rounded-lg px-3 py-2 transition hover:hover-primary cursor-pointer">
+                          {t("header.navs.nav3")}
+                        </p>
+                      </Link>
+                    </div>
+                  </PopoverPanel>
+                </>
+              )}
             </Popover>
+
             <p className="block font-medium text-black uppercase hover:text-sinii cursor-pointer">
               {t("header.navs.nav3")}
             </p>
