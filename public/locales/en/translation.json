@@ -66,5 +66,149 @@
       "home" : "Home",
       "forward" : "Forward",
       "back" : "Back"
-    }  
+    },
+    "sidebar": {
+    "about": "About the Academy",
+    "charter": "Charter of the Academy",
+    "history": "History of the Academy",
+    "logo": "Academy Logo",
+    "structure": "Structure",
+    "council": "Academic Council",
+    "union": "Trade Union Committee",
+    "qualitySystem": "Education Quality Management System",
+    "journal": "AGUPKR Journal",
+    "budget": "Budget Programs and Measures 2019–2021",
+    "professors": "Honorary Professors",
+    "cooperation": "International Cooperation",
+    "integrity": "Academic Integrity",
+    "lawsGeneral": "Regulatory Acts (General)",
+    "lawsInternal": "Regulatory Acts (Internal)"
+  },
+  "aboutAgu": {
+    "title": "Academy of Public Administration under the President of the Kyrgyz Republic (AGUPKR)",
+    "lead": "The Academy of Public Administration under the President of the Kyrgyz Republic (AGUPKR) is the only specialized educational institution in Kyrgyzstan dedicated to training managerial personnel for state bodies and local self-government authorities.",
+    "imageAlt": "Entrance to the Academy of Public Administration building",
+    "paragraphs": [
+      "AGUPKR has a high scientific and educational potential and a teaching staff of top qualifications, featuring leading national and international lecturers and experts, as well as broad opportunities for internships and further study abroad.",
+      "AGUPKR comprises four academic buildings in the administrative center of Bishkek; classrooms equipped with multimedia facilities; modern conference halls with videoconferencing equipment; five computer labs with up-to-date software; a library; a gym; a cafeteria; student dormitory; and a guest house at Lake Issyk-Kul.",
+      "AGUPKR pursues an active policy aimed at fostering and developing youth initiatives. To promote leadership and creative skills among students, a Student Union with themed sectors has been established and regular events, lectures and conferences with political and recognized experts are held.",
+      "Among the Academy’s alumni are many well-known figures in the country: senior managers, members of parliament, heads of enterprises and organizations, and specialists representing Kyrgyzstan’s interests on the international stage."
+    ],
+    "cards": {
+      "left": "AGUPKR possesses high scientific and educational potential and a faculty of the highest qualification, with leading domestic and foreign lecturers and experts, providing wide opportunities for internships and further study abroad.",
+      "right": "AGUPKR includes over 150 teaching staff, among them more than 20 doctors of sciences and professors, and 70 candidates of sciences and associate professors. Our instructors are practitioners with significant management experience, as well as teachers with foreign education and coaching experience."
+    },
+    "mission": {
+      "title": "Academy Mission",
+      "descr1": "The mission of the Academy is to provide government bodies, organizations, and local self-government authorities with highly qualified specialists, as well as to ensure scientific and analytical support for the activities of the President of the Kyrgyz Republic, the State Personnel Service of the Kyrgyz Republic, and other state and local authorities.",
+      "descr2": "AGUPKR represents strong scientific and educational potential with a highly qualified faculty, including leading national and international lecturers and experts, offering wide opportunities for internships and continued studies abroad."
+    },
+    "partners": "Our Partners"
+  },
+  "historyAgu": {
+  "title": "History of the Academy"
+},
+"logo": {
+  "title": "Logo of the Academy of Public Administration under the President of the Kyrgyz Republic",
+  "intro": {
+    "creation": "The logo was designed in May 2015 and officially adopted in November 2015.",
+    "languages": "The logo is presented in three languages: the state language, the official language, and English.",
+    "author": "The logo was created by the working collective of the Academy."
+  },
+  "philosophy": {
+    "title": "Philosophy of the Logo",
+    "text": "The philosophy of the Academy’s logo is based on the principles of Yusuf Balasagyn’s treatise 'Kutadgu Bilig' ('Blessed Knowledge') and is defined as: 'Quality education — the path to just public administration aimed at human development in the Kyrgyz Republic.'"
+  },
+  "form": {
+    "title": "Form and Meaning of the Logo",
+    "shape": "The shape of the logo is a rhombus, symbolizing the material world composed of four elements representing the four cardinal directions. It embodies harmony between human beings and the cosmos. The two triangles forming the rhombus represent Knowledge and Power, which together lead to Supreme Wisdom.",
+    "center": "Inside the rhombus, a line transitions into a Tunduk — the central element of the national emblem of the Kyrgyz Republic, symbolizing national unity and belonging. The shape also resembles a human figure, symbolizing the state's orientation toward personal development as the key resource of the country. The branching lines of the torso represent rebirth and opportunities for human growth within Kyrgyz society."
+  },
+  "colors": {
+    "title": "Color Symbolism",
+    "blue": "Blue represents wisdom and faith. Among Turkic peoples and many others, blue symbolizes eternity and the sky, as well as loyalty, honesty, purity, constancy, kindness, and noble reputation."
+  },
+  "alt": "Logo of the Academy of Public Administration under the President of the Kyrgyz Republic"
+},
+"structure": {
+  "item1": "Rector",
+  "item2": "Academic Council",
+  "item3": "Board of Trustees",
+  "item4": "Vice-Rector for Academic Affairs and Development",
+  "item5": "Higher School of Professional Education",
+  "item6": "Department of Education and Science",
+  "item7": "Vice-Rector for Continuing Education / HSA",
+  "item8": "Advanced Courses in Administration and Management",
+  "item9": "Institute for Public Administration Development Studies",
+  "item10": "National Center for Information Technologies",
+  "item11": "Advisor / Legal Counsel",
+  "item12": "Department of Human Resource Development",
+  "item13": "Department of Regulations, Protocol and External Relations",
+  "item14": "Vice-Rector for Administrative and Economic Affairs",
+  "item15": "Financial and Economic Department",
+  "item16": "Academy Administration Department",
+  "item17": "State Enterprise 'Ak-Tolkun'"
+},
+"coop": {
+  "title": "International Cooperation",
+  "intro": "The Academy of Public Administration under the President of the Kyrgyz Republic actively develops international cooperation in education, science, and innovation to exchange experience, build capacity, and integrate into the global academic community.",
+
+  "directionsTitle": "Main Areas of Cooperation",
+  "item1": "Establishing and developing international relations with foreign educational institutions in the field of public administration and local governance.",
+  "item2": "Participation in international projects, programs, and conferences aimed at improving the quality of education and research capacity.",
+  "item3": "Organizing exchange programs, internships, and professional training for public and municipal employees.",
+  "item4": "Academic mobility of faculty members, staff, and students.",
+  "item5": "Development of international research initiatives and joint scientific activities.",
+  "item6": "Active participation in international associations and networks of public administration academies.",
+  "item7": "Expanding cooperation with universities and research institutions across Europe, Asia, and the CIS.",
+  "item8": "Creating joint educational programs with foreign partners.",
+  "item9": "Development of digital education technologies and implementation of distance learning.",
+  "item10": "Organization of international forums, round tables, and conferences.",
+
+  "partnersTitle": "Partner Organizations",
+  "item11": "Academy of Public Administration under the President of the Republic of Kazakhstan.",
+  "item12": "Russian Presidential Academy of National Economy and Public Administration (RANEPA).",
+  "item13": "Academy of Public Administration under the President of the Republic of Uzbekistan.",
+  "item14": "Academy of Public Administration under the President of the Republic of Tajikistan.",
+  "item15": "Academy of Public Administration of Mongolia.",
+  "item16": "Georgian Institute of Public Affairs (GIPA).",
+  "item17": "Azerbaijan Academy of Public Administration under the President of Azerbaijan.",
+  "item18": "École Nationale d’Administration (ENA, France).",
+  "item19": "Regional Institute of Public Administration (RIPA, India).",
+  "item20": "Central Asian Regional Institute for Civil Service (CARICAD).",
+  "item21": "Kazakhstan Institute of Management, Economics, and Strategic Research (KIMEP).",
+  "item22": "Academy of Public Administration of the Republic of Armenia.",
+  "item23": "Asia-Europe Foundation (ASEF).",
+  "item24": "European Association of Schools and Institutes of Public Administration (EASPA).",
+  "item25": "Asian Association for Public Administration (AAPA).",
+
+  "projectsTitle": "International Projects and Initiatives",
+  "item26": "Student and faculty exchange programs under Erasmus+.",
+  "item27": "Professional development programs for civil servants supported by international organizations.",
+  "item28": "Joint research and publications with foreign universities.",
+  "item29": "Participation in international forums and competitions on public administration.",
+  "item30": "Expert involvement of the Academy in UNDP and World Bank programs.",
+
+  "conclusion": "The Academy’s international cooperation strengthens professional potential, promotes best practices, and enhances the global competitiveness of public servants of the Kyrgyz Republic."
+},
+"lawG": {
+  "title": "General Legal Acts",
+  "item1": "Constitution of the Kyrgyz Republic",
+  "item2": "Law of the Kyrgyz Republic 'On Education'",
+  "item3": "Law of the Kyrgyz Republic 'On the Civil Service'",
+  "item4": "Law of the Kyrgyz Republic 'On Local Self-Government'",
+  "item5": "Law of the Kyrgyz Republic 'On Regulatory Legal Acts'",
+  "item6": "Law of the Kyrgyz Republic 'On Combating Corruption'",
+  "item7": "Law of the Kyrgyz Republic 'On Public Procurement'",
+  "item8": "Law of the Kyrgyz Republic 'On Labor'",
+  "item9": "Law of the Kyrgyz Republic 'On the Status of Civil Servants'",
+  "item10": "Law of the Kyrgyz Republic 'On Personal Data'",
+  "item11": "Law of the Kyrgyz Republic 'On Licensing'",
+  "item12": "Government Decree of the Kyrgyz Republic No. 258 of November 15, 2021",
+  "item13": "National Development Strategy of the Kyrgyz Republic for 2018–2040",
+  "item14": "National Development Program of the Kyrgyz Republic until 2026",
+  "item15": "Concept of Education Development in the Kyrgyz Republic for 2021–2030"
+}
+
+
 }

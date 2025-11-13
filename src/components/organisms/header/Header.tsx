@@ -2,11 +2,12 @@ import LanguageSwitcher from "@/components/molecules/LangSwitcher";
 import logo from "@/assets/icon/Vector.svg";
 import lng from "@/assets/icon/Icon.svg";
 import { useTranslation } from "react-i18next";
-import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { Link } from "react-router-dom";
+import { useNavLinks } from "@/utils/navLinks";
 
 const Header = () => {
   const { t } = useTranslation();
+  const navItem = useNavLinks();
 
   return (
     <>
@@ -41,62 +42,23 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="w-full h-12 shadow-md">
-          <div
-            className={` ${
-              localStorage.getItem("language") === "ky"
-                ? "text-sm"
-                : "text-base"
-            } w-10/12 mx-auto h-full flex justify-between items-center border-t border-gray-200`}
-          >
-            <p className="block font-medium text-black uppercase hover:text-blue-400 cursor-pointer">
-              {t("header.navs.nav1")}
-            </p>
-
-            <Popover>
-              {({ close }) => (
-                <>
-                  <PopoverButton className="block text-black uppercase font-medium focus:outline-none data-open:text-primary data-focus:outline data-focus:outline-primary data-hover:text-primary cursor-pointer">
-                    {t("header.navs.nav2")}
-                  </PopoverButton>
-
-                  <PopoverPanel
-                    transition
-                    anchor="bottom"
-                    className="divide-y divide-blue-400 rounded-xl bg-primary z-50 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:--spacing(5)] data-closed:-translate-y-1 data-closed:opacity-0"
+        <div className="w-full h-12  border-b-2">
+          <div className="w-10/12 mx-auto h-full flex items-center">
+            <ul className="flex w-full justify-between items-center">
+              {navItem.map((item) => (
+                <Link to={item.path} key={item.id}>
+                  <li
+                    className={`${
+                      localStorage.getItem("language") === "ky"
+                        ? "text-sm"
+                        : "text-base"
+                    } font-medium text-black uppercase hover:text-blue-400 cursor-pointer`}
                   >
-                    <div className="p-3">
-                      <Link to="/about/ustav" onClick={() => close()}>
-                        <p className="font-semibold text-white block rounded-lg px-3 py-2 transition hover:hover-primary cursor-pointer">
-                          {t("header.navs.nav2")}
-                        </p>
-                      </Link>
-                      <Link to="/about/logotip" onClick={() => close()}>
-                        <p className="font-semibold text-white block rounded-lg px-3 py-2 transition hover:hover-primary cursor-pointer">
-                          {t("header.navs.nav3")}
-                        </p>
-                      </Link>
-                    </div>
-                  </PopoverPanel>
-                </>
-              )}
-            </Popover>
-
-            <p className="block font-medium text-black uppercase hover:text-sinii cursor-pointer">
-              {t("header.navs.nav3")}
-            </p>
-            <p className="block font-medium text-black uppercase hover:text-sinii cursor-pointer">
-              {t("header.navs.nav4")}
-            </p>
-            <p className="block font-medium text-black uppercase hover:text-sinii cursor-pointer">
-              {t("header.navs.nav5")}
-            </p>
-            <p className="block font-medium text-black uppercase hover:text-sinii cursor-pointer">
-              {t("header.navs.nav6")}
-            </p>
-            <p className="block font-medium text-black uppercase hover:text-sinii cursor-pointer">
-              {t("header.navs.nav7")}
-            </p>
+                    {item.title}
+                  </li>
+                </Link>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

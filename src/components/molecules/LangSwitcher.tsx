@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { languages } from "@/components/atoms/language";
+import { languages } from "@/utils/language";
 import { Select } from "@headlessui/react";
 
 const LanguageSwitcher = () => {

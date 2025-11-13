@@ -4,8 +4,20 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 const TITLE_KEYS: Record<string, string> = {
   "/": "header.navs.nav1",
   "/about": "header.navs.nav2",
-  "/about/ustav": "ustav",
-  "/about/logotip": "logotip",
+  "/about/charter": "sidebar.charter",
+  "/about/logotip": "sidebar.logo",
+  "/about/history": "sidebar.history",
+  "/about/structure": "sidebar.structure",
+  "/about/council": "sidebar.council",
+  "/about/union": "sidebar.union",
+  "/about/quality-system": "sidebar.qualitySystem",
+  "/about/journal": "sidebar.journal",
+  "/about/budget": "sidebar.budget",
+  "/about/professors": "sidebar.professors",
+  "/about/cooperation": "sidebar.cooperation",
+  "/about/integrity": "sidebar.integrity",
+  "/about/laws-general": "sidebar.lawsGeneral",
+  "/about/laws-internal": "sidebar.lawsInternal",
 };
 
 const prettify = (slug: string) =>
@@ -29,8 +41,8 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="w-screen h-16 py-10 mt-40">
-        <div className="w-11/12 mx-auto h-full flex gap-2">
+      <div className="w-screen h-12 mt-35 sticky left-0 top-35 bg-white/70 backdrop-blur-md z-50">
+        <div className="w-11/12 mx-auto h-full flex gap-2 items-center">
           <div className="flex gap-2 cursor-pointer">
             <div
               className="w-12 h-10 bg-[#E5F0FF] py-1 px-2 flex justify-center items-center rounded-md"

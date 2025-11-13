@@ -11,3 +11,9 @@ export type QuickLinksGroup = {
   categoryKey: string;
   links: QuickLink[];
 };
+
+export type sideBarNav = {
+  title: string;
+  id: number;
+  path: string;
+};

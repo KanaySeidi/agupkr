@@ -1,6 +1,6 @@
 import ArrowToTop from "@/components/atoms/ArrowToTop";
 import Line from "@/components/atoms/Line";
-import CountUp from "@/components/CountUp";
+import CountUp from "@/components/ui/CountUp";
 import { useTranslation } from "react-i18next";
 
 const AboutAGU = () => {
