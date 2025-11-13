@@ -72,7 +72,9 @@ export default function Sidebar() {
               <Link
                 key={item.id}
                 to={item.path}
-                ref={(el) => (itemRefs.current[item.id] = el)}
+                ref={(el) => {
+                  itemRefs.current[item.id] = el;
+                }}
                 className={`relative block py-2 px-4 rounded-md transition-colors duration-150 ${
                   isActive
                     ? "text-blue-600 font-medium bg-blue-50"
