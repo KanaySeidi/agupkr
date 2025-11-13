@@ -1,5 +1,9 @@
 const LawsGeneral = () => {
-  return <div>LawsGeneral</div>;
+  return (
+    <>
+      <div className=""></div>
+    </>
+  );
 };
 
 export default LawsGeneral;

@@ -18,6 +18,16 @@ const TITLE_KEYS: Record<string, string> = {
   "/about/integrity": "sidebar.integrity",
   "/about/laws-general": "sidebar.lawsGeneral",
   "/about/laws-internal": "sidebar.lawsInternal",
+  "/education": "sidebar.education.index",
+  "/education/spo": "sidebar.education.spo",
+  "/education/bakalavr": "sidebar.education.bakalavr",
+  "/education/magistr": "sidebar.education.magistr",
+  "/education/doctor": "sidebar.education.doctor",
+  "/education/aspirant": "sidebar.education.aspirant",
+  "/education/kafedgmu": "sidebar.education.kafedgmu",
+  "/education/kafedem": "sidebar.education.kafedem",
+  "/education/kafedbp": "sidebar.education.kafedbp",
+  "/education/anket": "sidebar.education.anket",
 };
 
 const prettify = (slug: string) =>
