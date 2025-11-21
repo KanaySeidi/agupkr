@@ -24,3 +24,4 @@ export { EduKafedGMU } from "./education/Education.async";
 export { EduKafedEM } from "./education/Education.async";
 export { EduKafedBP } from "./education/Education.async";
 export { EduAnket } from "./education/Education.async";
+export { Schedule } from "./schedule/Schedule.async";

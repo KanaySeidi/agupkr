@@ -2,12 +2,13 @@ import LanguageSwitcher from "@/components/molecules/LangSwitcher";
 import logo from "@/assets/icon/Vector.svg";
 import lng from "@/assets/icon/Icon.svg";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useNavLinks } from "@/utils/navLinks";
 
 const Header = () => {
   const { t } = useTranslation();
   const navItem = useNavLinks();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -28,7 +29,10 @@ const Header = () => {
             >
               {t("header.avn")}
             </button>
-            <button className="bg-sinii w-32 h-12 flex justify-center items-center rounded-md hover:bg-hover-sinii cursor-pointer">
+            <button
+              onClick={() => navigate("/schedule")}
+              className="bg-sinii w-32 h-12 flex justify-center items-center rounded-md hover:bg-hover-sinii cursor-pointer"
+            >
               {t("header.schedule")}
             </button>
             <button className="bg-sinii w-52 h-12 flex justify-center items-center rounded-md hover:bg-hover-sinii cursor-pointer">

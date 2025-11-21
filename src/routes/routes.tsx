@@ -23,6 +23,7 @@ import {
   Main,
   Professors,
   QualitySystem,
+  Schedule,
   Structure,
   Union,
 } from "@/components/pages";
@@ -54,6 +55,7 @@ const routes = [
   { path: "/education/kafedem", element: <EduKafedEM /> },
   { path: "/education/kafedbp", element: <EduKafedBP /> },
   { path: "/education/anket", element: <EduAnket /> },
+  { path: "/schedule", element: <Schedule /> },
 ];
 
 export default routes;
