@@ -56,7 +56,7 @@ const Header = () => {
                       localStorage.getItem("language") === "ky"
                         ? "text-sm"
                         : "text-base"
-                    } font-medium text-black uppercase hover:text-blue-400 cursor-pointer`}
+                    } font-medium text-black uppercase hover:text-sinii cursor-pointer`}
                   >
                     {item.title}
                   </li>

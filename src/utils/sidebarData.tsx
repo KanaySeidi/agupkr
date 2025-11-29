@@ -1,18 +1,15 @@
-// src/utils/sidebarData.ts
 import type { sideBarNav } from "@/types";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 
-/**
- * Универсальный хук: возвращает набор nav для текущего раздела.
- */
 export const useSidebarNav = (): sideBarNav[] => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
 
-  const getSection = (): "about" | "education" | "main" => {
+  const getSection = (): "about" | "education" | "advanced" | "main" => {
     if (pathname.startsWith("/about")) return "about";
     if (pathname.startsWith("/education")) return "education";
+    if (pathname.startsWith("/advanced")) return "advanced";
     return "main";
   };
 
@@ -89,8 +86,21 @@ export const useSidebarNav = (): sideBarNav[] => {
     ];
   }
 
-  return [
-    { id: 1, title: t("sidebar.home"), path: "/" },
-    { id: 2, title: t("sidebar.contacts"), path: "/contacts" },
-  ];
+  if (section === "advanced") {
+    return [
+      { id: 1, title: t("sidebar.advanced.about"), path: "/advanced" },
+      {
+        id: 2,
+        title: t("sidebar.advanced.profDevelop"),
+        path: "/advanced/profdevelop",
+      },
+      {
+        id: 3,
+        title: t("sidebar.advanced.employees"),
+        path: "/advanced/employees",
+      },
+    ];
+  }
+
+  return [{ id: 1, title: t("navbar.home"), path: "/" }];
 };

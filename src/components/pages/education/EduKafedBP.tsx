@@ -7,7 +7,7 @@ const EduKafedBP = () => {
   type StaffMember = {
     name: string;
     title?: string;
-    resumeUrl?: string; // ссылка на pdf (или пока placeholder)
+    resumeUrl?: string;
   };
 
   const { t } = useTranslation();

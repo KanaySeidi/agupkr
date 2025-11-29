@@ -13,13 +13,13 @@ const QuickLinks = () => {
           <Line title={t("quick.sectionTitle")} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
             {quickLinksConfig.map((group) => (
-              <div key={group.categoryKey}>
+              <div key={group.id}>
                 <div className="space-y-4">
                   <h1 className="text-lg">{t(group.categoryKey)}</h1>
                   <ul className="space-y-2">
                     {group.links.map((link) => (
                       <li
-                        key={link.titleKey}
+                        key={link.id}
                         className="flex items-center gap-2 text-sinii font-semibold hover:text-hover-sinii"
                       >
                         <ArrowToLeft width={24} height={24} color="#1877F2" />

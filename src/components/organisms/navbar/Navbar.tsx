@@ -28,6 +28,11 @@ const TITLE_KEYS: Record<string, string> = {
   "/education/kafedem": "sidebar.education.kafedem",
   "/education/kafedbp": "sidebar.education.kafedbp",
   "/education/anket": "sidebar.education.anket",
+  "/contacts": "header.navs.nav7",
+  "/advanced": "sidebar.advanced.about",
+  "/advanced/profdevelop": "sidebar.advanced.profDevelop",
+  "/advanced/employees": "sidebar.advanced.employees",
+  "/aplicant2025": "admission.blockTitle",
 };
 
 const prettify = (slug: string) =>
@@ -65,7 +70,7 @@ const Navbar = () => {
                 height="30"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#62A2F5"
+                stroke="#104385"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -86,7 +91,7 @@ const Navbar = () => {
                 height="30"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#62A2F5"
+                stroke="#104385"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -107,7 +112,7 @@ const Navbar = () => {
                 height="30"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#62A2F5"
+                stroke="#104385"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -122,7 +127,7 @@ const Navbar = () => {
             aria-label="Breadcrumbs"
             className="hidden w-fit h-10 bg-[#E5F0FF] px-2 rounded-md md:flex items-center"
           >
-            <Link to="/" className="text-sm text-blue-600 hover:underline">
+            <Link to="/" className="text-sm text-sinii hover:underline">
               {t(TITLE_KEYS["/"])}
             </Link>
 
@@ -132,10 +137,7 @@ const Navbar = () => {
                 className="flex items-center w-fit h-10 bg-[#E5F0FF] px-2 rounded-md"
               >
                 <span className="text-slate-300 mr-2">/</span>
-                <Link
-                  to={c.to}
-                  className="text-sm text-blue-600 hover:underline"
-                >
+                <Link to={c.to} className="text-sm text-sinii hover:underline">
                   {c.label}
                 </Link>
               </div>

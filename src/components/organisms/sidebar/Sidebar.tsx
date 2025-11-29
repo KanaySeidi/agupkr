@@ -6,20 +6,28 @@ export default function Sidebar() {
   const navItems = useSidebarNav();
   const { pathname } = useLocation();
 
-  const itemRefs = useRef<Record<number, HTMLAnchorElement | null>>({});
+  const itemRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
   const normalize = (p: string) =>
     p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
 
   const currentPath = normalize(pathname);
 
+  const allowedPrefixes = ["/about", "/education", "/library", "/advanced"];
+  const showSidebar = allowedPrefixes.some(
+    (prefix) => currentPath === prefix || currentPath.startsWith(prefix + "/")
+  );
+
+  const navWithPath = navItems.filter(
+    (it) => typeof it.path === "string" && it.path.length > 0
+  );
+
   const activeId = useMemo(() => {
     let bestId: number | null = null;
     let bestLen = -1;
 
-    for (const item of navItems) {
-      if (!item.path) continue;
-      const itemPath = normalize(item.path);
+    for (const item of navWithPath) {
+      const itemPath = normalize(item.path!);
 
       if (currentPath === itemPath) {
         if (itemPath.length > bestLen) {
@@ -38,11 +46,13 @@ export default function Sidebar() {
     }
 
     return bestId;
-  }, [navItems, currentPath]);
+  }, [navWithPath, currentPath]);
 
   useEffect(() => {
-    if (!activeId) return;
-    const el = itemRefs.current[activeId];
+    if (activeId == null) return;
+
+    const key = String(activeId);
+    const el = itemRefs.current[key];
     if (!el) return;
 
     const container = el.closest("[data-sidebar-scroll]") as HTMLElement | null;
@@ -55,7 +65,9 @@ export default function Sidebar() {
     } else {
       el.scrollIntoView({ block: "center", behavior: "smooth" });
     }
-  }, [activeId]);
+  }, [activeId, showSidebar]);
+
+  if (!showSidebar) return null;
 
   return (
     <aside className="hidden md:block w-64 shrink-0" aria-label="Sidebar">
@@ -65,15 +77,20 @@ export default function Sidebar() {
           data-sidebar-scroll
           role="navigation"
         >
-          {navItems.map((item) => {
+          {navWithPath.map((item) => {
             const isActive = activeId === item.id;
+            const key = String(item.id);
 
             return (
               <Link
-                key={item.id}
-                to={item.path}
+                key={key}
+                to={item.path!}
                 ref={(el) => {
-                  itemRefs.current[item.id] = el;
+                  if (el) {
+                    itemRefs.current[key] = el;
+                  } else {
+                    delete itemRefs.current[key];
+                  }
                 }}
                 className={`relative block py-2 px-4 rounded-md transition-colors duration-150 ${
                   isActive

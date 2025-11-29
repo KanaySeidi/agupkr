@@ -141,7 +141,7 @@ const ProgramCardItem: React.FC<{ data: ProgramCard }> = ({ data }) => {
   const activeCourse = hasCourses ? data.courses[activeCourseIndex] : null;
 
   return (
-    <div className="w-auto h-auto flex flex-col items-start rounded-2xl border border-slate-700/60 bg-black/10 backdrop-blur-md px-4 py-3 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-indigo-400/80">
+    <div className="w-auto h-auto flex flex-col items-start rounded-2xl border border-slate-700/60 backdrop-blur-md px-4 py-3 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-indigo-400/80">
       <h3 className="font-semibold text-2xl text-sinii mb-3 line-clamp-2">
         {data.title}
       </h3>
@@ -161,8 +161,8 @@ const ProgramCardItem: React.FC<{ data: ProgramCard }> = ({ data }) => {
                     transition-colors
                     ${
                       isActive
-                        ? "border-indigo-400 bg-indigo-500/20 text-sinii"
-                        : "border-slate-600 bg-slate-300 text-sinii hover:border-indigo-300"
+                        ? "bg-hover-sinii text-white"
+                        : "border-slate-600 text-sinii  hover:border-indigo-300"
                     }
                   `}
                 >
@@ -184,9 +184,8 @@ const ProgramCardItem: React.FC<{ data: ProgramCard }> = ({ data }) => {
                   className="
                     text-lg px-4 py-2 rounded-full
                     border border-indigo-400/80
-                    bg-indigo-500/10
                     text-sinii
-                    hover:bg-indigo-500/20 hover:text-sinii
+                    hover:bg-hover-sinii hover:text-white
                     transition-colors
                   "
                 >

@@ -17,7 +17,7 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div className="text-[#1877F2] text-base md:text-md lg:text-lg focus:outline-none outline-none">
+    <div className="text-sinii text-base md:text-md lg:text-lg focus:outline-none outline-none">
       <Select
         name="status"
         id="language-select"
@@ -29,7 +29,7 @@ const LanguageSwitcher = () => {
         {languages.map(({ title, key }) => (
           <option
             key={key}
-            className="[#1877F2] focus:outline-none outline-none"
+            className="text-sinii focus:outline-none outline-none"
             value={key}
           >
             {title.toUpperCase()}

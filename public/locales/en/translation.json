@@ -94,7 +94,12 @@
         "kafedem": "Department of Economic Management",
         "kafedbp": "Department of Budget and Policy",
         "anket": "Surveys / Feedback"
-      }
+      },
+      "advanced" : {
+  "about" : "About us",
+  "profDevelop" : "Professional development",
+  "employees" : "State order for training of state civil servants and municipal employees"
+}
     },
   "aboutAgu": {
     "title": "Academy of Public Administration under the President of the Kyrgyz Republic (AGUPKR)",
@@ -220,7 +225,87 @@
   "item13": "National Development Strategy of the Kyrgyz Republic for 2018–2040",
   "item14": "National Development Program of the Kyrgyz Republic until 2026",
   "item15": "Concept of Education Development in the Kyrgyz Republic for 2021–2030"
+},
+"contacts" : {
+  "reception_and_departments": "Reception and Departments",
+  "study_reception": "Reception for Academic Affairs and Schedule",
+  "director_coordinator": "Director of VII / Coordinator for Continuing Education",
+  "press_secretary": "Press Secretary",
+  "hr_department": "Human Resources Development Department",
+  "youth_protocol_department": "Youth, Protocol and External Relations Department",
+  "phone": "Phone",
+  "email": "E-mail"
+},
+"advanced" : {
+  "about": "On July 31, 1996, by the order of the President of the Kyrgyz Republic 'On the organization based on the Bishkek International School of Management and Business', the training and retraining of civil servants under the Master's in Public Administration program began, created within the framework of the UNDP project 'Management Development in Kyrgyzstan'. On January 19, 1998, by Presidential Decree No. 19, a unified educational and methodological complex for training and retraining personnel was established on the basis of AUPKR. According to the Government Resolution No. 35 dated January 26, 2004, Centers for Professional Development and Retraining of State and Municipal Employees were established in Bishkek and Osh. According to Presidential Decree No. 206 dated September 26, 2012, ... the Institute of Continuing Education for State and Municipal Employees was created, which in 2015 (Decree No. 188) was renamed into the Higher Courses of Administration and Management (VKAU). Currently, the Higher School of Administration (VShA) is responsible for training, retraining, and professional development, consisting of VKAU, the Institute for Public Administration Research and Development, and the National Center for Information Technologies. To date, about 28,000 civil and municipal servants have completed various trainings. Trainings are regularly conducted based on state orders and in cooperation with foreign partners (GIZ, EC, OSCE, JDS, JICE, Peace Nexus, RANEPA).",
+  "title": "Activities",
+  "link1": "Activities for 2022",
+  "link2": "Digitalization Action Plan",
+  "link3": "Digitalization Event Plan",
+  "item1": "1.3.1. Constitution of the Kyrgyz Republic",
+  "item2": "1.3.2. Constitutional Law on the Cabinet of Ministers",
+  "item3": "1.3.3. Law of the Kyrgyz Republic on Civil and Municipal Service",
+  "item4": "1.3.4. On Local State Administration and Local Self-Government Bodies",
+  "item5": "1.3.5. Charter of the Academy of Public Administration under the President of the Kyrgyz Republic named after Jusup Abdrakhmanov",
+  "item6": "1.3.6. Regulation on the procedure for probation in the system of civil and municipal service",
+  "item7": "1.3.7. Regulation on the procedure for attestation of civil and municipal servants of the Kyrgyz Republic",
+  "item8": "1.3.8. Regulation of the Cabinet of Ministers of the Kyrgyz Republic",
+  "item9": "1.3.9. Resolution of the Cabinet of Ministers of the Kyrgyz Republic 'On the issues of training civil and municipal servants of the Kyrgyz Republic'",
+  "item10": "1.3.10. Regulation on the procedure for training civil and municipal servants of the Kyrgyz Republic",
+  "item11": "1.3.11. Regulation on the state order for training civil and municipal servants of the Kyrgyz Republic",
+  "item12": "1.3.12. Consortium of universities",
+  "stepper": {
+    "title": "Professional Development Cycle",
+    "subtitle": "The learner development cycle consists in  of 10 sequential steps",
+    "item1_title": "Learner Registration",
+    "item1_subtitle": "Online registration or official request from an organization. Submission of the list of employees.",
+    "item2_title": "Instructor Selection",
+    "item2_subtitle": "The APA commission selects instructors based on qualification criteria.",
+    "item3_title": "Program Adaptation",
+    "item3_subtitle": "The selected instructor adapts the program considering the specifics of future learners.",
+    "item4_title": "Training Delivery",
+    "item4_subtitle": "Conducting sessions, ongoing assessment, and final evaluation of knowledge and skills.",
+    "item5_title": "Issuance of Certificates",
+    "item5_subtitle": "Preparation, production, and award of ranked Academy certificates.",
+    "item6_title": "Budget Formation",
+    "item6_subtitle": "Development and approval of the training program budget. Signing of the service contract.",
+    "item7_title": "Training Schedule",
+    "item7_subtitle": "Development and approval of the training schedule and timeline.",
+    "item8_title": "Training Start",
+    "item8_subtitle": "Formation of the learner group and start of the educational process.",
+    "item9_title": "Learner Survey",
+    "item9_subtitle": "Evaluation of the quality of training through learner surveys.",
+    "item10_title": "Reporting and Analysis",
+    "item10_subtitle": "Instructors submit reports. The Academy analyzes training quality."
+  }
+},
+"admission.title": "INFORMATION FOR APPLICANTS TO THE MASTER’S PROGRAM 2025",
+"admission.subtitle": "The Academy of Public Administration under the President of the Kyrgyz Republic (hereinafter APAKR) is the only specialized educational institution in the Kyrgyz Republic in the field of training managerial personnel for state bodies and local self-government bodies of the Kyrgyz Republic.",
+"admission.blockTitle": "APPLICANT – 2025!",
+"admission.desc": "The Academy of Public Administration under the President of the Kyrgyz Republic named after Jusup Abdrakhmanov (APAKR) announces admission for the contract-based master’s degree program in the following direction and profiles of full-time study (2 years, contract 56,000 – 66,000 KGS):",
+"admission.direction": "DIRECTION: 580900 “Public and Municipal Administration”",
+"admission.profilesTitle": "Profiles:",
+"admission.profile1": "Public and municipal administration and women's leadership",
+"admission.profile2": "Public and municipal administration and women's leadership",
+"admission.profile3": "Public and municipal administration and women's leadership",
+"admission.profile4": "Public and municipal administration and women's leadership",
+"admission.profile5": "Public and municipal administration and women's leadership",
+"admission.note": "If the direction/specialty of higher professional education does not correspond to the field of study, the Academy offers bridging courses on a paid basis in accordance with the Resolution of the Government of the Kyrgyz Republic “On the established two-level structure of higher professional education in the Kyrgyz Republic” No. 496 of 23.08.2011 (as amended by Government Resolutions No. 472 of 04.07.2012, No. 405 of 22.07.2014, No. 323 of 16.07.2018, No. 718 of 30.12.2019).",
+"admission.requirementsTitle": "For admission to the master’s degree:",
+"admission.req1": "Passport (copy);",
+"admission.req2": "Original diploma of higher education with the academic degree of “bachelor” or diploma of higher education with the qualification of “specialist” in the corresponding field or specialty;",
+"admission.req3": "Resume;",
+"admission.req4": "Referral from the place of work (for budget-funded applicants);",
+"admission.req5": "Copy of the employment record book;",
+"admission.req6": "Certificate from the place of work indicating the category according to the Register of state civil and municipal servants (for budget-funded applicants);",
+"admission.req7": "Receipt for payment of the admission fee — 1500 KGS (copy);",
+"admission.req8": "Receipt for payment of 50% of the annual tuition fee (annual contract: 56,000 – 66,000 KGS).",
+"admission.finalNote": "Publication of results and enrollment. Lists of applicants recommended for enrollment are posted on the information board and on the Academy’s website:",
+"news": {
+  "announcement": "University Announcements",
+  "pinned": "Pinned Announcements",
+  "news": "News",
+  "events": "Events",
+  "evnnew": "Events & News"
 }
-
-
 }

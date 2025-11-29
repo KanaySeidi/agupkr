@@ -2,7 +2,12 @@ import {
   About,
   AboutLogo,
   AboutUstav,
+  AdEmployees,
+  AdProfDevelop,
+  Advanced,
+  Aplicant,
   Budget,
+  Contacts,
   Cooperation,
   Council,
   EduAnket,
@@ -21,6 +26,7 @@ import {
   LawsGeneral,
   LawsInternal,
   Main,
+  News,
   Professors,
   QualitySystem,
   Schedule,
@@ -56,6 +62,12 @@ const routes = [
   { path: "/education/kafedbp", element: <EduKafedBP /> },
   { path: "/education/anket", element: <EduAnket /> },
   { path: "/schedule", element: <Schedule /> },
+  { path: "/contacts", element: <Contacts /> },
+  { path: "/advanced", element: <Advanced /> },
+  { path: "/advanced/profdevelop", element: <AdProfDevelop /> },
+  { path: "/advanced/employees", element: <AdEmployees /> },
+  { path: "/aplicant2025", element: <Aplicant /> },
+  { path: "/news", element: <News /> },
 ];
 
 export default routes;

@@ -5,9 +5,11 @@ export type LineProps = {
 export type QuickLink = {
   titleKey: string;
   href: string;
+  id: string;
 };
 
 export type QuickLinksGroup = {
+  id: string;
   categoryKey: string;
   links: QuickLink[];
 };

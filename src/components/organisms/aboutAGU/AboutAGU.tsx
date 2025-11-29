@@ -2,10 +2,11 @@ import ArrowToTop from "@/components/atoms/ArrowToTop";
 import Line from "@/components/atoms/Line";
 import CountUp from "@/components/ui/CountUp";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const AboutAGU = () => {
   const { t } = useTranslation();
-
+  const navigate = useNavigate();
   return (
     <>
       <div className="w-screen mt-10">
@@ -16,7 +17,10 @@ const AboutAGU = () => {
               <p className="text-4xl w-3/4">{t("AGU.subTitle")}</p>
               <p className="text-xl text-[#4C4C4C]">{t("AGU.description1")}</p>
               <p className="text-xl text-[#4C4C4C]">{t("AGU.description2")}</p>
-              <button className="w-full h-13 rounded-md border-2 border-sinii text-sinii flex justify-center items-center uppercase font-semibold cursor-pointer">
+              <button
+                onClick={() => navigate("/about")}
+                className="w-full h-13 rounded-md border-2 border-sinii text-sinii flex justify-center items-center uppercase font-semibold cursor-pointer"
+              >
                 {t("AGU.button")}
                 <ArrowToTop width={30} height={30} />
               </button>
