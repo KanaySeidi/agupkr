@@ -1,6 +1,5 @@
 import ArrowToTop from "@/components/atoms/ArrowToTop";
 import Line from "@/components/atoms/Line";
-import AdProfDevelopStepper from "@/components/organisms/AdProfDevelopStepper/AdProfDevelopStepper";
 import {
   Accordion,
   AccordionContent,
