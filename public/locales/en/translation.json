@@ -306,6 +306,8 @@
   "pinned": "Pinned Announcements",
   "news": "News",
   "events": "Events",
-  "evnnew": "Events & News"
+  "evnnew": "Events & News",
+  "allnews" : "All news"
 }
+
 }

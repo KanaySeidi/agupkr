@@ -23,7 +23,7 @@ const Education = () => {
                 className="border border-gray-400 w-full flex justify-center items-center rounded-md py-2"
               >
                 <p>Подобнее</p>
-                <ArrowToTop width={25} height={25} />
+                <ArrowToTop width={25} height={25} color="black" />
               </button>
             </div>
             <div className="w-1/4 h-56 flex flex-col justify-around">
@@ -38,7 +38,7 @@ const Education = () => {
                 className="border border-gray-400 w-full flex justify-center items-center rounded-md py-2"
               >
                 <p>Подобнее</p>
-                <ArrowToTop width={25} height={25} />
+                <ArrowToTop width={25} height={25} color="black" />
               </button>
             </div>
             <div className="w-1/4 h-56 flex flex-col justify-around">
@@ -53,7 +53,7 @@ const Education = () => {
                 className="border border-gray-400 w-full flex justify-center items-center rounded-md py-2"
               >
                 <p>Подобнее</p>
-                <ArrowToTop width={25} height={25} />
+                <ArrowToTop width={25} height={25} color="black" />
               </button>
             </div>
             <div className="w-1/4 h-56 flex flex-col justify-around">
@@ -68,7 +68,7 @@ const Education = () => {
                 className="border border-gray-400 w-full flex justify-center items-center rounded-md py-2"
               >
                 <p>Подобнее</p>
-                <ArrowToTop width={25} height={25} />
+                <ArrowToTop width={25} height={25} color="black" />
               </button>
             </div>
           </div>

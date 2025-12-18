@@ -33,6 +33,7 @@ const TITLE_KEYS: Record<string, string> = {
   "/advanced/profdevelop": "sidebar.advanced.profDevelop",
   "/advanced/employees": "sidebar.advanced.employees",
   "/aplicant2025": "admission.blockTitle",
+  "/news": "header.navs.nav6",
 };
 
 const prettify = (slug: string) =>
