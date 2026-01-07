@@ -2,11 +2,9 @@ import Line from "@/components/atoms/Line";
 import { useTranslation } from "react-i18next";
 import news_img from "@/assets/img/news_img.png";
 import ArrowToTop from "@/components/atoms/ArrowToTop";
-import { useNavigate } from "react-router-dom";
 
 const News = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   const announcements = [
     {
