@@ -71,9 +71,13 @@ export default function Sidebar() {
 
   return (
     <aside className="hidden md:block w-64 shrink-0" aria-label="Sidebar">
-      <div className="sticky top-44 p-4 border-r border-gray-200">
+      <div
+        className="sticky p-4 border-r border-gray-200"
+        style={{ top: "calc(var(--header-h, 224px) + 16px)" }}
+      >
         <nav
-          className="max-h-[calc(100vh-7rem)] overflow-y-auto flex flex-col gap-2 text-sm"
+          className="overflow-y-auto flex flex-col gap-2 text-sm"
+          style={{ maxHeight: "calc(100vh - var(--header-h, 224px) - 48px)" }}
           data-sidebar-scroll
           role="navigation"
         >

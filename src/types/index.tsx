@@ -14,8 +14,27 @@ export type QuickLinksGroup = {
   links: QuickLink[];
 };
 
-export type sideBarNav = {
+export type SidebarNavItem = {
   title: string;
   id: number;
   path: string;
+};
+
+export type NavItemConfig = {
+  id: number;
+  path: string;
+  titleKey: string;
+};
+
+export type HeaderShortcutItem = {
+  id: string;
+  titleKey: string;
+  path?: string;
+  href?: string;
+  className: string;
+};
+
+export type LanguageOption = {
+  title: string;
+  key: string;
 };

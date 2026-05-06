@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
+  type CarouselApi,
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -36,7 +37,7 @@ const MainSlider = () => {
   ];
 
   // Embla API + Autoplay
-  const emblaRef = useRef<any>(null);
+  const emblaRef = useRef<CarouselApi | null>(null);
   const autoplay = useRef(
     Autoplay({
       delay: 4000,

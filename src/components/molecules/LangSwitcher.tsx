@@ -1,19 +1,18 @@
 import { useTranslation } from "react-i18next";
 import { languages } from "@/utils/language";
 import { Select } from "@headlessui/react";
+import type { ChangeEvent } from "react";
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
-  const currentLanguage = i18n.language || "ru";
+  const currentLanguage = i18n.resolvedLanguage ?? "ru";
 
-  const changeLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const changeLanguage = (event: ChangeEvent<HTMLSelectElement>) => {
     const selectedLanguage = event.target.value;
-    if (selectedLanguage) {
-      i18n.changeLanguage(selectedLanguage);
-      localStorage.setItem("language", selectedLanguage);
-    } else {
-      console.error("Ошибка: язык не определён");
-    }
+    if (!selectedLanguage) return;
+
+    i18n.changeLanguage(selectedLanguage);
+    localStorage.setItem("language", selectedLanguage);
   };
 
   return (

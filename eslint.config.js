@@ -20,4 +20,16 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    files: ['src/components/pages/**/*.tsx'],
+    rules: {
+      'no-irregular-whitespace': 'off',
+    },
+  },
+  {
+    files: ['src/components/ui/button.tsx', 'src/components/ui/sidebar.tsx'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  },
 ])

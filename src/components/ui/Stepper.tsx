@@ -57,8 +57,10 @@ export default function StepperSimple({
         const storedBg = localStorage.getItem(bgKey);
         if (storedBg) setBg(storedBg);
       }
-    } catch {}
-  }, []);
+    } catch {
+      // Ignore localStorage access issues and keep the in-memory fallback.
+    }
+  }, [bgKey, palette, todayKey]);
 
   // autoplay
   useEffect(() => {

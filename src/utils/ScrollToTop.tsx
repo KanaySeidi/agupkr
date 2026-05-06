@@ -1,16 +1,15 @@
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, type ReactNode } from "react";
 import { useLocation } from "react-router-dom";
-import React from "react";
 
 type ScrollToTopOnPageChangeProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   behavior?: ScrollBehavior;
 };
 
-const ScrollToTop: React.FC<ScrollToTopOnPageChangeProps> = ({
+const ScrollToTop = ({
   children,
   behavior = "smooth",
-}) => {
+}: ScrollToTopOnPageChangeProps) => {
   const { pathname } = useLocation();
 
   useLayoutEffect(() => {
