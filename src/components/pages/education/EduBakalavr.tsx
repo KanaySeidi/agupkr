@@ -11,94 +11,74 @@ const EduBakalavr = () => {
   const directions = [
     {
       id: "gm",
-      title: "Государственное и муниципальное управление (580900)",
-      profiles: ["Государственное и муниципальное управление"],
+      titleKey: "auto2.components.pages.education.EduBakalavr.1",
+      profileKeys: ["auto2.components.pages.education.EduBakalavr.2"],
     },
     {
       id: "econ",
-      title: "Экономика (580100)",
-      profiles: [
-        "Финансы и кредит",
-        "Бухгалтерский учет, анализ и аудит",
-        "Экономика и управление бизнесом",
+      titleKey: "auto2.components.pages.education.EduBakalavr.3",
+      profileKeys: [
+        "auto2.components.pages.education.EduBakalavr.4",
+        "auto2.components.pages.education.EduBakalavr.5",
+        "auto2.components.pages.education.EduBakalavr.6",
       ],
     },
     {
       id: "mgmt",
-      title: "Менеджмент (580200)",
-      profiles: [
-        "Менеджмент организации (по отраслям и сферам деятельности)",
-        "Финансовый менеджмент",
+      titleKey: "auto2.components.pages.education.EduBakalavr.7",
+      profileKeys: [
+        "auto2.components.pages.education.EduBakalavr.8",
+        "auto2.components.pages.education.EduBakalavr.9",
       ],
     },
     {
       id: "law",
-      title: "Юриспруденция (530500)",
-      profiles: ["Юрист в сфере государственной службы"],
+      titleKey: "auto2.components.pages.education.EduBakalavr.10",
+      profileKeys: ["auto2.components.pages.education.EduBakalavr.11"],
     },
   ];
 
   return (
-    <article className="w-11/12 mx-auto p-6 md:p-10 bg-white rounded-2xl shadow-lg">
+    <article className="w-full bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-10">
       <header className="mb-6">
         <Line title={t("sidebar.education.bakalavr")} />
         <h2 className="text-lg font-semibold text-slate-900 mt-5">
-          Миссия Программы бакалавриата
-        </h2>
+          {t("auto.components.pages.education.EduBakalavr.1")}</h2>
         <p className="mt-3 text-sm md:text-base text-slate-700">
-          Содействие целенаправленной подготовке высокопрофессиональных
-          государственных и муниципальных служащих на уровне бакалаврских
-          программ, обладающих теоретическими и профессиональными знаниями,
-          организационно-управленческими навыками, коммуникативными качествами и
-          социальной компетентностью, нацеленных на достижение успеха и умением
-          быстро и эффективно принимать управленческие решения в сфере
-          государственного и муниципального управления, экономики, менеджмента,
-          а также юриспруденции.
-        </p>
+          {t("auto.components.pages.education.EduBakalavr.2")}</p>
       </header>
 
       <section className="mb-6">
-        <h2 className="text-lg font-semibold text-slate-900">Цель программы</h2>
+        <h2 className="text-lg font-semibold text-slate-900">{t("auto.components.pages.education.EduBakalavr.3")}</h2>
         <p className="mt-2 text-sm text-slate-700">
-          Основной целью Программы является реализация образовательных программ
-          Академии по подготовке высококвалифицированных кадров государственных
-          и муниципальных служащих в сфере государственного и муниципального
-          управления, экономики, менеджмента и юриспруденции Кыргызской
-          Республики в соответствии с миссией Академии.
-        </p>
+          {t("auto.components.pages.education.EduBakalavr.4")}</p>
       </section>
 
       <section className="mb-6">
         <h2 className="text-lg font-semibold text-slate-900">
-          Образовательные программы
-        </h2>
+          {t("auto.components.pages.education.EduBakalavr.5")}</h2>
 
         <p className="mt-3 text-sm text-slate-700">
-          Деятельность программы проводится на основе Государственных
-          образовательных стандартов высшего профессионального образования КР.
-          Программа бакалавриата организует и координирует учебный процесс по
-          следующим направлениям подготовки:
-        </p>
+          {t("auto.components.pages.education.EduBakalavr.6")}</p>
 
         <div className="mt-4 grid gap-4 md:grid-cols-2">
           {directions.map((d) => (
             <div key={d.id} className="border rounded-lg p-4 shadow-sm">
-              <div className="flex justify-between items-start gap-3">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3">
                 <div>
                   <h3 className="text-sm font-semibold text-slate-900">
-                    {d.title}
+                    {t(d.titleKey)}
                   </h3>
                   <p className="text-xs text-slate-500 mt-1">
-                    Уровень обучения: бакалавр, магистр
-                  </p>
+                    {t("auto.components.pages.education.EduBakalavr.7")}</p>
                 </div>
 
                 <button
                   aria-expanded={!!open[d.id]}
                   onClick={() => toggle(d.id)}
-                  className="ml-2 inline-flex items-center gap-2 px-3 py-1 rounded-md text-sm bg-sinii text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-300"
+                  className="self-start shrink-0 inline-flex items-center gap-2 px-3 py-1 rounded-md text-sm bg-sinii text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-300"
                 >
-                  {open[d.id] ? "Свернуть" : "Профили"}
+                  {open[d.id] ? t("auto2.components.pages.education.EduBakalavr.12") : t("auto2.components.pages.education.EduBakalavr.13")}
                 </button>
               </div>
 
@@ -108,8 +88,8 @@ const EduBakalavr = () => {
                 }`}
               >
                 <ul className="list-disc list-inside text-sm text-slate-700 space-y-1">
-                  {d.profiles.map((p) => (
-                    <li key={p}>{p}</li>
+                  {d.profileKeys.map((profileKey) => (
+                    <li key={profileKey}>{t(profileKey)}</li>
                   ))}
                 </ul>
               </div>
@@ -120,22 +100,15 @@ const EduBakalavr = () => {
 
       <section className="mb-6">
         <h2 className="text-lg font-semibold text-slate-900">
-          Преимущества программ бакалавриата
-        </h2>
+          {t("auto.components.pages.education.EduBakalavr.8")}</h2>
         <ul className="mt-3 space-y-2 text-sm text-slate-700">
           <li>
-            Диплом о высшем образовании от одного из самых престижных
-            отечественных вузов;
-          </li>
+            {t("auto.components.pages.education.EduBakalavr.9")}</li>
           <li>
-            Качественные профессиональные знания программы бакалавриата Академии
-            высоко ценятся в КР и за рубежом;
-          </li>
-          <li>Обучение в Академии с президентским статусом;</li>
+            {t("auto.components.pages.education.EduBakalavr.10")}</li>
+          <li>{t("auto.components.pages.education.EduBakalavr.11")}</li>
           <li>
-            Участие зарубежных специалистов мирового уровня: семинары,
-            мастер-классы и программы от партнерских вузов.
-          </li>
+            {t("auto.components.pages.education.EduBakalavr.12")}</li>
         </ul>
       </section>
     </article>

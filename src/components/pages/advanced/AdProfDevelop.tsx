@@ -25,8 +25,7 @@ const AdProfDevelop = () => {
             <AccordionItem value="1">
               <AccordionTrigger className="text-lg text-sinii">
                 <p className="text-2xl">
-                  Каталоги курсов повышения квалификации
-                </p>
+                  {t("auto.components.pages.advanced.AdProfDevelop.1")}</p>
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 <ul className="flexl flex-col px-5">
@@ -35,49 +34,35 @@ const AdProfDevelop = () => {
                       target="_blank"
                       href="http://www.apap.kg/uploads/pdf/%D0%93%D0%9C%D0%A1/%D0%9F%D0%9A%D0%9F/%D0%9F%D0%BE%D0%B2%D1%8B%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BA%D0%B2%D0%B0%D0%BB%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8/%D0%9A%D0%90%D0%A2%D0%90%D0%9B%D0%9E%D0%93%20%D0%92%D0%9A%D0%90%D0%A3_%D0%9E%D0%92.pdf"
                     >
-                      Каталог курсов повышения квалификации для государственных
-                      гражданских служащих и муниципальных служащих Кыргызской
-                      Республики, отраслевых управленцев и специалистов компаний
-                    </a>
+                      {t("auto.components.pages.advanced.AdProfDevelop.2")}</a>
                   </li>
                   <li className="text-sinii list-disc mb-4">
                     <a
                       target="_blank"
                       href="http://www.apap.kg/uploads/pdf/%D0%93%D0%9C%D0%A1/%D0%9F%D0%9A%D0%9F/%D0%9F%D0%BE%D0%B2%D1%8B%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BA%D0%B2%D0%B0%D0%BB%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8/%D0%BA%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3%20%D0%B4%D0%BB%D1%8F%20%D0%B0%D0%BA%D0%B8%D0%BC%D0%B8%D0%B0%D1%82%D0%BE%D0%B2.pdf"
                     >
-                      Каталог курсов повышения квалификации для руководителей
-                      районных государственных администраций Кыргызской
-                      Республики
-                    </a>
+                      {t("auto.components.pages.advanced.AdProfDevelop.3")}</a>
                   </li>
                   <li className="text-sinii list-disc mb-4">
                     <a
                       target="_blank"
                       href="http://www.apap.kg/uploads/pdf/%D0%93%D0%9C%D0%A1/%D0%9F%D0%9A%D0%9F/%D0%9F%D0%BE%D0%B2%D1%8B%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BA%D0%B2%D0%B0%D0%BB%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8/%D0%BA%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3%20%D0%B4%D0%BB%D1%8F%20%D0%BC%D1%8D%D1%80%D0%B8%D0%B9%20%D0%9E%D0%92.pdf"
                     >
-                      Каталог курсов повышения квалификации для руководителей и
-                      специалистов муниципальных образований Кыргызской
-                      Республики
-                    </a>
+                      {t("auto.components.pages.advanced.AdProfDevelop.4")}</a>
                   </li>
                   <li className="text-sinii list-disc mb-4">
                     <a
                       target="_blank"
                       href="http://www.apap.kg/uploads/pdf/%D0%93%D0%9C%D0%A1/%D0%9F%D0%9A%D0%9F/%D0%9F%D0%BE%D0%B2%D1%8B%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BA%D0%B2%D0%B0%D0%BB%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8/_%D0%BA%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3%20%D0%B4%D0%BB%D1%8F%20%D0%B0%D0%B9%D1%8B%D0%BB%20%D0%BE%D0%BA%D0%BC%D0%BE%D1%82%D1%83%20%2B.pdf"
                     >
-                      Каталог курсов повышения квалификации для глав айыл
-                      окмоту, ответственных секретарей и специалистов айыл
-                      окмоту
-                    </a>
+                      {t("auto.components.pages.advanced.AdProfDevelop.5")}</a>
                   </li>
                   <li className="text-sinii list-disc mb-4">
                     <a
                       target="_blank"
                       href="http://www.apap.kg/uploads/pdf/%D0%93%D0%9C%D0%A1/%D0%9F%D0%9A%D0%9F/%D0%9F%D0%BE%D0%B2%D1%8B%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BA%D0%B2%D0%B0%D0%BB%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8/_%D0%BA%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3%20%D0%B4%D0%BB%D1%8F%20%D1%80%D0%B5%D0%B7%D0%B5%D1%80%D0%B2%D0%B0%D0%B8%D1%8E%D0%BD%D1%8C.pdf"
                     >
-                      Каталог курсов повышения квалификации для резерва кадров
-                      государственной и муниципальной службы
-                    </a>
+                      {t("auto.components.pages.advanced.AdProfDevelop.6")}</a>
                   </li>
                 </ul>
               </AccordionContent>
@@ -96,7 +81,7 @@ const AdProfDevelop = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <p className="text-2xl">Форма регистрация на курсы</p>
+                    <p className="text-2xl">{t("auto.components.pages.advanced.AdProfDevelop.7")}</p>
                   </a>
 
                   <ArrowToTop width={25} height={25} />
@@ -112,8 +97,7 @@ const AdProfDevelop = () => {
             <AccordionItem value="1">
               <AccordionTrigger className="text-lg text-sinii">
                 <p className="text-2xl">
-                  Каталоги курсов повышения квалификации
-                </p>
+                  {t("auto.components.pages.advanced.AdProfDevelop.8")}</p>
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 <AdProfDevelopStepper />
@@ -134,8 +118,7 @@ const AdProfDevelop = () => {
                     rel="noopener noreferrer"
                   >
                     <p className="text-2xl">
-                      План – график курсов повышения квалификации ЦППК АГУПКР
-                    </p>
+                      {t("auto.components.pages.advanced.AdProfDevelop.9")}</p>
                   </a>
 
                   <ArrowToTop width={25} height={25} />

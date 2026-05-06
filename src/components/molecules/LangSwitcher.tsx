@@ -4,12 +4,12 @@ import { Select } from "@headlessui/react";
 import type { ChangeEvent } from "react";
 
 const LanguageSwitcher = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const currentLanguage = i18n.resolvedLanguage ?? "ru";
 
   const changeLanguage = (event: ChangeEvent<HTMLSelectElement>) => {
     const selectedLanguage = event.target.value;
-    if (!selectedLanguage) return;
+    if (!selectedLanguage || selectedLanguage === currentLanguage) return;
 
     i18n.changeLanguage(selectedLanguage);
     localStorage.setItem("language", selectedLanguage);
@@ -21,7 +21,7 @@ const LanguageSwitcher = () => {
         name="status"
         id="language-select"
         className="focus:outline-none text-xs md:text-xs lg:text-base"
-        aria-label="Project status"
+        aria-label={t("common.language")}
         value={currentLanguage}
         onChange={changeLanguage}
       >

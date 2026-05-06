@@ -36,22 +36,19 @@ const MainSlider = () => {
     },
   ];
 
-  // Embla API + Autoplay
   const emblaRef = useRef<CarouselApi | null>(null);
   const autoplay = useRef(
-    Autoplay({
-      delay: 4000,
-      stopOnInteraction: true,
-    })
+    Autoplay({ delay: 4000, stopOnInteraction: true })
   );
 
   const handlePrev = () => emblaRef.current?.scrollPrev();
   const handleNext = () => emblaRef.current?.scrollNext();
 
   return (
-    <section className="w-3/4 mx-auto">
+    <section className="w-full lg:w-3/4">
       <div
-        className="relative w-full h-[600px] rounded-2xl overflow-hidden"
+        className="relative w-full rounded-2xl overflow-hidden"
+        style={{ height: "clamp(220px, 45vw, 600px)" }}
         onMouseEnter={() => autoplay.current.stop()}
         onMouseLeave={() => autoplay.current.play()}
         onFocus={() => autoplay.current.stop()}
@@ -66,7 +63,7 @@ const MainSlider = () => {
           <CarouselContent>
             {infoSlider.map((item) => (
               <CarouselItem key={item.id}>
-                <div className="relative h-[600px]">
+                <div className="relative w-full h-full" style={{ height: "clamp(220px, 45vw, 600px)" }}>
                   <img
                     src={item.img}
                     alt={item.title}
@@ -74,15 +71,11 @@ const MainSlider = () => {
                     loading="lazy"
                     onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
                   />
-
                   <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />
-
-                  <div className="absolute bottom-6 left-6 right-6 md:left-8 md:right-auto">
-                    <div className="max-w-2xl bg-black/55 backdrop-blur-[2px] rounded-xl p-5 md:p-6 shadow-xl">
-                      <p className="text-gray-200 text-sm md:text-base mb-1 drop-shadow">
-                        {item.date}
-                      </p>
-                      <h2 className="text-white text-2xl md:text-3xl font-semibold leading-tight drop-shadow">
+                  <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5">
+                    <div className="bg-black/55 backdrop-blur-[2px] rounded-xl p-3 sm:p-5 shadow-xl">
+                      <p className="text-gray-200 text-xs sm:text-sm mb-1">{item.date}</p>
+                      <h2 className="text-white text-sm sm:text-xl lg:text-2xl xl:text-3xl font-semibold leading-tight">
                         {item.title}
                       </h2>
                     </div>
@@ -92,23 +85,22 @@ const MainSlider = () => {
             ))}
           </CarouselContent>
 
-          {/* стрелки */}
-          <div className="absolute bottom-6 right-6 flex gap-3">
+          <div className="absolute bottom-3 right-3 flex gap-2">
             <Button
               onClick={handlePrev}
               size="icon"
-              className="rounded-full bg-white/85 hover:bg-white text-gray-900 shadow-md"
-              aria-label="Предыдущий слайд"
+              className="rounded-full bg-white/85 hover:bg-white text-gray-900 shadow-md size-8 sm:size-10"
+              aria-label={t("auto.components.organisms.mainSlider.MainSlider.1")}
             >
-              <ArrowLeft className="h-5 w-5" />
+              <ArrowLeft className="h-3 w-3 sm:h-4 sm:w-4" />
             </Button>
             <Button
               onClick={handleNext}
               size="icon"
-              className="rounded-full bg-white/85 hover:bg-white text-gray-900 shadow-md"
-              aria-label="Следующий слайд"
+              className="rounded-full bg-white/85 hover:bg-white text-gray-900 shadow-md size-8 sm:size-10"
+              aria-label={t("auto.components.organisms.mainSlider.MainSlider.2")}
             >
-              <ArrowRight className="h-5 w-5" />
+              <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
             </Button>
           </div>
         </Carousel>

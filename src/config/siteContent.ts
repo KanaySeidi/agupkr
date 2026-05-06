@@ -13,164 +13,35 @@ export const languageOptions: LanguageOption[] = [
 export const quickLinksConfig: QuickLinksGroup[] = [
   {
     id: "about",
-    categoryKey: "quick.about.title",
+    categoryKey: "header.navs.nav2",
     links: [
-      {
-        id: "about-charter",
-        titleKey: "quick.about.charter",
-        href: "/about/charter",
-      },
-      {
-        id: "about-mission",
-        titleKey: "quick.about.mission",
-        href: "/about/mission",
-      },
-      { id: "about-logo", titleKey: "quick.about.logo", href: "/about/logo" },
-      {
-        id: "about-structure",
-        titleKey: "quick.about.structure",
-        href: "/about/structure",
-      },
-      {
-        id: "about-international",
-        titleKey: "quick.about.international",
-        href: "/about/international",
-      },
+      { id: "about-1", titleKey: "sidebar.charter",     href: "/about/charter" },
+      { id: "about-2", titleKey: "sidebar.history",     href: "/about/history" },
+      { id: "about-3", titleKey: "sidebar.structure",   href: "/about/structure" },
+      { id: "about-4", titleKey: "sidebar.cooperation", href: "/about/cooperation" },
+      { id: "about-5", titleKey: "sidebar.integrity",   href: "/about/integrity" },
     ],
   },
   {
-    id: "study-1",
-    categoryKey: "quick.study.title",
+    id: "education",
+    categoryKey: "header.navs.nav3",
     links: [
-      {
-        id: "study-1-charter",
-        titleKey: "quick.study.charter",
-        href: "/study/charter",
-      },
-      {
-        id: "study-1-mission",
-        titleKey: "quick.study.mission",
-        href: "/study/mission",
-      },
-      { id: "study-1-logo", titleKey: "quick.study.logo", href: "/study/logo" },
-      {
-        id: "study-1-structure",
-        titleKey: "quick.study.structure",
-        href: "/study/structure",
-      },
-      {
-        id: "study-1-international",
-        titleKey: "quick.study.international",
-        href: "/study/international",
-      },
+      { id: "edu-1", titleKey: "sidebar.education.bakalavr", href: "/education/bakalavr" },
+      { id: "edu-2", titleKey: "sidebar.education.magistr",  href: "/education/magistr" },
+      { id: "edu-3", titleKey: "sidebar.education.doctor",   href: "/education/doctor" },
+      { id: "edu-4", titleKey: "sidebar.education.aspirant", href: "/education/aspirant" },
+      { id: "edu-5", titleKey: "sidebar.education.spo",      href: "/education/spo" },
     ],
   },
   {
-    id: "study-2",
-    categoryKey: "quick.study.title",
+    id: "advanced",
+    categoryKey: "header.navs.nav4",
     links: [
-      {
-        id: "study-2-charter",
-        titleKey: "quick.study.charter",
-        href: "/study/charter",
-      },
-      {
-        id: "study-2-mission",
-        titleKey: "quick.study.mission",
-        href: "/study/mission",
-      },
-      { id: "study-2-logo", titleKey: "quick.study.logo", href: "/study/logo" },
-      {
-        id: "study-2-structure",
-        titleKey: "quick.study.structure",
-        href: "/study/structure",
-      },
-      {
-        id: "study-2-international",
-        titleKey: "quick.study.international",
-        href: "/study/international",
-      },
-    ],
-  },
-  {
-    id: "study-3",
-    categoryKey: "quick.study.title",
-    links: [
-      {
-        id: "study-3-charter",
-        titleKey: "quick.study.charter",
-        href: "/study/charter",
-      },
-      {
-        id: "study-3-mission",
-        titleKey: "quick.study.mission",
-        href: "/study/mission",
-      },
-      { id: "study-3-logo", titleKey: "quick.study.logo", href: "/study/logo" },
-      {
-        id: "study-3-structure",
-        titleKey: "quick.study.structure",
-        href: "/study/structure",
-      },
-      {
-        id: "study-3-international",
-        titleKey: "quick.study.international",
-        href: "/study/international",
-      },
-    ],
-  },
-  {
-    id: "study-4",
-    categoryKey: "quick.study.title",
-    links: [
-      {
-        id: "study-4-charter",
-        titleKey: "quick.study.charter",
-        href: "/study/charter",
-      },
-      {
-        id: "study-4-mission",
-        titleKey: "quick.study.mission",
-        href: "/study/mission",
-      },
-      { id: "study-4-logo", titleKey: "quick.study.logo", href: "/study/logo" },
-      {
-        id: "study-4-structure",
-        titleKey: "quick.study.structure",
-        href: "/study/structure",
-      },
-      {
-        id: "study-4-international",
-        titleKey: "quick.study.international",
-        href: "/study/international",
-      },
-    ],
-  },
-  {
-    id: "study-5",
-    categoryKey: "quick.study.title",
-    links: [
-      {
-        id: "study-5-charter",
-        titleKey: "quick.study.charter",
-        href: "/study/charter",
-      },
-      {
-        id: "study-5-mission",
-        titleKey: "quick.study.mission",
-        href: "/study/mission",
-      },
-      { id: "study-5-logo", titleKey: "quick.study.logo", href: "/study/logo" },
-      {
-        id: "study-5-structure",
-        titleKey: "quick.study.structure",
-        href: "/study/structure",
-      },
-      {
-        id: "study-5-international",
-        titleKey: "quick.study.international",
-        href: "/study/international",
-      },
+      { id: "adv-1", titleKey: "sidebar.advanced.profDevelop", href: "/advanced/profdevelop" },
+      { id: "adv-2", titleKey: "header.schedule",              href: "/schedule" },
+      { id: "adv-3", titleKey: "header.library",               href: "/library" },
+      { id: "adv-4", titleKey: "header.navs.nav5",             href: "/aplicant2025" },
+      { id: "adv-5", titleKey: "header.navs.nav7",             href: "/contacts" },
     ],
   },
 ];

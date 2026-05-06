@@ -31,8 +31,7 @@ const Structure = () => {
                 <div className="flex gap-10 h-full items-center">
                   <Smile size={100} />
                   <p className="text-2xl text-sinii">
-                    Баланчаева Баланча Баланчаевна
-                  </p>
+                    {t("auto.components.pages.about.Structure.1")}</p>
                 </div>
               </AccordionContent>
             </AccordionItem>

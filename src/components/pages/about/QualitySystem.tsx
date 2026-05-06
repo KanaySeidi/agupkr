@@ -8,25 +8,20 @@ const QualitySystem = () => {
       <div className="w-full flex flex-col gap-5">
         <Line title={t("sidebar.qualitySystem")} />
         <ul className="flex flex-col gap-2">
-          <li>• Совет по качеству образования</li>
-          <li>• Положение о Совете</li>
-          <li>• Положение о внутр.СМК </li>
-          <li>• Системы менеджмента качества в АГУПКР </li>
-          <li>• План работы Совета по качеству образования</li>
-          <li>• Положение об аудите качества образования АГУПКР</li>
+          <li>{t("auto.components.pages.about.QualitySystem.1")}</li>
+          <li>{t("auto.components.pages.about.QualitySystem.2")}</li>
+          <li>{t("auto.components.pages.about.QualitySystem.3")}</li>
+          <li>{t("auto.components.pages.about.QualitySystem.4")}</li>
+          <li>{t("auto.components.pages.about.QualitySystem.5")}</li>
+          <li>{t("auto.components.pages.about.QualitySystem.6")}</li>
           <li>
-            • График мониторинга образовательного процесса в Академии
-            государственного управления при Президенте Кыргызской Республики на
-            2021-2022 учебный год{" "}
+            {t("auto.components.pages.about.QualitySystem.7")}{" "}
           </li>
           <li>
-            • Индикаторы мониторинга образовательного процесса в Академии
-            государственного управления при Президенте Кыргызской Республики{" "}
+            {t("auto.components.pages.about.QualitySystem.8")}{" "}
           </li>
           <li>
-            • План внутривузовского контроля качества АГУПКР на 2021-2022
-            учебный ГОД
-          </li>
+            {t("auto.components.pages.about.QualitySystem.9")}</li>
         </ul>
       </div>
     </>

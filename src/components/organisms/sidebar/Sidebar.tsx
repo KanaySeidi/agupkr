@@ -1,8 +1,10 @@
 import { useMemo, useRef, useEffect } from "react";
 import { useSidebarNav } from "@/utils/sidebarData";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function Sidebar() {
+  const { t } = useTranslation();
   const navItems = useSidebarNav();
   const { pathname } = useLocation();
 
@@ -70,7 +72,7 @@ export default function Sidebar() {
   if (!showSidebar) return null;
 
   return (
-    <aside className="hidden md:block w-64 shrink-0" aria-label="Sidebar">
+    <aside className="hidden lg:block w-64 shrink-0" aria-label={t("common.sidebar")}>
       <div
         className="sticky p-4 border-r border-gray-200"
         style={{ top: "calc(var(--header-h, 224px) + 16px)" }}

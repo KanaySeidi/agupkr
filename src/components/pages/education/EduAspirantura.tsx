@@ -5,154 +5,125 @@ export default function EduAspirantura() {
   const { t } = useTranslation();
 
   return (
-    <div className="space-y-3 mt-6">
+    <div className="w-full space-y-3 mt-6">
       <Line title={t("sidebar.education.aspirant")} />
 
       <p className="text-[18px] text-sinii mt-5">
-        Аспирантура — общая информация
-      </p>
+        {t("auto.components.pages.education.EduAspirantura.1")}</p>
 
       <div className="flex flex-col gap-6 text-sinii text-[15px]">
         <section className="space-y-3 text-[#1a1a1a]">
           <p>
-            Аспирантура — это одна из основных форм подготовки научных и
-            научно-педагогических кадров в системе послевузовского
-            профессионального образования Кыргызской Республики.
-          </p>
+            {t("auto.components.pages.education.EduAspirantura.2")}</p>
           <p>
-            В Академии государственного управления при Президенте КР подготовка
-            аспирантов осуществляется по научным специальностям в соответствии
-            с:
-          </p>
+            {t("auto.components.pages.education.EduAspirantura.3")}</p>
 
           <ul className="list-disc list-inside space-y-1">
             <li>
-              Лицензией и приказами Министерства образования Кыргызской
-              Республики
-            </li>
+              {t("auto.components.pages.education.EduAspirantura.4")}</li>
             <li>
-              Положением о подготовке научных и научно-педагогических кадров в
-              Кыргызской Республике
-            </li>
+              {t("auto.components.pages.education.EduAspirantura.5")}</li>
           </ul>
         </section>
 
-        {/* Курсы */}
+        {}
         <section>
           <h3 className="font-semibold mb-2">
-            Курсы для кандидатского минимума
-          </h3>
+            {t("auto.components.pages.education.EduAspirantura.6")}</h3>
           <ul className="list-disc list-inside space-y-1 text-[#1a1a1a]">
-            <li>История и философия науки</li>
-            <li>Государственный язык</li>
-            <li>Иностранный язык</li>
+            <li>{t("auto.components.pages.education.EduAspirantura.7")}</li>
+            <li>{t("auto.components.pages.education.EduAspirantura.8")}</li>
+            <li>{t("auto.components.pages.education.EduAspirantura.9")}</li>
           </ul>
         </section>
 
-        {/* Возможности */}
+        {}
         <section>
           <h3 className="font-semibold mb-2">
-            Также предоставляется возможность:
-          </h3>
+            {t("auto.components.pages.education.EduAspirantura.10")}</h3>
           <ul className="list-disc list-inside space-y-1 text-[#1a1a1a]">
             <li>
-              Апробации результатов исследований на конференциях, семинарах и
-              круглых столах
-            </li>
-            <li>Публикации научных статей в журнале «Вестник»</li>
+              {t("auto.components.pages.education.EduAspirantura.11")}</li>
+            <li>{t("auto.components.pages.education.EduAspirantura.12")}</li>
           </ul>
         </section>
 
-        {/* Специальности */}
+        {}
         <section>
-          <h3 className="font-semibold mb-2">Научные специальности</h3>
+          <h3 className="font-semibold mb-2">{t("auto.components.pages.education.EduAspirantura.13")}</h3>
           <p className="text-[#1a1a1a] mb-2">
-            Подготовка аспирантов ведется по 4 специальностям:
-          </p>
+            {t("auto.components.pages.education.EduAspirantura.14")}</p>
           <ul className="list-disc list-inside text-[#1a1a1a] space-y-1">
             <li>
-              08.00.05 — Отраслевая экономика (экономика, организация и
-              управление отраслями, предприятиями, комплексами)
-            </li>
-            <li>08.00.10 — Финансы, денежное обращение и кредит</li>
-            <li>23.00.02 — Политические институты, процессы и технологии</li>
-            <li>12.00.02 — Конституционное право, муниципальное право</li>
+              {t("auto.components.pages.education.EduAspirantura.15")}</li>
+            <li>{t("auto.components.pages.education.EduAspirantura.16")}</li>
+            <li>{t("auto.components.pages.education.EduAspirantura.17")}</li>
+            <li>{t("auto.components.pages.education.EduAspirantura.18")}</li>
           </ul>
         </section>
 
-        {/* Документы */}
+        {}
         <section>
-          <h3 className="font-semibold mb-2">Документы для поступления</h3>
+          <h3 className="font-semibold mb-2">{t("auto.components.pages.education.EduAspirantura.19")}</h3>
           <ul className="list-disc list-inside text-[#1a1a1a] space-y-1">
             <li>
-              Заявление абитуриента на имя Ректора АГУПКР с указанием
-              специальности и формы обучения
-            </li>
+              {t("auto.components.pages.education.EduAspirantura.20")}</li>
             <li>
-              Личный листок по учету кадров (анкета), заверенный кадровой
-              службой
-            </li>
-            <li>Копия трудовой книжки (заверенная)</li>
-            <li>Резюме</li>
-            <li>Копия паспорта</li>
+              {t("auto.components.pages.education.EduAspirantura.21")}</li>
+            <li>{t("auto.components.pages.education.EduAspirantura.22")}</li>
+            <li>{t("auto.components.pages.education.EduAspirantura.23")}</li>
+            <li>{t("auto.components.pages.education.EduAspirantura.24")}</li>
             <li>
-              Нотариально заверенная копия диплома (специалист или магистр)
-            </li>
-            <li>2 фотографии 3×4</li>
-            <li>Вступительный реферат (20–25 страниц)</li>
+              {t("auto.components.pages.education.EduAspirantura.25")}</li>
+            <li>{t("auto.components.pages.education.EduAspirantura.26")}</li>
+            <li>{t("auto.components.pages.education.EduAspirantura.27")}</li>
           </ul>
         </section>
 
-        {/* Сроки обучения */}
+        {}
         <section>
-          <h3 className="font-semibold mb-2">Сроки обучения</h3>
+          <h3 className="font-semibold mb-2">{t("auto.components.pages.education.EduAspirantura.28")}</h3>
           <ul className="list-disc list-inside text-[#1a1a1a] space-y-1">
-            <li>Очная форма — 3 года</li>
-            <li>Заочная форма — 4 года</li>
+            <li>{t("auto.components.pages.education.EduAspirantura.29")}</li>
+            <li>{t("auto.components.pages.education.EduAspirantura.30")}</li>
           </ul>
         </section>
 
-        {/* Нормативные документы */}
+        {}
         <section>
-          <h3 className="font-semibold mb-2">Нормативные документы</h3>
+          <h3 className="font-semibold mb-2">{t("auto.components.pages.education.EduAspirantura.31")}</h3>
           <ul className="list-disc list-inside text-[#1a1a1a] space-y-1">
             <li>
               <a className="text-sinii underline" href="#">
-                Приказ об открытии аспирантуры АГУПКР (pdf)
-              </a>
+                {t("auto.components.pages.education.EduAspirantura.32")}</a>
             </li>
             <li>
               <a className="text-sinii underline" href="#">
-                Приказ об открытии докторантуры АГУПКР (pdf)
-              </a>
+                {t("auto.components.pages.education.EduAspirantura.33")}</a>
             </li>
             <li>
               <a className="text-sinii underline" href="#">
-                Новые требования ВАК КР об ученых степенях
-              </a>
+                {t("auto.components.pages.education.EduAspirantura.34")}</a>
             </li>
             <li>
               <a className="text-sinii underline" href="#">
-                Положение о рейтинговой оценке деятельности научных организаций
-              </a>
+                {t("auto.components.pages.education.EduAspirantura.35")}</a>
             </li>
             <li>
               <a className="text-sinii underline" href="#">
-                Положение о педагогической практике аспирантов
-              </a>
+                {t("auto.components.pages.education.EduAspirantura.36")}</a>
             </li>
             <li>
               <a className="text-sinii underline" href="#">
-                Положение о подготовке научно-педагогических кадров
-              </a>
+                {t("auto.components.pages.education.EduAspirantura.37")}</a>
             </li>
           </ul>
         </section>
 
-        {/* Аспиранты и докторанты */}
+        {}
         <section>
-          <h3 className="font-semibold mb-2">Аспиранты АГУПКР</h3>
-          <h3 className="font-semibold">Докторанты АГУПКР</h3>
+          <h3 className="font-semibold mb-2">{t("auto.components.pages.education.EduAspirantura.38")}</h3>
+          <h3 className="font-semibold">{t("auto.components.pages.education.EduAspirantura.39")}</h3>
         </section>
       </div>
     </div>

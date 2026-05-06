@@ -2,110 +2,97 @@ import Line from "@/components/atoms/Line";
 import { useTranslation } from "react-i18next";
 
 const EduKafedGMU = () => {
-  type StaffMember = { name: string; title?: string };
+  type StaffMember = { nameKey: string; titleKey?: string };
   const { t } = useTranslation();
 
   const STAFF: StaffMember[] = [
-    { name: "Абдиева Айгуль Ильясбековна", title: "к.э.н., доцент" },
-    { name: "Алымкулов Марат Сапарбекович", title: "д.ф.н., профессор АГУПКР" },
-    { name: "Арапова Эльмира Байышевна", title: "к.ф.н., доцент" },
-    { name: "Ашымов С.Дж.", title: "преподаватель" },
-    { name: "Базарбаев Кудайберген Базарбаевич", title: "к.п.н., и.о. доцент" },
-    { name: "Бекташев Кубанычбек Джумаевич", title: "к.п.н., и.о. доцент" },
-    { name: "Байзаков Асан Байзакович", title: "д.ф.-м.н., профессор" },
-    { name: "Болпонова Асыл Бакытбековна", title: "д.и.н., профессор АГУПКР" },
-    { name: "Дуйшо кызы Нуржан", title: "к.п.н., и.о.доцента" },
-    { name: "Егиналиев Марат Санжыевич", title: "к.п.н., и.о. доцента" },
-    { name: "Жапаров Турдубек Турдалиевич", title: "д.э.н., профессор АГУПКР" },
-    { name: "Калекеев М.А.", title: "ст.преп." },
-    { name: "Касымова Эльвира Джапашевна", title: "к.х.н., доцент" },
-    { name: "Кошоев Темирбек Сулайманович", title: "к.э.н., профессор АГУПКР" },
-    { name: "Кожоев К.А.", title: "преподаватель" },
-    { name: "Кунтубаева А.А.", title: "к.и.н., и.о. доцента" },
-    { name: "Кыдыралиева А.Ш.", title: "ст.преп." },
-    { name: "Мамбеталиева Эркайым Жумамудуновна", title: "к.п.н., доцент" },
-    { name: "Мурзаев Салих Кадырбекович", title: "к.т.н., профессор АГУПКР" },
-    { name: "Мусаева Айгуль Каныбековна", title: "к.с.н., и.о. доцента" },
-    { name: "Приходько Л.А.", title: "к.г.н., и.о. доцента" },
-    { name: "Ожукеева Токонай Ожукеевна", title: "д.и.н., профессор" },
-    { name: "Орозалиев Ш.Ы.", title: "ст.преп." },
-    { name: "Осмоналиева Ч.Ч.", title: "ст. преподаватель" },
-    { name: "Райымбеков Б.Ж.", title: "PhD, и.о. доцента" },
-    { name: "Саякбаев Тилек Дженишбекович", title: "д.э.н., и.о. профессора" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.1", titleKey: "auto2.components.pages.education.EduKafedGMU.2" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.3", titleKey: "auto2.components.pages.education.EduKafedGMU.4" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.5", titleKey: "auto2.components.pages.education.EduKafedGMU.6" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.7", titleKey: "auto2.components.pages.education.EduKafedGMU.8" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.9", titleKey: "auto2.components.pages.education.EduKafedGMU.10" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.11", titleKey: "auto2.components.pages.education.EduKafedGMU.12" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.13", titleKey: "auto2.components.pages.education.EduKafedGMU.14" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.15", titleKey: "auto2.components.pages.education.EduKafedGMU.16" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.17", titleKey: "auto2.components.pages.education.EduKafedGMU.18" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.19", titleKey: "auto2.components.pages.education.EduKafedGMU.20" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.21", titleKey: "auto2.components.pages.education.EduKafedGMU.22" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.23", titleKey: "auto2.components.pages.education.EduKafedGMU.24" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.25", titleKey: "auto2.components.pages.education.EduKafedGMU.26" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.27", titleKey: "auto2.components.pages.education.EduKafedGMU.28" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.29", titleKey: "auto2.components.pages.education.EduKafedGMU.30" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.31", titleKey: "auto2.components.pages.education.EduKafedGMU.32" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.33", titleKey: "auto2.components.pages.education.EduKafedGMU.34" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.35", titleKey: "auto2.components.pages.education.EduKafedGMU.36" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.37", titleKey: "auto2.components.pages.education.EduKafedGMU.38" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.39", titleKey: "auto2.components.pages.education.EduKafedGMU.40" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.41", titleKey: "auto2.components.pages.education.EduKafedGMU.42" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.43", titleKey: "auto2.components.pages.education.EduKafedGMU.44" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.45", titleKey: "auto2.components.pages.education.EduKafedGMU.46" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.47", titleKey: "auto2.components.pages.education.EduKafedGMU.48" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.49", titleKey: "auto2.components.pages.education.EduKafedGMU.50" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.51", titleKey: "auto2.components.pages.education.EduKafedGMU.52" },
     {
-      name: "Торогельдиева Бактыкан Макишевна",
-      title: "д.п.н., профессор АГУПКР",
+      nameKey: "auto2.components.pages.education.EduKafedGMU.53",
+      titleKey: "auto2.components.pages.education.EduKafedGMU.54",
     },
-    { name: "Узакбаева Нуржамал Эргешбаевна", title: "ст. преподаватель" },
-    { name: "Эсенбаев Азис Эркинбекович", title: "к.п.н., доцент" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.55", titleKey: "auto2.components.pages.education.EduKafedGMU.56" },
+    { nameKey: "auto2.components.pages.education.EduKafedGMU.57", titleKey: "auto2.components.pages.education.EduKafedGMU.58" },
   ];
 
   return (
     <>
-      <main className="w-11/12 mx-auto ">
-        <header className="grid md:grid-cols-3 gap-6 items-center mb-8">
-          <div className="md:col-span-2">
+      <main className="w-full">
+        <header className="mb-8">
+          <div>
             <Line title={t("sidebar.education.kafedgmu")} />
 
             <p className="text-slate-700 max-w-3xl mt-5">
-              Структурное подразделение ВШПО АГУПКР, ответственное за
-              учебно-методическую и научную работу, модернизацию образования и
-              подготовку профессиональных управленцев.
-            </p>
+              {t("auto.components.pages.education.EduKafedGMU.1")}</p>
           </div>
         </header>
 
         {/* Sections */}
         <div className="space-y-4">
           {/* Mission */}
-          <div title="Миссия кафедры">
+          <div title={t("auto.components.pages.education.EduKafedGMU.2")}>
             <p>
-              Миссия кафедры — подготовка, переподготовка и повышение
-              квалификации государственных и муниципальных служащих,
-              формирование резерва управленческих кадров, обладающих
-              профессиональными знаниями, управленческими навыками и социальной
-              компетентностью.
-            </p>
+              {t("auto.components.pages.education.EduKafedGMU.3")}</p>
           </div>
 
           {/* Priorities */}
-          <div title="Приоритеты">
+          <div title={t("auto.components.pages.education.EduKafedGMU.4")}>
             <p>
-              Кафедра внедряет современные образовательные модели и стандарты,
-              ориентированные на потребности государства, работодателей и
-              общества.
-            </p>
+              {t("auto.components.pages.education.EduKafedGMU.5")}</p>
           </div>
 
           {/* Strategy */}
-          <div title="Стратегическая цель">
+          <div title={t("auto.components.pages.education.EduKafedGMU.6")}>
             <p>
-              Подготовка квалифицированных государственных и муниципальных
-              служащих, конкурентоспособных и готовых к профессиональному росту.
-            </p>
+              {t("auto.components.pages.education.EduKafedGMU.7")}</p>
           </div>
 
           {/* Activities */}
-          <div title="Учебно-методическая работа">
+          <div title={t("auto.components.pages.education.EduKafedGMU.8")}>
             <ul>
-              <li>Совершенствование магистерских программ</li>
-              <li>Организация научно-методических мероприятий</li>
-              <li>Привлечение практиков-управленцев</li>
-              <li>Проведение практических занятий в госорганах</li>
+              <li>{t("auto.components.pages.education.EduKafedGMU.9")}</li>
+              <li>{t("auto.components.pages.education.EduKafedGMU.10")}</li>
+              <li>{t("auto.components.pages.education.EduKafedGMU.11")}</li>
+              <li>{t("auto.components.pages.education.EduKafedGMU.12")}</li>
             </ul>
           </div>
 
-          {/* Staff (без поиска) */}
-          <div title="Профессорско-преподавательский состав">
+          {}
+          <div title={t("auto.components.pages.education.EduKafedGMU.13")}>
             <div className="grid gap-2 sm:grid-cols-2">
               {STAFF.map((s) => (
                 <div
-                  key={s.name}
+                  key={s.nameKey}
                   className="p-3 rounded-lg bg-white border border-slate-200"
                 >
-                  <div className="font-medium text-slate-900">{s.name}</div>
-                  {s.title && (
-                    <div className="text-xs text-slate-600 mt-1">{s.title}</div>
+                  <div className="font-medium text-slate-900">{t(s.nameKey)}</div>
+                  {s.titleKey && (
+                    <div className="text-xs text-slate-600 mt-1">{t(s.titleKey)}</div>
                   )}
                 </div>
               ))}
@@ -113,23 +100,20 @@ const EduKafedGMU = () => {
           </div>
 
           {/* Programs */}
-          <div title="Образовательные программы">
+          <div title={t("auto.components.pages.education.EduKafedGMU.14")}>
             <p>
-              Направление{" "}
+              {t("auto.components.pages.education.EduKafedGMU.15")}{" "}
               <strong>
-                580900 «Государственное и муниципальное управление»
-              </strong>
-              , профили:
-            </p>
+                {t("auto.components.pages.education.EduKafedGMU.16")}</strong>
+              {t("auto.components.pages.education.EduKafedGMU.17")}</p>
 
             <ul className="mt-2">
-              <li>Государственное управление и экономика социальной сферы</li>
+              <li>{t("auto.components.pages.education.EduKafedGMU.18")}</li>
               <li>
-                Государственное управление и экономика устойчивого развития
-              </li>
-              <li>Цифровое государственное управление</li>
-              <li>Государственное и муниципальное управление</li>
-              <li>Государственная политика и управление</li>
+                {t("auto.components.pages.education.EduKafedGMU.19")}</li>
+              <li>{t("auto.components.pages.education.EduKafedGMU.20")}</li>
+              <li>{t("auto.components.pages.education.EduKafedGMU.21")}</li>
+              <li>{t("auto.components.pages.education.EduKafedGMU.22")}</li>
             </ul>
           </div>
         </div>

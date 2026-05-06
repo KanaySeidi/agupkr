@@ -1,5 +1,9 @@
+import { useTranslation } from "react-i18next";
+
+
 const LawsInternal = () => {
-  return <div>LawsInternal</div>;
+  const { t } = useTranslation();
+  return <div>{t("sidebar.lawsInternal")}</div>;
 };
 
 export default LawsInternal;

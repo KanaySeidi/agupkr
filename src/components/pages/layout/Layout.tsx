@@ -19,7 +19,7 @@ const Layout = () => {
       <main>
         <Suspense fallback={<Loader />}>
           {isHome ? (
-            <div className="mt-40">
+            <div style={{ paddingTop: "var(--header-h, 160px)" }}>
               <Outlet />
             </div>
           ) : (

@@ -14,12 +14,13 @@ import { useNavLinks } from "@/utils/navLinks";
 const LOGO_H_FULL = 112;
 const LOGO_H_COMPACT = 60;
 const NAV_H = 48;
-const CRUMB_H = 64;
+const CRUMB_H = 56;
 
-function getHeaderH(isHome: boolean, scrolled: boolean) {
-  const logoRow = scrolled ? LOGO_H_COMPACT : LOGO_H_FULL;
+function getHeaderH(isHome: boolean, scrolled: boolean, isMobile: boolean) {
+  const logoRow = scrolled || isMobile ? LOGO_H_COMPACT : LOGO_H_FULL;
+  const navRow = isMobile ? 0 : NAV_H;
   const crumbRow = isHome ? 0 : CRUMB_H;
-  return logoRow + NAV_H + crumbRow;
+  return logoRow + navRow + crumbRow;
 }
 
 const prettify = (slug: string) =>
@@ -34,6 +35,10 @@ const Header = () => {
   const isHome = location.pathname === "/";
 
   const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== "undefined" ? window.innerWidth < 1024 : false
+  );
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const segments = location.pathname.split("/").filter(Boolean);
   const crumbs = segments.map((seg, i) => {
@@ -50,170 +55,233 @@ const Header = () => {
       id: "home",
       title: t("navbar.home"),
       onClick: () => navigate("/"),
-      icon: <House size={20} color="#104385" />,
+      icon: <House size={18} color="#104385" />,
     },
     {
       id: "back",
       title: t("navbar.back"),
       onClick: () => navigate(-1),
-      icon: <SquareChevronLeft size={20} color="#104385" />,
+      icon: <SquareChevronLeft size={18} color="#104385" />,
     },
     {
       id: "forward",
       title: t("navbar.forward"),
       onClick: () => navigate(1),
-      icon: <SquareChevronRight size={20} color="#104385" />,
+      icon: <SquareChevronRight size={18} color="#104385" />,
     },
   ];
 
   useEffect(() => {
     const update = () => {
-      const s = window.scrollY > 60;
+      const mobile = window.innerWidth < 1024;
+      const s = mobile ? false : window.scrollY > 60;
       setScrolled(s);
+      setIsMobile(mobile);
       document.documentElement.style.setProperty(
         "--header-h",
-        `${getHeaderH(isHome, s)}px`
+        `${getHeaderH(isHome, s, mobile)}px`
       );
     };
     update();
     window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
+    window.addEventListener("resize", update, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
   }, [isHome]);
 
-  const totalH = getHeaderH(isHome, scrolled);
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileMenuOpen]);
+
+  const totalH = getHeaderH(isHome, scrolled, isMobile);
 
   return (
-    <header
-      className="w-full fixed inset-x-0 top-0 z-30 backdrop-blur-md bg-white/70 overflow-hidden transition-[height] duration-500"
-      style={{ height: totalH }}
-    >
-      {/* Row 1: Лого + текст/аббревиатура + кнопки + язык */}
-      <div
-        className="w-11/12 mx-auto flex justify-between items-center transition-[height] duration-500"
-        style={{ height: scrolled ? LOGO_H_COMPACT : LOGO_H_FULL }}
+    <>
+      <header
+        className="w-full fixed inset-x-0 top-0 z-30 backdrop-blur-md bg-white/90 overflow-hidden transition-[height] duration-500"
+        style={{ height: totalH }}
       >
-        {/* Лого + переключаемый текст */}
-        <div className="flex items-center gap-3">
-          <img
-            className={`shrink-0 transition-[width,height] duration-500 ${
-              scrolled ? "size-10" : "size-20"
-            }`}
-            src={logo}
-            alt="logo"
-          />
-
-          <div className="relative uppercase text-sinii font-bold overflow-hidden">
-            {/* Полный текст — виден когда не прокручено */}
-            <div
-              className="transition-opacity duration-500"
-              style={{ opacity: scrolled ? 0 : 1 }}
-            >
-              <p>{t("header.line1")}</p>
-              <p>{t("header.line2")}</p>
-              <p>{t("header.line3")}</p>
-            </div>
-
-            {/* Аббревиатура — накладывается поверх при скролле */}
-            <div
-              className="absolute inset-0 flex items-center transition-opacity duration-500"
-              style={{ opacity: scrolled ? 1 : 0 }}
-            >
-              {t("header.abbr")}
-            </div>
-          </div>
-        </div>
-
-        {/* Кнопки + язык */}
-        <div className="flex items-center gap-2">
-          {headerShortcutConfig.map((item) => (
-            <button
-              key={item.id}
-              onClick={() =>
-                item.href
-                  ? window.open(item.href, "_blank", "noopener,noreferrer")
-                  : navigate(item.path!)
-              }
-              className={`bg-sinii text-white ${
-                item.className
-              } h-12 flex justify-center items-center rounded-md hover:bg-hover-sinii cursor-pointer transition-transform duration-500 ${
-                scrolled ? "scale-90" : "scale-100"
-              }`}
-            >
-              {t(item.titleKey)}
-            </button>
-          ))}
-          <div className="flex gap-1 items-center">
-            <img src={lng} alt="lng icon" />
-            <LanguageSwitcher />
-          </div>
-        </div>
-      </div>
-
-      {/* Row 2: Навигация — всегда видима */}
-      <div className="w-full h-12 border-b-2">
-        <div className="w-10/12 mx-auto h-full flex items-center">
-          <ul className="flex w-full justify-between items-center">
-            {navItems.map((item) => (
-              <Link to={item.path} key={item.id}>
-                <li
-                  className={`${
-                    isKyrgyz ? "text-sm" : "text-base"
-                  } font-medium text-black uppercase hover:text-sinii cursor-pointer`}
-                >
-                  {item.title}
-                </li>
-              </Link>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      {!isHome && (
+        {}
         <div
-          className="w-11/12 mx-auto flex gap-2 items-center"
-          style={{ height: CRUMB_H }}
+          className="w-11/12 mx-auto flex justify-between items-center"
+          style={{ height: isMobile ? LOGO_H_COMPACT : scrolled ? LOGO_H_COMPACT : LOGO_H_FULL }}
         >
-          <div className="flex gap-2">
-            {navControls.map((ctrl) => (
+          {}
+          <Link to="/" className="flex items-center gap-2 lg:gap-3 min-w-0">
+            <img
+              className={`shrink-0 transition-[width,height] duration-500 ${
+                scrolled || isMobile ? "size-9 lg:size-10" : "size-20"
+              }`}
+              src={logo}
+              alt={t("common.logo")}
+            />
+            <div className="uppercase text-sinii font-bold leading-tight overflow-hidden">
+              {isMobile ? (
+                <span className="text-sm font-bold whitespace-nowrap">{t("header.abbr")}</span>
+              ) : (
+                <div className="relative">
+                  <div className="transition-opacity duration-500" style={{ opacity: scrolled ? 0 : 1 }}>
+                    <p className="text-sm">{t("header.line1")}</p>
+                    <p className="text-sm">{t("header.line2")}</p>
+                    <p className="text-sm">{t("header.line3")}</p>
+                  </div>
+                  <div
+                    className="absolute inset-0 flex items-center transition-opacity duration-500"
+                    style={{ opacity: scrolled ? 1 : 0 }}
+                  >
+                    {t("header.abbr")}
+                  </div>
+                </div>
+              )}
+            </div>
+          </Link>
+
+          {}
+          <div className="hidden lg:flex items-center gap-2 shrink-0">
+            {headerShortcutConfig.map((item) => (
               <button
-                key={ctrl.id}
-                type="button"
-                title={ctrl.title}
-                onClick={ctrl.onClick}
-                className="w-10 h-10 bg-[#E5F0FF] flex justify-center items-center rounded-md"
+                key={item.id}
+                onClick={() =>
+                  item.href
+                    ? window.open(item.href, "_blank", "noopener,noreferrer")
+                    : navigate(item.path!)
+                }
+                className={`bg-sinii text-white ${item.className} h-11 flex justify-center items-center rounded-md hover:bg-hover-sinii cursor-pointer transition-transform duration-500 text-sm ${
+                  scrolled ? "scale-90" : "scale-100"
+                }`}
               >
-                {ctrl.icon}
+                {t(item.titleKey)}
               </button>
             ))}
+            <div className="flex gap-1 items-center ml-1">
+              <img src={lng} alt={t("common.language")} />
+              <LanguageSwitcher />
+            </div>
           </div>
 
-          {parentCrumbs.length > 0 && (
-            <nav
-              aria-label="Breadcrumbs"
-              className="hidden h-10 bg-[#E5F0FF] px-3 rounded-md md:flex items-center gap-1"
-            >
-              {parentCrumbs.map((c) => (
-                <div key={c.to} className="flex items-center gap-1">
-                  <span className="text-slate-300">/</span>
-                  <Link
-                    to={c.to}
-                    className="text-sm text-sinii hover:underline"
-                  >
-                    {c.label}
-                  </Link>
-                </div>
-              ))}
-            </nav>
-          )}
-
-          {currentLabel && (
-            <div className="h-10 bg-[#E5F0FF] px-3 rounded-md flex items-center text-sm font-semibold text-slate-600">
-              {currentLabel}
+          {}
+          <div className="flex lg:hidden items-center gap-3 shrink-0">
+            <div className="flex gap-1 items-center">
+              <img src={lng} alt={t("common.language")} className="size-4" />
+              <LanguageSwitcher />
             </div>
-          )}
+            <button
+              onClick={() => setMobileMenuOpen((v) => !v)}
+              className="flex flex-col gap-1.5 p-1.5"
+              aria-label={t("auto2.components.organisms.header.Header.1")}
+            >
+              <span className={`block w-5 h-0.5 bg-sinii transition-transform duration-300 origin-center ${mobileMenuOpen ? "rotate-45 translate-y-2" : ""}`} />
+              <span className={`block w-5 h-0.5 bg-sinii transition-opacity duration-300 ${mobileMenuOpen ? "opacity-0" : ""}`} />
+              <span className={`block w-5 h-0.5 bg-sinii transition-transform duration-300 origin-center ${mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+            </button>
+          </div>
+        </div>
+
+        {}
+        <div className="hidden lg:block w-full border-b-2" style={{ height: NAV_H }}>
+          <div className="w-10/12 mx-auto h-full flex items-center">
+            <ul className="flex w-full justify-between items-center">
+              {navItems.map((item) => (
+                <Link to={item.path} key={item.id}>
+                  <li className={`${isKyrgyz ? "text-xs xl:text-sm" : "text-sm xl:text-base"} font-medium text-black uppercase hover:text-sinii cursor-pointer`}>
+                    {item.title}
+                  </li>
+                </Link>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Row 3: Breadcrumbs */}
+        {!isHome && (
+          <div
+            className="w-11/12 mx-auto flex gap-2 items-center"
+            style={{ height: CRUMB_H }}
+          >
+            <div className="flex gap-1.5">
+              {navControls.map((ctrl) => (
+                <button
+                  key={ctrl.id}
+                  type="button"
+                  title={ctrl.title}
+                  onClick={ctrl.onClick}
+                  className="w-8 h-8 bg-[#E5F0FF] flex justify-center items-center rounded-md"
+                >
+                  {ctrl.icon}
+                </button>
+              ))}
+            </div>
+
+            {parentCrumbs.length > 0 && (
+              <nav
+                aria-label={t("common.breadcrumbs")}
+                className="hidden h-8 bg-[#E5F0FF] px-3 rounded-md sm:flex items-center gap-1 overflow-hidden"
+              >
+                {parentCrumbs.map((c) => (
+                  <div key={c.to} className="flex items-center gap-1 shrink-0">
+                    <span className="text-slate-300">/</span>
+                    <Link to={c.to} className="text-xs text-sinii hover:underline whitespace-nowrap">
+                      {c.label}
+                    </Link>
+                  </div>
+                ))}
+              </nav>
+            )}
+
+            {currentLabel && (
+              <div className="h-8 bg-[#E5F0FF] px-3 rounded-md flex items-center text-xs font-semibold text-slate-600 truncate max-w-[180px] sm:max-w-xs lg:max-w-none">
+                {currentLabel}
+              </div>
+            )}
+          </div>
+        )}
+      </header>
+
+      {/* Mobile nav drawer */}
+      {mobileMenuOpen && (
+        <div
+          className="lg:hidden fixed inset-x-0 bottom-0 z-20 bg-white overflow-y-auto"
+          style={{ top: LOGO_H_COMPACT }}
+        >
+          <nav className="w-11/12 mx-auto py-4 flex flex-col">
+            {navItems.map((item) => (
+              <Link
+                key={item.id}
+                to={item.path}
+                className="text-base font-medium text-slate-800 uppercase hover:text-sinii py-3 border-b border-slate-100 last:border-0"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.title}
+              </Link>
+            ))}
+            <div className="flex flex-col gap-2.5 mt-5 pt-5 border-t border-slate-200">
+              {headerShortcutConfig.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    item.href
+                      ? window.open(item.href, "_blank", "noopener,noreferrer")
+                      : navigate(item.path!);
+                  }}
+                  className="bg-sinii text-white w-full h-12 flex justify-center items-center rounded-md hover:bg-hover-sinii font-medium"
+                >
+                  {t(item.titleKey)}
+                </button>
+              ))}
+            </div>
+          </nav>
         </div>
       )}
-    </header>
+    </>
   );
 };
 

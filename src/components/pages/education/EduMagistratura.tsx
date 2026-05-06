@@ -7,165 +7,145 @@ import {
 } from "@/components/ui/accordion";
 import { useTranslation } from "react-i18next";
 
-const magistracy = [
-  {
-    id: 1,
-    title: 'Направление 580900 "Государственное и муниципальное управление"',
-    content: null,
-  },
-  {
-    id: 2,
-    title: 'Направление 580100 "Экономика"',
-    content: (
+const EduMagistratura = () => {
+  const { t } = useTranslation();
+
+  const magistracy = [
+    {
+      id: 1,
+      title: t("auto.components.pages.education.EduMagistratura.22"),
+      content: null,
+    },
+    {
+      id: 2,
+      title: t("auto.components.pages.education.EduMagistratura.23"),
+      content: (
       <div className="flex flex-col gap-6 text-sinii text-[15px]">
-        {/* ГОС */}
+        {}
         <section>
-          <h3 className="font-semibold mb-2">ГОС ВПО КР</h3>
+          <h3 className="font-semibold mb-2">{t("auto.components.pages.education.EduMagistratura.1")}</h3>
           <ul className="list-disc list-inside space-y-1 text-[#1a1a1a]">
             <li>
               <a className="text-sinii underline" href="#">
-                Государственный образовательный стандарт ВПО_Государственное и
-                муниципальное управление_магистр
-              </a>
+                {t("auto.components.pages.education.EduMagistratura.2")}</a>
             </li>
             <li>
               <a className="text-sinii underline" href="#">
-                Государственный образовательный стандарт ВПО_Государственное и
-                муниципальное управление_магистр_2021
-              </a>
+                {t("auto.components.pages.education.EduMagistratura.3")}</a>
             </li>
           </ul>
         </section>
 
-        {/* Основная образовательная программа */}
+        {}
         <section>
           <h3 className="font-semibold mb-2">
-            Основная образовательная программа
-          </h3>
+            {t("auto.components.pages.education.EduMagistratura.4")}</h3>
           <ul className="list-disc list-inside text-[#1a1a1a] space-y-1">
             <li>
               <a className="text-sinii underline" href="#">
-                ООП Государственное и муниципальное управление
-              </a>
+                {t("auto.components.pages.education.EduMagistratura.5")}</a>
             </li>
             <li>
               <a className="text-sinii underline" href="#">
-                Положение об ООП_ГМУ
-              </a>
+                {t("auto.components.pages.education.EduMagistratura.6")}</a>
             </li>
           </ul>
         </section>
 
-        {/* Стратегия развития */}
+        {}
         <section>
-          <h3 className="font-semibold mb-2">Стратегия развития ООП</h3>
+          <h3 className="font-semibold mb-2">{t("auto.components.pages.education.EduMagistratura.7")}</h3>
           <ul className="list-disc list-inside text-[#1a1a1a]">
             <li>
               <a className="text-sinii underline" href="#">
-                Стратегия развития ООП ГМУ
-              </a>
+                {t("auto.components.pages.education.EduMagistratura.8")}</a>
             </li>
           </ul>
         </section>
 
-        {/* Примерный учебный план */}
+        {}
         <section>
-          <h3 className="font-semibold mb-2">Примерный учебный план</h3>
+          <h3 className="font-semibold mb-2">{t("auto.components.pages.education.EduMagistratura.9")}</h3>
           <ul className="list-disc list-inside text-[#1a1a1a] space-y-1">
             <li>
               <a className="text-sinii underline" href="#">
-                ПУП_Государственное и муниципальное управление
-              </a>
+                {t("auto.components.pages.education.EduMagistratura.10")}</a>
             </li>
           </ul>
         </section>
 
-        {/* Рабочий учебный план */}
+        {}
         <section>
-          <h3 className="font-semibold mb-2">Рабочий учебный план</h3>
+          <h3 className="font-semibold mb-2">{t("auto.components.pages.education.EduMagistratura.11")}</h3>
           <ul className="list-disc list-inside text-[#1a1a1a] space-y-1">
             <li>
               <a className="text-sinii underline" href="#">
-                РУП_Государственное управление и экономика устойчивого развития
-                24
-              </a>
+                {t("auto.components.pages.education.EduMagistratura.12")}</a>
             </li>
             <li>
               <a className="text-sinii underline" href="#">
-                РУП_Цифровое государственное управление 24
-              </a>
+                {t("auto.components.pages.education.EduMagistratura.13")}</a>
             </li>
             <li>
               <a className="text-sinii underline" href="#">
-                РУП_Государственное управление и экономика социальной сферы 24
-              </a>
+                {t("auto.components.pages.education.EduMagistratura.14")}</a>
             </li>
           </ul>
         </section>
 
-        {/* ИГА */}
+        {}
         <section>
           <h3 className="font-semibold mb-2">
-            Итоговая государственная аттестация
-          </h3>
+            {t("auto.components.pages.education.EduMagistratura.15")}</h3>
           <ul className="list-disc list-inside text-[#1a1a1a] space-y-1">
             <li>
               <a className="text-sinii underline" href="#">
-                Программа ГАК МСУ-2022 г.
-              </a>
+                {t("auto.components.pages.education.EduMagistratura.16")}</a>
             </li>
             <li>
               <a className="text-sinii underline" href="#">
-                Программа ГАК ГМУ_2022
-              </a>
+                {t("auto.components.pages.education.EduMagistratura.17")}</a>
             </li>
             <li>
               <a className="text-sinii underline" href="#">
-                Программа ГАК ГПУ_2022
-              </a>
+                {t("auto.components.pages.education.EduMagistratura.18")}</a>
             </li>
             <li>
               <a className="text-sinii underline" href="#">
-                Программа ГАК ГУЭС_2022
-              </a>
+                {t("auto.components.pages.education.EduMagistratura.19")}</a>
             </li>
             <li>
               <a className="text-sinii underline" href="#">
-                Программа ГАК ГУЭСР_2022
-              </a>
+                {t("auto.components.pages.education.EduMagistratura.20")}</a>
             </li>
             <li>
               <a className="text-sinii underline" href="#">
-                Программа ГАК ЦГУ_2022
-              </a>
+                {t("auto.components.pages.education.EduMagistratura.21")}</a>
             </li>
           </ul>
         </section>
       </div>
     ),
   },
-  {
-    id: 3,
-    title: 'Направление 580200 "Менеджмент"',
-    content: null,
-  },
-  {
-    id: 4,
-    title: 'Направление 530500 "Юриспруденция"',
-    content: null,
-  },
-  {
-    id: 5,
-    title: "Совместные магистерские программы с Фондом Ханнса Зайделя",
-    content: null,
-  },
-];
-
-const EduMagistratura = () => {
-  const { t } = useTranslation();
+    {
+      id: 3,
+      title: t("auto.components.pages.education.EduMagistratura.24"),
+      content: null,
+    },
+    {
+      id: 4,
+      title: t("auto.components.pages.education.EduMagistratura.25"),
+      content: null,
+    },
+    {
+      id: 5,
+      title: t("auto.components.pages.education.EduMagistratura.26"),
+      content: null,
+    },
+  ];
 
   return (
-    <div className="w-11/12 mx-auto space-y-3 mt-6">
+    <div className="w-full space-y-3 mt-6">
       <Line title={t("sidebar.education.magistr")} />
 
       {magistracy.map((item) => (
@@ -176,7 +156,7 @@ const EduMagistratura = () => {
           className="w-full rounded-xl bg-[#f4f7ff] p-3"
         >
           <AccordionItem value={`item-${item.id}`}>
-            <AccordionTrigger className="text-[18px] text-sinii">
+            <AccordionTrigger className="text-sm sm:text-base md:text-[18px] text-sinii text-left">
               {item.title}
             </AccordionTrigger>
 

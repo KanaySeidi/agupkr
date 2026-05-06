@@ -2,60 +2,84 @@ import news_img from "@/assets/img/news_img.png";
 
 export interface NewsItem {
   id: number;
-  date: string;
-  title: string;
+  dateKey: string;
+  titleKey: string;
   image: string;
   images: string[];
-  content: string;
+  contentKey: string;
+  paragraphKeys?: string[];
+  bulletKeys?: string[];
 }
 
 export const newsItems: NewsItem[] = [
   {
     id: 1,
-    date: "10 октября 2024",
-    title: "Руководство по реализации программы грантов Академического инновационного фонда",
+    dateKey: "auto2.utils.newsData.1",
+    titleKey: "auto2.utils.newsData.2",
     image: news_img,
     images: [news_img, news_img, news_img, news_img],
-    content: "Академический инновационный фонд объявляет о начале приёма заявок на гранты для поддержки научных и образовательных проектов. Программа направлена на развитие инновационного потенциала академии и повышение качества исследований.",
+    contentKey: "auto2.utils.newsData.3",
   },
   {
     id: 2,
-    date: "12 октября 2024",
-    title: "Программа академической мобильности студентов 2024-2025",
+    dateKey: "auto2.utils.newsData.4",
+    titleKey: "auto2.utils.newsData.5",
     image: news_img,
     images: [news_img, news_img, news_img, news_img],
-    content: "Академия открывает новый сезон программы академической мобильности. Студенты могут подать заявки на участие в обменных программах с ведущими университетами стран СНГ и дальнего зарубежья.",
+    contentKey: "auto2.utils.newsData.6",
   },
   {
     id: 3,
-    date: "13 октября 2024",
-    title: "Приглашение к участию в конференции молодых исследователей",
+    dateKey: "auto2.utils.newsData.7",
+    titleKey: "auto2.utils.newsData.8",
     image: news_img,
     images: [news_img, news_img, news_img, news_img],
-    content: "Академия приглашает молодых учёных и студентов принять участие в ежегодной научной конференции. Заявки принимаются до 1 ноября 2024 года. Участие бесплатное.",
+    contentKey: "auto2.utils.newsData.9",
   },
   {
     id: 4,
-    date: "15 октября 2024",
-    title: "Итоги международного форума по государственному управлению",
+    dateKey: "auto2.utils.newsData.10",
+    titleKey: "auto2.utils.newsData.11",
     image: news_img,
     images: [news_img, news_img, news_img, news_img],
-    content: "В академии прошёл международный форум, посвящённый современным подходам к государственному управлению. В мероприятии приняли участие эксперты из 12 стран.",
+    contentKey: "auto2.utils.newsData.12",
   },
   {
     id: 5,
-    date: "18 октября 2024",
-    title: "Новые образовательные программы на 2025 год",
+    dateKey: "auto2.utils.newsData.13",
+    titleKey: "auto2.utils.newsData.14",
     image: news_img,
     images: [news_img, news_img, news_img, news_img],
-    content: "Академия анонсирует запуск трёх новых образовательных программ в области цифрового управления, публичной политики и международных отношений.",
+    contentKey: "auto2.utils.newsData.15",
   },
   {
     id: 6,
-    date: "20 октября 2024",
-    title: "Подписание соглашения о сотрудничестве с Российской академией народного хозяйства",
+    dateKey: "auto2.utils.newsData.16",
+    titleKey: "auto2.utils.newsData.17",
     image: news_img,
     images: [news_img, news_img, news_img, news_img],
-    content: "Академия государственного управления подписала соглашение о стратегическом партнёрстве с РАНХиГС. Соглашение предусматривает совместные исследования, обмен преподавателями и студентами.",
+    contentKey: "auto2.utils.newsData.18",
+  },
+  {
+    id: 7,
+    dateKey: "auto2.utils.newsData.19",
+    titleKey: "auto2.utils.newsData.20",
+    image: news_img,
+    images: [news_img, news_img, news_img, news_img],
+    contentKey: "auto2.utils.newsData.21",
+    paragraphKeys: [
+      "auto2.utils.newsData.22",
+      "auto2.utils.newsData.23",
+      "auto2.utils.newsData.24",
+      "auto2.utils.newsData.25",
+    ],
+    bulletKeys: [
+      "auto2.utils.newsData.26",
+      "auto2.utils.newsData.27",
+      "auto2.utils.newsData.28",
+      "auto2.utils.newsData.29",
+      "auto2.utils.newsData.30",
+      "auto2.utils.newsData.31",
+    ],
   },
 ];

@@ -38,47 +38,47 @@ const socials = [
 const columns = [
   {
     id: "about",
-    title: "Об Академии",
+    titleKey: "auto2.components.organisms.footer.Footer.1",
     links: [
-      { label: "Об Академии", path: "/about" },
-      { label: "Устав", path: "/about/charter" },
-      { label: "История", path: "/about/history" },
-      { label: "Структура", path: "/about/structure" },
-      { label: "Логотип", path: "/about/logotip" },
-      { label: "Ученый совет", path: "/about/council" },
+      { labelKey: "auto2.components.organisms.footer.Footer.2", path: "/about" },
+      { labelKey: "auto2.components.organisms.footer.Footer.3", path: "/about/charter" },
+      { labelKey: "auto2.components.organisms.footer.Footer.4", path: "/about/history" },
+      { labelKey: "auto2.components.organisms.footer.Footer.5", path: "/about/structure" },
+      { labelKey: "auto2.components.organisms.footer.Footer.6", path: "/about/logotip" },
+      { labelKey: "auto2.components.organisms.footer.Footer.7", path: "/about/council" },
     ],
   },
   {
     id: "education",
-    title: "Образование",
+    titleKey: "auto2.components.organisms.footer.Footer.8",
     links: [
-      { label: "Бакалавриат", path: "/education/bakalavr" },
-      { label: "Магистратура", path: "/education/magistr" },
-      { label: "Докторантура", path: "/education/doctor" },
-      { label: "Аспирантура", path: "/education/aspirant" },
-      { label: "СПО", path: "/education/spo" },
+      { labelKey: "auto2.components.organisms.footer.Footer.9", path: "/education/bakalavr" },
+      { labelKey: "auto2.components.organisms.footer.Footer.10", path: "/education/magistr" },
+      { labelKey: "auto2.components.organisms.footer.Footer.11", path: "/education/doctor" },
+      { labelKey: "auto2.components.organisms.footer.Footer.12", path: "/education/aspirant" },
+      { labelKey: "auto2.components.organisms.footer.Footer.13", path: "/education/spo" },
     ],
   },
   {
     id: "advanced",
-    title: "Повышение квалификации",
+    titleKey: "auto2.components.organisms.footer.Footer.14",
     links: [
-      { label: "О нас", path: "/advanced" },
-      { label: "Курсы", path: "/advanced/profdevelop" },
-      { label: "Государственный заказ", path: "/advanced/employees" },
-      { label: "Расписание", path: "/schedule" },
-      { label: "Электронная библиотека", path: "/library" },
+      { labelKey: "auto2.components.organisms.footer.Footer.15", path: "/advanced" },
+      { labelKey: "auto2.components.organisms.footer.Footer.16", path: "/advanced/profdevelop" },
+      { labelKey: "auto2.components.organisms.footer.Footer.17", path: "/advanced/employees" },
+      { labelKey: "auto2.components.organisms.footer.Footer.18", path: "/schedule" },
+      { labelKey: "auto2.components.organisms.footer.Footer.19", path: "/library" },
     ],
   },
   {
     id: "info",
-    title: "Информация",
+    titleKey: "auto2.components.organisms.footer.Footer.20",
     links: [
-      { label: "Новости", path: "/news" },
-      { label: "Абитурент-2025", path: "/aplicant2025" },
-      { label: "Контакты", path: "/contacts" },
-      { label: "Международное сотрудничество", path: "/about/cooperation" },
-      { label: "Академическая честность", path: "/about/integrity" },
+      { labelKey: "auto2.components.organisms.footer.Footer.21", path: "/news" },
+      { labelKey: "auto2.components.organisms.footer.Footer.22", path: "/aplicant2025" },
+      { labelKey: "auto2.components.organisms.footer.Footer.23", path: "/contacts" },
+      { labelKey: "auto2.components.organisms.footer.Footer.24", path: "/about/cooperation" },
+      { labelKey: "auto2.components.organisms.footer.Footer.25", path: "/about/integrity" },
     ],
   },
 ];
@@ -98,7 +98,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-1 flex flex-col gap-5">
             <div className="flex items-start gap-3">
-              <img src={logo} className="size-14 shrink-0 mt-0.5" alt="Логотип" />
+              <img src={logo} className="size-14 shrink-0 mt-0.5" alt={t("auto2.components.organisms.footer.Footer.26")} />
               <div className="text-white leading-snug">
                 {isKyrgyz ? (
                   <>
@@ -121,9 +121,9 @@ const Footer = () => {
             </div>
 
             <div className="text-sm text-white/60 leading-relaxed">
-              <p className="text-white/40 text-xs uppercase tracking-wide mb-1">Адрес</p>
-              <p>Кыргызская Республика, 720040,</p>
-              <p>г.Бишкек, ул. Панфилова, 237</p>
+              <p className="text-white/40 text-xs uppercase tracking-wide mb-1">{t("auto2.components.organisms.footer.Footer.27")}</p>
+              <p>{t("auto2.components.organisms.footer.Footer.28")}</p>
+              <p>{t("auto2.components.organisms.footer.Footer.29")}</p>
             </div>
 
             <div className="flex gap-2">
@@ -147,7 +147,7 @@ const Footer = () => {
             {columns.map((col) => (
               <div key={col.id}>
                 <h3 className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-3">
-                  {col.title}
+                  {t(col.titleKey)}
                 </h3>
                 <ul className="flex flex-col gap-2">
                   {col.links.map((link) => (
@@ -156,7 +156,7 @@ const Footer = () => {
                         to={link.path}
                         className="text-sm text-white/70 hover:text-white transition-colors"
                       >
-                        {link.label}
+                        {t(link.labelKey)}
                       </Link>
                     </li>
                   ))}
@@ -173,7 +173,7 @@ const Footer = () => {
                   onClick={() => toggle(col.id)}
                   className="w-full flex items-center justify-between py-3.5 text-sm font-semibold text-white"
                 >
-                  <span>{col.title}</span>
+                  <span>{t(col.titleKey)}</span>
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -193,7 +193,7 @@ const Footer = () => {
                           className="text-sm text-white/70 hover:text-white transition-colors block"
                           onClick={() => setOpen(null)}
                         >
-                          {link.label}
+                          {t(link.labelKey)}
                         </Link>
                       </li>
                     ))}
@@ -206,8 +206,8 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="pt-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/35">
-          <p>© {new Date().getFullYear()} АГУПКР. Все права защищены.</p>
-          <p>Академия государственного управления при Президенте КР</p>
+          <p>© {new Date().getFullYear()} {t("auto2.components.organisms.footer.Footer.30")}</p>
+          <p>{t("auto2.components.organisms.footer.Footer.31")}</p>
         </div>
       </div>
     </footer>

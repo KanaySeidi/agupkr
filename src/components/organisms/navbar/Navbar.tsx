@@ -64,7 +64,7 @@ const Navbar = () => {
           </div>
           {crumbs.slice(0, -1).length > 0 && (
             <nav
-              aria-label="Breadcrumbs"
+              aria-label={t("common.breadcrumbs")}
               className="hidden w-fit h-10 bg-[#E5F0FF] px-2 rounded-md md:flex items-center"
             >
               {crumbs.slice(0, -1).map((c) => (

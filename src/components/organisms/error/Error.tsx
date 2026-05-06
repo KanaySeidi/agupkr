@@ -21,7 +21,7 @@ function Error() {
               className="rounded-md bg-[#1877F2] px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-[#93b9ea] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 flex justify-around items-center gap-2"
             >
               <p className="text-lg">{t("errorBtn")}</p>
-              <img src={home} alt="home icon" />
+              <img src={home} alt={t("common.homeIcon")} />
             </button>
           </div>
         </div>
