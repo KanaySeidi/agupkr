@@ -1,107 +1,66 @@
 import Line from "@/components/atoms/Line";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useEducationStore } from "@/store/education.store";
 
 export default function EduDoktorantura() {
   const { t } = useTranslation();
+  const { programsByType, status, fetchByType } = useEducationStore();
+
+  useEffect(() => {
+    fetchByType("doctorate");
+  }, [fetchByType]);
+
+  const programs = programsByType["doctorate"] ?? [];
+  const mainProgram = programs[0];
+  const isLoading = status["doctorate"] === "loading" && programs.length === 0;
 
   return (
     <article className="w-full p-4 sm:p-6 md:p-10 rounded-2xl shadow-lg space-y-8">
       <header>
-        <Line title={t("sidebar.education.doctor")} />
+        <Line title={mainProgram?.title || t("sidebar.education.doctor")} />
 
-        <p className="text-[15px] text-[#1a1a1a] leading-relaxed mt-5">
-          {t("auto.components.pages.education.EduDoktorantura.1")}</p>
+        {isLoading && (
+          <p className="text-slate-500 text-sm mt-5">{t("sidebar.education.doctor")}…</p>
+        )}
 
-        <p className="text-[15px] text-[#1a1a1a] mt-3">
-          {t("auto.components.pages.education.EduDoktorantura.2")}</p>
-        <ul className="list-disc list-inside text-[#1a1a1a] mt-2 space-y-1">
-          <li>
-            {t("auto.components.pages.education.EduDoktorantura.3")}</li>
-          <li>
-            {t("auto.components.pages.education.EduDoktorantura.4")}</li>
-        </ul>
+        {mainProgram ? (
+          <>
+            {mainProgram.photo_url && (
+              <img
+                src={mainProgram.photo_url}
+                alt={mainProgram.title}
+                className="w-full max-h-64 object-cover rounded-md mt-5"
+              />
+            )}
+            {mainProgram.description && (
+              <div
+                className="text-[15px] text-[#1a1a1a] leading-relaxed mt-5"
+                dangerouslySetInnerHTML={{ __html: mainProgram.description }}
+              />
+            )}
+            {mainProgram.link && (
+              <a
+                href={mainProgram.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-4 text-sm text-white bg-sinii hover:bg-sky-700 rounded-md px-4 py-2"
+              >
+                {mainProgram.title}
+              </a>
+            )}
+          </>
+        ) : !isLoading ? (
+          <>
+            <p className="text-[15px] text-[#1a1a1a] leading-relaxed mt-5">
+              {t("auto.components.pages.education.EduDoktorantura.1")}
+            </p>
+            <p className="text-[15px] text-[#1a1a1a] mt-3">
+              {t("auto.components.pages.education.EduDoktorantura.2")}
+            </p>
+          </>
+        ) : null}
       </header>
-
-      <section>
-        <h3 className="text-xl font-semibold text-sinii mb-2">
-          {t("auto.components.pages.education.EduDoktorantura.5")}</h3>
-
-        <ul className="list-disc list-inside text-[#1a1a1a] space-y-1 text-[15px]">
-          <li>{t("auto.components.pages.education.EduDoktorantura.6")}</li>
-          <li>{t("auto.components.pages.education.EduDoktorantura.7")}</li>
-          <li>{t("auto.components.pages.education.EduDoktorantura.8")}</li>
-        </ul>
-      </section>
-
-      {}
-      <section>
-        <h3 className="text-xl font-semibold text-sinii mb-2">
-          {t("auto.components.pages.education.EduDoktorantura.9")}</h3>
-
-        <ul className="list-disc list-inside text-[#1a1a1a] space-y-1 text-[15px]">
-          <li>{t("auto.components.pages.education.EduDoktorantura.10")}</li>
-          <li>
-            {t("auto.components.pages.education.EduDoktorantura.11")}</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3 className="text-xl font-semibold text-sinii mb-2">
-          {t("auto.components.pages.education.EduDoktorantura.12")}</h3>
-
-        <ul className="list-disc list-inside text-[#1a1a1a] text-[15px] space-y-1">
-          <li>
-            {t("auto.components.pages.education.EduDoktorantura.13")}</li>
-          <li>{t("auto.components.pages.education.EduDoktorantura.14")}</li>
-          <li>{t("auto.components.pages.education.EduDoktorantura.15")}</li>
-          <li>{t("auto.components.pages.education.EduDoktorantura.16")}</li>
-          <li>{t("auto.components.pages.education.EduDoktorantura.17")}</li>
-          <li>{t("auto.components.pages.education.EduDoktorantura.18")}</li>
-          <li>{t("auto.components.pages.education.EduDoktorantura.19")}</li>
-          <li>{t("auto.components.pages.education.EduDoktorantura.20")}</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3 className="text-xl font-semibold text-sinii mb-2">
-          {t("auto.components.pages.education.EduDoktorantura.21")}</h3>
-
-        <ul className="list-disc list-inside text-[#1a1a1a] text-[15px] space-y-1">
-          <li>{t("auto.components.pages.education.EduDoktorantura.22")}</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3 className="text-xl font-semibold text-sinii mb-2">
-          {t("auto.components.pages.education.EduDoktorantura.23")}</h3>
-
-        <ul className="list-disc list-inside text-[15px] text-[#1a1a1a] space-y-1">
-          <li>
-            <a href="#" className="text-sinii underline">
-              {t("auto.components.pages.education.EduDoktorantura.24")}</a>
-          </li>
-          <li>
-            <a href="#" className="text-sinii underline">
-              {t("auto.components.pages.education.EduDoktorantura.25")}</a>
-          </li>
-          <li>{t("auto.components.pages.education.EduDoktorantura.26")}</li>
-          <li>
-            <a href="#" className="text-sinii underline">
-              {t("auto.components.pages.education.EduDoktorantura.27")}</a>
-          </li>
-          <li>
-            {t("auto.components.pages.education.EduDoktorantura.28")}</li>
-          <li>
-            {t("auto.components.pages.education.EduDoktorantura.29")}</li>
-          <li>
-            {t("auto.components.pages.education.EduDoktorantura.30")}</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3 className="font-semibold text-sinii">{t("auto.components.pages.education.EduDoktorantura.31")}</h3>
-        <h3 className="font-semibold text-sinii">{t("auto.components.pages.education.EduDoktorantura.32")}</h3>
-      </section>
     </article>
   );
 }

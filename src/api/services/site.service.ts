@@ -1,6 +1,6 @@
 import { api } from '@/api/client';
 import { ENDPOINTS } from '@/api/endpoints';
-import type { MainPage, Paginated, Partner, SiteSettings, SocialLink } from '@/api/types';
+import type { MainPage, Paginated, Partner, SiteSettings, SocialLink, Survey } from '@/api/types';
 
 export const siteService = {
   mainPage() {
@@ -17,5 +17,9 @@ export const siteService = {
 
   socialLinks() {
     return api.get<Paginated<SocialLink>>(ENDPOINTS.site.socialLinks).then(r => r.data);
+  },
+
+  surveys(signal?: AbortSignal) {
+    return api.get<Paginated<Survey>>(ENDPOINTS.surveys.list, { signal }).then(r => r.data);
   },
 };

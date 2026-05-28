@@ -5,7 +5,7 @@ const Line = ({ title }: LineProps) => {
     <div>
       <div className="flex items-center gap-2">
         <div className="w-6 h-1 bg-sinii"></div>
-        <p className="text-2xl">{title}</p>
+        <p className="text-2xl font-bold text-sinii">{title}</p>
       </div>
     </div>
   );

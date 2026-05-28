@@ -191,12 +191,77 @@ export type Partner = {
   updated_at: string;
 };
 
+export type AcademicHonesty = {
+  id: number;
+  title: string;
+  description: string;
+  photo: string | null;
+  photo_url: string;
+  created_at: string;
+  updated_at: string;
+};
+
 export type SocialLink = {
   id: number;
   name: string;
   url: string;
   icon: string;
   order: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type AboutAcademy = {
+  id: number; title: string; main_photo_url: string;
+  description: string; additional_description: string;
+  block1_title: string; block1_description: string;
+  block2_title: string; block2_description: string;
+  mission_title: string; mission_description: string;
+  photo_url: string; created_at: string; updated_at: string;
+};
+export type AcademyCharter = { id: number; title: string; description: string; file_url: string; created_at: string; updated_at: string; };
+export type AcademyHistory = { id: number; title: string; description: string; file_url: string; created_at: string; updated_at: string; };
+export type AcademyLogo = { id: number; title: string; description: string; logo_url: string; created_at: string; updated_at: string; };
+export type BudgetProgram = { id: number; title: string; description: string; period: string; created_at: string; updated_at: string; };
+export type InternationalCooperationLink = { id: number; title: string; url: string; created_at: string; updated_at: string; };
+export type InternationalCooperation = { id: number; title: string; description: string; photo_url: string; links: InternationalCooperationLink[]; created_at: string; updated_at: string; };
+export type BulletinFile = { id: number; title: string; file_url: string; created_at: string; updated_at: string; };
+export type Bulletin = { id: number; title: string; description: string; files: BulletinFile[]; created_at: string; updated_at: string; };
+export type LegalDocument = { id: number; title: string; document_type: 'external' | 'internal'; document_type_display: string; file_url: string; created_at: string; updated_at: string; };
+export type QualityManagementFile = { id: number; title: string; file_url: string; created_at: string; updated_at: string; };
+export type QualityManagement = { id: number; title: string; files: QualityManagementFile[]; created_at: string; updated_at: string; };
+export type TradeUnion = { id: number; title: string; description: string; created_at: string; updated_at: string; };
+
+export type ProgramType = 'bachelor' | 'master' | 'phd' | 'doctorate' | 'cppk' | 'spo';
+
+export type EducationProgram = {
+  id: number;
+  title: string;
+  program_type: ProgramType;
+  program_type_display: string;
+  description: string;
+  link: string;
+  photo_url: string;
+  order: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type EducationDirection = {
+  id: number;
+  title: string;
+  description: string;
+  link: string;
+  photo_url: string;
+  created_at: string;
+  updated_at: string;
+};
+
+export type Survey = {
+  id: number;
+  title: string;
+  description: string;
+  link: string;
   created_at: string;
   updated_at: string;
 };

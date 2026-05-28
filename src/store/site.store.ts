@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { siteService } from '@/api/services/site.service';
-import type { MainPage, Partner, SiteSettings, SocialLink } from '@/api/types';
+import type { MainPage, Partner, SiteSettings, SocialLink, Survey } from '@/api/types';
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
@@ -10,6 +10,8 @@ type SiteState = {
   settings: SiteSettings | null;
   partners: Partner[];
   socialLinks: SocialLink[];
+  surveys: Survey[];
+  surveysStatus: Status;
   byId: Record<number, MainPage>;
   status: Status;
   detailStatus: Status;
@@ -27,6 +29,7 @@ type SiteActions = {
   fetchSettings: () => Promise<void>;
   fetchPartners: () => Promise<void>;
   fetchSocialLinks: () => Promise<void>;
+  fetchSurveys: () => Promise<void>;
   reset: () => void;
 };
 
@@ -35,6 +38,8 @@ const initialState: SiteState = {
   settings: null,
   partners: [],
   socialLinks: [],
+  surveys: [],
+  surveysStatus: 'idle',
   byId: {},
   status: 'idle',
   detailStatus: 'idle',
@@ -100,6 +105,16 @@ export const useSiteStore = create<SiteState & SiteActions>()(
           set({ socialLinks: data.results });
         } catch {
           // non-critical
+        }
+      },
+
+      fetchSurveys: async () => {
+        set({ surveysStatus: 'loading' });
+        try {
+          const data = await siteService.surveys();
+          set({ surveys: data.results, surveysStatus: 'success' });
+        } catch {
+          set({ surveysStatus: 'error' });
         }
       },
 

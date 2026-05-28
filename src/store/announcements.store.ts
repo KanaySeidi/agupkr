@@ -13,6 +13,7 @@ type AnnouncementsState = {
   byId: Record<number, Announcement>;
   pinned: Announcement[];
   status: Status;
+  pinnedStatus: Status;
   detailStatus: Status;
   error: string | null;
   params: Params;
@@ -32,6 +33,7 @@ const initialState: AnnouncementsState = {
   byId: {},
   pinned: [],
   status: 'idle',
+  pinnedStatus: 'idle',
   detailStatus: 'idle',
   error: null,
   params: {},
@@ -78,11 +80,12 @@ export const useAnnouncementsStore = create<AnnouncementsState & AnnouncementsAc
       },
 
       fetchPinned: async () => {
+        set({ pinnedStatus: 'loading' });
         try {
           const data = await announcementsService.pinned();
-          set({ pinned: data });
+          set({ pinned: data, pinnedStatus: 'success' });
         } catch {
-          // non-critical; leave stale
+          set({ pinnedStatus: 'success' });
         }
       },
 

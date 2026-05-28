@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Line from "@/components/atoms/Line";
 import { useTranslation } from "react-i18next";
-import structure from "@/assets/img/structure.png";
 import {
   Accordion,
   AccordionContent,
@@ -13,56 +12,49 @@ import { useStructureStore } from "@/store/structure.store";
 
 const Structure = () => {
   const { t } = useTranslation();
-  const { items, fetchList } = useStructureStore();
+  const { items, status, fetchList } = useStructureStore();
 
   useEffect(() => {
     fetchList();
   }, [fetchList]);
 
-  const structureItems = items.length > 0
-    ? items.map(item => ({ id: item.id, title: item.title, departments: item.departments, scheme_url: item.scheme_url }))
-    : [];
+  if ((status === 'idle' || status === 'loading') && items.length === 0) return null;
 
   return (
-    <>
-      <div className="w-full">
-        <Line title={t("sidebar.structure")} />
-        <img
-          src={structureItems[0]?.scheme_url || structure}
-          alt=""
-          className="w-full object-cover"
-        />
-
-        {structureItems.map((item) => (
-          <Accordion key={item.id} type="single" collapsible className="w-full">
-            <AccordionItem value={`item-${item.id}`}>
-              <AccordionTrigger className="text-lg text-sinii">
-                {item.title}
-              </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
-                {item.departments.length > 0 ? (
-                  <ul className="flex flex-col gap-2">
-                    {item.departments.map((dept) => (
-                      <li key={dept.id} className="text-sm text-slate-700">
-                        <span className="font-medium text-sinii">{dept.name}</span>
-                        {dept.description && (
-                          <p className="text-xs text-slate-500 mt-0.5">{dept.description}</p>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-sm text-slate-500">
-                    {t("auto.components.pages.about.Structure.1")}
-                  </p>
-                )}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+    <div className="w-full">
+      <Line title={t("sidebar.structure")} />
+      <div className="flex flex-col gap-8 mt-6">
+        {items.map((item) => (
+          <div key={item.id} className="flex flex-col gap-4">
+            {item.scheme_url && (
+              <img src={item.scheme_url} alt={item.title} className="w-full object-cover rounded-md" />
+            )}
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value={`item-${item.id}`}>
+                <AccordionTrigger className="text-xl font-semibold text-sinii">
+                  {item.title}
+                </AccordionTrigger>
+                <AccordionContent className="flex flex-col gap-3">
+                  {item.departments.length > 0 && (
+                    <ul className="flex flex-col gap-3">
+                      {item.departments.map((dept) => (
+                        <li key={dept.id} className="text-base text-slate-700">
+                          <span className="font-medium text-sinii">{dept.name}</span>
+                          {dept.description && (
+                            <p className="text-sm text-slate-500 mt-0.5">{dept.description}</p>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
         ))}
-        <QuickLinks />
       </div>
-    </>
+      <QuickLinks />
+    </div>
   );
 };
 

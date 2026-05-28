@@ -11,12 +11,12 @@ const NewsMain = () => {
   const navigate = useNavigate();
 
   const { items, fetchList } = useNewsStore();
-  const { pinned: pinnedAnnouncements, fetchPinned } = useAnnouncementsStore();
+  const { items: announcements, fetchList: fetchAnnouncements } = useAnnouncementsStore();
 
   useEffect(() => {
     fetchList();
-    fetchPinned();
-  }, [fetchList, fetchPinned]);
+    fetchAnnouncements();
+  }, [fetchList, fetchAnnouncements]);
 
   return (
     <div className="w-11/12 mx-auto mt-8 sm:mt-10">
@@ -34,14 +34,17 @@ const NewsMain = () => {
       <div className="w-full flex flex-col lg:flex-row justify-between gap-6 lg:gap-10">
         <div className="hidden lg:block w-1/4">
           <ul className="space-y-6">
-            {pinnedAnnouncements.map((a) => (
+            {announcements.map((a) => (
               <li key={a.id} className="border-b pb-3">
                 <p className="text-sm text-blue-600">
                   {new Date(a.date).toLocaleDateString()}
                 </p>
-                <p className="text-gray-800 text-sm leading-snug mt-1 hover:underline cursor-pointer">
+                <p className="text-gray-800 text-sm leading-snug mt-1 font-medium">
                   {a.title}
                 </p>
+                {a.description && (
+                  <p className="text-gray-500 text-xs leading-snug mt-0.5">{a.description}</p>
+                )}
               </li>
             ))}
           </ul>

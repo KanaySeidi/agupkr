@@ -1,23 +1,32 @@
+import { useEffect } from "react";
 import Line from "@/components/atoms/Line";
-import logos from "@/assets/img/logos.png";
 import { useTranslation } from "react-i18next";
+import { usePagesStore } from "@/store/pages.store";
 
 const AboutLogo = () => {
   const { t } = useTranslation();
+  const { logo, status, fetchLogo } = usePagesStore();
+
+  useEffect(() => {
+    fetchLogo();
+  }, [fetchLogo]);
+
+  const isLoading = (status.logo === 'idle' || status.logo === 'loading') && !logo;
+  if (isLoading) return null;
 
   return (
-    <>
-      <div className="w-full flex flex-col gap-5">
-        <Line title={t("sidebar.logo")} />
-        <img src={logos} alt="" />
-        <h1>{t("logo.title")}</h1>
-        <p>{t("logo.intro.creation")}</p>
-        <p>{t("logo.intro.languages")}</p>
-        <p>{t("logo.philosophy.text")}</p>
-        <h3>{t("logo.colors.title")}</h3>
-        <p>{t("logo.colors.blue")}</p>
-      </div>
-    </>
+    <div className="w-full flex flex-col gap-5">
+      <Line title={t("sidebar.logo")} />
+      {logo && (
+        <>
+          {logo.logo_url && <img src={logo.logo_url} alt="" className="max-h-64 object-contain" />}
+          {logo.title && <h1>{logo.title}</h1>}
+          {logo.description && (
+            <div dangerouslySetInnerHTML={{ __html: logo.description }} />
+          )}
+        </>
+      )}
+    </div>
   );
 };
 

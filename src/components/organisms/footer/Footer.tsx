@@ -1,39 +1,112 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import logo from "@/assets/icon/fLogo.svg";
+import { useSiteStore } from "@/store/site.store";
 
-const socials = [
-  {
-    label: "Facebook",
-    href: "#",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
-        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-      </svg>
+type FallbackSocial = {
+  label: string;
+  href: string;
+  iconKey: string;
+};
+
+const FALLBACK_SOCIALS: FallbackSocial[] = [
+  { label: "Facebook", href: "#", iconKey: "facebook" },
+  { label: "YouTube", href: "#", iconKey: "youtube" },
+  { label: "Instagram", href: "#", iconKey: "instagram" },
+];
+
+type IconMapEntry = {
+  viewBox: string;
+  fill: string;
+  stroke?: string;
+  strokeWidth?: string;
+  content: React.ReactNode;
+};
+
+const ICON_MAP: Record<string, IconMapEntry> = {
+  facebook: {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    content: (
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
     ),
   },
-  {
-    label: "YouTube",
-    href: "#",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
-        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" />
-      </svg>
+  youtube: {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    content: (
+      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" />
     ),
   },
-  {
-    label: "Instagram",
-    href: "#",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-4">
+  instagram: {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    content: (
+      <>
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
         <circle cx="12" cy="12" r="4" />
         <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
-      </svg>
+      </>
     ),
   },
-];
+  telegram: {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    content: (
+      <path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-16.5 7.5a2.25 2.25 0 0 0 .126 4.17l3.958 1.31 2.04 6.12a.75.75 0 0 0 1.352.162l2.43-3.644 4.55 3.41a2.25 2.25 0 0 0 3.536-1.34l3-14.25a2.25 2.25 0 0 0-2.47-2.653z" />
+    ),
+  },
+  twitter: {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    content: (
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    ),
+  },
+  vk: {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    content: (
+      <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.523-2.049-1.714-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.677-1.254.677-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4 8.408 4 7.932c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.839c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.712-.576.712z" />
+    ),
+  },
+};
+
+const DEFAULT_ICON: IconMapEntry = {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: "2",
+  content: (
+    <>
+      <circle cx="12" cy="12" r="10" />
+      <line x1="2" y1="12" x2="22" y2="12" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </>
+  ),
+};
+
+function SocialIcon({ iconKey }: { iconKey: string }) {
+  if (iconKey && (iconKey.startsWith("http://") || iconKey.startsWith("https://"))) {
+    return <img src={iconKey} alt="" className="size-4 object-contain" />;
+  }
+  const entry = ICON_MAP[iconKey?.toLowerCase()] ?? DEFAULT_ICON;
+  return (
+    <svg
+      viewBox={entry.viewBox}
+      fill={entry.fill}
+      stroke={entry.stroke}
+      strokeWidth={entry.strokeWidth}
+      className="size-4"
+    >
+      {entry.content}
+    </svg>
+  );
+}
 
 const columns = [
   {
@@ -88,6 +161,11 @@ const Footer = () => {
   const isKyrgyz = i18n.resolvedLanguage?.startsWith("ky");
   const [open, setOpen] = useState<string | null>(null);
 
+  const socialLinks = useSiteStore(s => s.socialLinks);
+  const fetchSocialLinks = useSiteStore(s => s.fetchSocialLinks);
+
+  useEffect(() => { fetchSocialLinks(); }, [fetchSocialLinks]);
+
   const toggle = (id: string) => setOpen((prev) => (prev === id ? null : id));
 
   return (
@@ -127,18 +205,24 @@ const Footer = () => {
             </div>
 
             <div className="flex gap-2">
-              {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center size-9 rounded-full bg-white/10 hover:bg-white/25 transition-colors"
-                >
-                  {s.icon}
-                </a>
-              ))}
+              {(socialLinks.length > 0 ? socialLinks : FALLBACK_SOCIALS).map((s) => {
+                const isFallback = "iconKey" in s;
+                const label = isFallback ? (s as FallbackSocial).label : s.name;
+                const href = isFallback ? (s as FallbackSocial).href : s.url;
+                const iconKey = isFallback ? (s as FallbackSocial).iconKey : s.icon;
+                return (
+                  <a
+                    key={label}
+                    href={href}
+                    aria-label={label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center size-9 rounded-full bg-white/10 hover:bg-white/25 transition-colors"
+                  >
+                    <SocialIcon iconKey={iconKey} />
+                  </a>
+                );
+              })}
             </div>
           </div>
 

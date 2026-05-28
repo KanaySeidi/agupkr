@@ -23,7 +23,6 @@ const Library = () => {
           {t("auto2.components.pages.libs.Library.20")}</p>
       </div>
 
-      {}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
         {[
           { labelKey: "auto2.components.pages.libs.Library.21", value: "340+" },
@@ -37,7 +36,6 @@ const Library = () => {
         ))}
       </div>
 
-      {}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {sections.map((sec) => (
           <div

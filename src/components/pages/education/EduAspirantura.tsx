@@ -1,131 +1,65 @@
 import Line from "@/components/atoms/Line";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useEducationStore } from "@/store/education.store";
 
 export default function EduAspirantura() {
   const { t } = useTranslation();
+  const { programsByType, status, fetchByType } = useEducationStore();
+
+  useEffect(() => {
+    fetchByType("phd");
+  }, [fetchByType]);
+
+  const programs = programsByType["phd"] ?? [];
+  const mainProgram = programs[0];
+  const isLoading = status["phd"] === "loading" && programs.length === 0;
 
   return (
     <div className="w-full space-y-3 mt-6">
-      <Line title={t("sidebar.education.aspirant")} />
+      <Line title={mainProgram?.title || t("sidebar.education.aspirant")} />
 
-      <p className="text-[18px] text-sinii mt-5">
-        {t("auto.components.pages.education.EduAspirantura.1")}</p>
+      {isLoading && (
+        <p className="text-slate-500 text-sm">{t("sidebar.education.aspirant")}…</p>
+      )}
 
-      <div className="flex flex-col gap-6 text-sinii text-[15px]">
-        <section className="space-y-3 text-[#1a1a1a]">
-          <p>
-            {t("auto.components.pages.education.EduAspirantura.2")}</p>
-          <p>
-            {t("auto.components.pages.education.EduAspirantura.3")}</p>
-
-          <ul className="list-disc list-inside space-y-1">
-            <li>
-              {t("auto.components.pages.education.EduAspirantura.4")}</li>
-            <li>
-              {t("auto.components.pages.education.EduAspirantura.5")}</li>
-          </ul>
-        </section>
-
-        {}
-        <section>
-          <h3 className="font-semibold mb-2">
-            {t("auto.components.pages.education.EduAspirantura.6")}</h3>
-          <ul className="list-disc list-inside space-y-1 text-[#1a1a1a]">
-            <li>{t("auto.components.pages.education.EduAspirantura.7")}</li>
-            <li>{t("auto.components.pages.education.EduAspirantura.8")}</li>
-            <li>{t("auto.components.pages.education.EduAspirantura.9")}</li>
-          </ul>
-        </section>
-
-        {}
-        <section>
-          <h3 className="font-semibold mb-2">
-            {t("auto.components.pages.education.EduAspirantura.10")}</h3>
-          <ul className="list-disc list-inside space-y-1 text-[#1a1a1a]">
-            <li>
-              {t("auto.components.pages.education.EduAspirantura.11")}</li>
-            <li>{t("auto.components.pages.education.EduAspirantura.12")}</li>
-          </ul>
-        </section>
-
-        {}
-        <section>
-          <h3 className="font-semibold mb-2">{t("auto.components.pages.education.EduAspirantura.13")}</h3>
-          <p className="text-[#1a1a1a] mb-2">
-            {t("auto.components.pages.education.EduAspirantura.14")}</p>
-          <ul className="list-disc list-inside text-[#1a1a1a] space-y-1">
-            <li>
-              {t("auto.components.pages.education.EduAspirantura.15")}</li>
-            <li>{t("auto.components.pages.education.EduAspirantura.16")}</li>
-            <li>{t("auto.components.pages.education.EduAspirantura.17")}</li>
-            <li>{t("auto.components.pages.education.EduAspirantura.18")}</li>
-          </ul>
-        </section>
-
-        {}
-        <section>
-          <h3 className="font-semibold mb-2">{t("auto.components.pages.education.EduAspirantura.19")}</h3>
-          <ul className="list-disc list-inside text-[#1a1a1a] space-y-1">
-            <li>
-              {t("auto.components.pages.education.EduAspirantura.20")}</li>
-            <li>
-              {t("auto.components.pages.education.EduAspirantura.21")}</li>
-            <li>{t("auto.components.pages.education.EduAspirantura.22")}</li>
-            <li>{t("auto.components.pages.education.EduAspirantura.23")}</li>
-            <li>{t("auto.components.pages.education.EduAspirantura.24")}</li>
-            <li>
-              {t("auto.components.pages.education.EduAspirantura.25")}</li>
-            <li>{t("auto.components.pages.education.EduAspirantura.26")}</li>
-            <li>{t("auto.components.pages.education.EduAspirantura.27")}</li>
-          </ul>
-        </section>
-
-        {}
-        <section>
-          <h3 className="font-semibold mb-2">{t("auto.components.pages.education.EduAspirantura.28")}</h3>
-          <ul className="list-disc list-inside text-[#1a1a1a] space-y-1">
-            <li>{t("auto.components.pages.education.EduAspirantura.29")}</li>
-            <li>{t("auto.components.pages.education.EduAspirantura.30")}</li>
-          </ul>
-        </section>
-
-        {}
-        <section>
-          <h3 className="font-semibold mb-2">{t("auto.components.pages.education.EduAspirantura.31")}</h3>
-          <ul className="list-disc list-inside text-[#1a1a1a] space-y-1">
-            <li>
-              <a className="text-sinii underline" href="#">
-                {t("auto.components.pages.education.EduAspirantura.32")}</a>
-            </li>
-            <li>
-              <a className="text-sinii underline" href="#">
-                {t("auto.components.pages.education.EduAspirantura.33")}</a>
-            </li>
-            <li>
-              <a className="text-sinii underline" href="#">
-                {t("auto.components.pages.education.EduAspirantura.34")}</a>
-            </li>
-            <li>
-              <a className="text-sinii underline" href="#">
-                {t("auto.components.pages.education.EduAspirantura.35")}</a>
-            </li>
-            <li>
-              <a className="text-sinii underline" href="#">
-                {t("auto.components.pages.education.EduAspirantura.36")}</a>
-            </li>
-            <li>
-              <a className="text-sinii underline" href="#">
-                {t("auto.components.pages.education.EduAspirantura.37")}</a>
-            </li>
-          </ul>
-        </section>
-
-        {}
-        <section>
-          <h3 className="font-semibold mb-2">{t("auto.components.pages.education.EduAspirantura.38")}</h3>
-          <h3 className="font-semibold">{t("auto.components.pages.education.EduAspirantura.39")}</h3>
-        </section>
-      </div>
+      {mainProgram ? (
+        <div className="flex flex-col gap-6 text-sinii text-[15px]">
+          {mainProgram.photo_url && (
+            <img
+              src={mainProgram.photo_url}
+              alt={mainProgram.title}
+              className="w-full max-h-64 object-cover rounded-md"
+            />
+          )}
+          {mainProgram.description && (
+            <div
+              className="text-[#1a1a1a]"
+              dangerouslySetInnerHTML={{ __html: mainProgram.description }}
+            />
+          )}
+          {mainProgram.link && (
+            <a
+              href={mainProgram.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-sm text-white bg-sinii hover:bg-sky-700 rounded-md px-4 py-2 self-start"
+            >
+              {mainProgram.title}
+            </a>
+          )}
+        </div>
+      ) : !isLoading ? (
+        <div className="flex flex-col gap-6 text-sinii text-[15px]">
+          <p className="text-[18px] text-sinii mt-5">
+            {t("auto.components.pages.education.EduAspirantura.1")}
+          </p>
+          <section className="space-y-3 text-[#1a1a1a]">
+            <p>{t("auto.components.pages.education.EduAspirantura.2")}</p>
+            <p>{t("auto.components.pages.education.EduAspirantura.3")}</p>
+          </section>
+        </div>
+      ) : null}
     </div>
   );
 }

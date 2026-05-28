@@ -37,10 +37,33 @@ export const ENDPOINTS = {
     list: '/schedules/',
     detail: (id: number) => `/schedules/${id}/`,
   },
+  honesty: {
+    list: '/academic-honesty/',
+    detail: (id: number) => `/academic-honesty/${id}/`,
+  },
   site: {
     mainPage: '/main-page/',
     settings: '/site-settings/',
     partners: '/partners/',
     socialLinks: '/social-links/',
+  },
+  pages: {
+    aboutAcademy: '/about-academy/',
+    charter: '/academy-charter/',
+    logo: '/academy-logo/',
+    history: '/academy-history/',
+    budgetPrograms: '/budget-programs/',
+    cooperation: '/international-cooperation/',
+    bulletin: '/bulletin/',
+    legalDocuments: '/legal-documents/',
+    qualityManagement: '/quality-management/',
+    tradeUnion: '/trade-union/',
+  },
+  education: {
+    programs: '/education-programs/',
+    directions: '/education-directions/',
+  },
+  surveys: {
+    list: '/surveys/',
   },
 } as const;

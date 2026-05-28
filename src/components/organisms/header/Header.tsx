@@ -189,13 +189,18 @@ const Header = () => {
         <div className="hidden lg:block w-full border-b-2" style={{ height: NAV_H }}>
           <div className="w-10/12 mx-auto h-full flex items-center">
             <ul className="flex w-full justify-between items-center">
-              {navItems.map((item) => (
-                <Link to={item.path} key={item.id}>
-                  <li className={`${isKyrgyz ? "text-xs xl:text-sm" : "text-sm xl:text-base"} font-medium text-black uppercase hover:text-sinii cursor-pointer`}>
-                    {item.title}
-                  </li>
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                const isActive = item.path === "/"
+                  ? location.pathname === "/"
+                  : location.pathname === item.path || location.pathname.startsWith(item.path + "/");
+                return (
+                  <Link to={item.path} key={item.id}>
+                    <li className={`${isKyrgyz ? "text-xs xl:text-sm" : "text-sm xl:text-base"} uppercase cursor-pointer transition-colors ${isActive ? "text-sinii font-bold" : "font-medium text-black hover:text-sinii"}`}>
+                      {item.title}
+                    </li>
+                  </Link>
+                );
+              })}
             </ul>
           </div>
         </div>
@@ -252,16 +257,21 @@ const Header = () => {
           style={{ top: LOGO_H_COMPACT }}
         >
           <nav className="w-11/12 mx-auto py-4 flex flex-col">
-            {navItems.map((item) => (
-              <Link
-                key={item.id}
-                to={item.path}
-                className="text-base font-medium text-slate-800 uppercase hover:text-sinii py-3 border-b border-slate-100 last:border-0"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.title}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive = item.path === "/"
+                ? location.pathname === "/"
+                : location.pathname === item.path || location.pathname.startsWith(item.path + "/");
+              return (
+                <Link
+                  key={item.id}
+                  to={item.path}
+                  className={`text-base uppercase py-3 border-b border-slate-100 last:border-0 ${isActive ? "text-sinii font-bold" : "font-medium text-slate-800 hover:text-sinii"}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.title}
+                </Link>
+              );
+            })}
             <div className="flex flex-col gap-2.5 mt-5 pt-5 border-t border-slate-200">
               {headerShortcutConfig.map((item) => (
                 <button
