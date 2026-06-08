@@ -16,7 +16,7 @@ const Announcement = () => {
         {t("announcement.univerTitle")}
       </h3>
       <ul className="flex flex-row gap-4 overflow-x-auto pb-1 scrollbar-none lg:flex-col lg:space-y-5 lg:overflow-x-visible lg:pb-0">
-        {items.map((a) => (
+        {items.slice(0, 3).map((a) => (
           <li key={a.id} className="border-b pb-3 min-w-[200px] sm:min-w-[260px] lg:min-w-0 shrink-0 lg:shrink">
             <p className="text-sm text-blue-600">
               {new Date(a.date).toLocaleDateString()}

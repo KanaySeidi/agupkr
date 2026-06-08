@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { House, SquareChevronLeft, SquareChevronRight } from "lucide-react";
 import LanguageSwitcher from "@/components/molecules/LangSwitcher";
-import logo from "@/assets/icon/Vector.svg";
+import logo from "@/assets/icon/Logo.svg";
 import lng from "@/assets/icon/Icon.svg";
 import {
   headerShortcutConfig,
@@ -35,8 +35,8 @@ const Header = () => {
   const isHome = location.pathname === "/";
 
   const [scrolled, setScrolled] = useState(false);
-  const [isMobile, setIsMobile] = useState(
-    () => typeof window !== "undefined" ? window.innerWidth < 1024 : false
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth < 1024 : false
   );
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -98,7 +98,9 @@ const Header = () => {
   // Prevent body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileMenuOpen]);
 
   const totalH = getHeaderH(isHome, scrolled, isMobile);
@@ -112,7 +114,13 @@ const Header = () => {
         {}
         <div
           className="w-11/12 mx-auto flex justify-between items-center"
-          style={{ height: isMobile ? LOGO_H_COMPACT : scrolled ? LOGO_H_COMPACT : LOGO_H_FULL }}
+          style={{
+            height: isMobile
+              ? LOGO_H_COMPACT
+              : scrolled
+              ? LOGO_H_COMPACT
+              : LOGO_H_FULL,
+          }}
         >
           {}
           <Link to="/" className="flex items-center gap-2 lg:gap-3 min-w-0">
@@ -125,10 +133,15 @@ const Header = () => {
             />
             <div className="uppercase text-sinii font-bold leading-tight overflow-hidden">
               {isMobile ? (
-                <span className="text-sm font-bold whitespace-nowrap">{t("header.abbr")}</span>
+                <span className="text-sm font-bold whitespace-nowrap">
+                  {t("header.abbr")}
+                </span>
               ) : (
                 <div className="relative">
-                  <div className="transition-opacity duration-500" style={{ opacity: scrolled ? 0 : 1 }}>
+                  <div
+                    className="transition-opacity duration-500"
+                    style={{ opacity: scrolled ? 0 : 1 }}
+                  >
                     <p className="text-sm">{t("header.line1")}</p>
                     <p className="text-sm">{t("header.line2")}</p>
                     <p className="text-sm">{t("header.line3")}</p>
@@ -154,8 +167,14 @@ const Header = () => {
                     ? window.open(item.href, "_blank", "noopener,noreferrer")
                     : navigate(item.path!)
                 }
-                className={`bg-sinii text-white ${item.className} h-11 flex justify-center items-center rounded-md hover:bg-hover-sinii cursor-pointer transition-transform duration-500 text-sm ${
+                className={`${
+                  item.className
+                } h-11 flex justify-center items-center rounded-xl cursor-pointer transition-transform duration-500 text-sm ${
                   scrolled ? "scale-90" : "scale-100"
+                } ${
+                  item.variant === "outlined"
+                    ? "bg-gray-200 text-sinii hover:bg-gray-300 font-semibold"
+                    : "bg-sinii text-white hover:bg-hover-sinii"
                 }`}
               >
                 {t(item.titleKey)}
@@ -178,29 +197,60 @@ const Header = () => {
               className="flex flex-col gap-1.5 p-1.5"
               aria-label={t("auto2.components.organisms.header.Header.1")}
             >
-              <span className={`block w-5 h-0.5 bg-sinii transition-transform duration-300 origin-center ${mobileMenuOpen ? "rotate-45 translate-y-2" : ""}`} />
-              <span className={`block w-5 h-0.5 bg-sinii transition-opacity duration-300 ${mobileMenuOpen ? "opacity-0" : ""}`} />
-              <span className={`block w-5 h-0.5 bg-sinii transition-transform duration-300 origin-center ${mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+              <span
+                className={`block w-5 h-0.5 bg-sinii transition-transform duration-300 origin-center ${
+                  mobileMenuOpen ? "rotate-45 translate-y-2" : ""
+                }`}
+              />
+              <span
+                className={`block w-5 h-0.5 bg-sinii transition-opacity duration-300 ${
+                  mobileMenuOpen ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`block w-5 h-0.5 bg-sinii transition-transform duration-300 origin-center ${
+                  mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+                }`}
+              />
             </button>
           </div>
         </div>
 
         {}
-        <div className="hidden lg:block w-full border-b-2" style={{ height: NAV_H }}>
-          <div className="w-10/12 mx-auto h-full flex items-center">
-            <ul className="flex w-full justify-between items-center">
-              {navItems.map((item) => {
-                const isActive = item.path === "/"
-                  ? location.pathname === "/"
-                  : location.pathname === item.path || location.pathname.startsWith(item.path + "/");
-                return (
-                  <Link to={item.path} key={item.id}>
-                    <li className={`${isKyrgyz ? "text-xs xl:text-sm" : "text-sm xl:text-base"} uppercase cursor-pointer transition-colors ${isActive ? "text-sinii font-bold" : "font-medium text-black hover:text-sinii"}`}>
-                      {item.title}
-                    </li>
-                  </Link>
-                );
-              })}
+        <div
+          className="hidden lg:block w-full border-b-2"
+          style={{ height: NAV_H }}
+        >
+          <div className="w-11/12 mx-auto h-full flex items-center">
+            <ul className="flex w-full items-center justify-between gap-1">
+              {(() => {
+                const activeItem = navItems
+                  .filter((item) =>
+                    item.path === "/"
+                      ? location.pathname === "/"
+                      : location.pathname === item.path ||
+                        location.pathname.startsWith(item.path + "/")
+                  )
+                  .sort((a, b) => b.path.length - a.path.length)[0];
+                return navItems.map((item) => {
+                  const isActive = activeItem?.path === item.path;
+                  return (
+                    <Link to={item.path} key={item.id}>
+                      <li
+                        className={`${
+                          isKyrgyz ? "text-[10px]" : "text-xs xl:text-sm"
+                        } uppercase cursor-pointer transition-colors whitespace-nowrap bg-gray-200 px-2 py-1.5 rounded-xl ${
+                          isActive
+                            ? "text-sinii font-bold"
+                            : "font-medium text-gray-700 hover:text-sinii"
+                        }`}
+                      >
+                        {item.title}
+                      </li>
+                    </Link>
+                  );
+                });
+              })()}
             </ul>
           </div>
         </div>
@@ -233,7 +283,10 @@ const Header = () => {
                 {parentCrumbs.map((c) => (
                   <div key={c.to} className="flex items-center gap-1 shrink-0">
                     <span className="text-slate-300">/</span>
-                    <Link to={c.to} className="text-xs text-sinii hover:underline whitespace-nowrap">
+                    <Link
+                      to={c.to}
+                      className="text-xs text-sinii hover:underline whitespace-nowrap"
+                    >
                       {c.label}
                     </Link>
                   </div>
@@ -258,14 +311,20 @@ const Header = () => {
         >
           <nav className="w-11/12 mx-auto py-4 flex flex-col">
             {navItems.map((item) => {
-              const isActive = item.path === "/"
-                ? location.pathname === "/"
-                : location.pathname === item.path || location.pathname.startsWith(item.path + "/");
+              const isActive =
+                item.path === "/"
+                  ? location.pathname === "/"
+                  : location.pathname === item.path ||
+                    location.pathname.startsWith(item.path + "/");
               return (
                 <Link
                   key={item.id}
                   to={item.path}
-                  className={`text-base uppercase py-3 border-b border-slate-100 last:border-0 ${isActive ? "text-sinii font-bold" : "font-medium text-slate-800 hover:text-sinii"}`}
+                  className={`text-base uppercase py-3 border-b border-slate-100 last:border-0 ${
+                    isActive
+                      ? "text-sinii font-bold"
+                      : "font-medium text-slate-800 hover:text-sinii"
+                  }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.title}
@@ -282,7 +341,11 @@ const Header = () => {
                       ? window.open(item.href, "_blank", "noopener,noreferrer")
                       : navigate(item.path!);
                   }}
-                  className="bg-sinii text-white w-full h-12 flex justify-center items-center rounded-md hover:bg-hover-sinii font-medium"
+                  className={`w-full h-12 flex justify-center items-center rounded-md font-medium ${
+                    item.variant === "outlined"
+                      ? "border border-gray-300 bg-white text-sinii hover:bg-gray-50"
+                      : "bg-sinii text-white hover:bg-hover-sinii"
+                  }`}
                 >
                   {t(item.titleKey)}
                 </button>

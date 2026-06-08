@@ -13,7 +13,6 @@ const AboutAGU = () => {
       <div className="w-11/12 mx-auto py-10 sm:py-14 lg:py-20">
         <Line title={t("AGU.title")} />
         <div className="flex flex-col gap-5 sm:gap-8 lg:gap-10 mt-6 sm:mt-8 lg:mt-10">
-
           <p className="text-xl sm:text-2xl lg:text-4xl w-full lg:w-3/4 leading-snug">
             {t("AGU.subTitle")}
           </p>
@@ -33,12 +32,32 @@ const AboutAGU = () => {
           </button>
 
           {}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 divide-y-2 lg:divide-y-0 lg:divide-x-2 divide-gray-200 border-2 border-gray-200 rounded-xl overflow-hidden">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 divide-y-2 lg:divide-y-0 lg:divide-x-2 divide-gray-200 rounded-xl overflow-hidden">
             {[
-              { to: 150, suffix: "+", label: t("AGU.stats.teachers"), duration: 2 },
-              { to: 20, suffix: "", label: t("AGU.stats.doctors"), duration: 2 },
-              { to: 10000, suffix: "", label: t("AGU.stats.graduates"), duration: 1 },
-              { to: 65, suffix: "%", label: t("AGU.stats.success"), duration: 2 },
+              {
+                to: 150,
+                suffix: "+",
+                label: t("AGU.stats.teachers"),
+                duration: 2,
+              },
+              {
+                to: 20,
+                suffix: "",
+                label: t("AGU.stats.doctors"),
+                duration: 2,
+              },
+              {
+                to: 10000,
+                suffix: "",
+                label: t("AGU.stats.graduates"),
+                duration: 1,
+              },
+              {
+                to: 65,
+                suffix: "%",
+                label: t("AGU.stats.success"),
+                duration: 2,
+              },
             ].map((s, i) => (
               <div
                 key={i}
@@ -55,13 +74,18 @@ const AboutAGU = () => {
                     duration={s.duration}
                     className="count-up-text"
                   />
-                  {s.suffix && <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold">{s.suffix}</span>}
+                  {s.suffix && (
+                    <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
+                      {s.suffix}
+                    </span>
+                  )}
                 </span>
-                <p className="text-xs sm:text-sm lg:text-base text-slate-600">{s.label}</p>
+                <p className="text-xs sm:text-sm lg:text-base text-slate-600">
+                  {s.label}
+                </p>
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </div>

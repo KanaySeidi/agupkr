@@ -29,8 +29,7 @@ export const quickLinksConfig: QuickLinksGroup[] = [
       { id: "edu-1", titleKey: "sidebar.education.bakalavr", href: "/education/bakalavr" },
       { id: "edu-2", titleKey: "sidebar.education.magistr",  href: "/education/magistr" },
       { id: "edu-3", titleKey: "sidebar.education.doctor",   href: "/education/doctor" },
-      { id: "edu-4", titleKey: "sidebar.education.aspirant", href: "/education/aspirant" },
-      { id: "edu-5", titleKey: "sidebar.education.spo",      href: "/education/spo" },
+{ id: "edu-5", titleKey: "sidebar.education.spo",      href: "/education/spo" },
     ],
   },
   {

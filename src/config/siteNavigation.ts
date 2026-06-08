@@ -10,29 +10,26 @@ export const mainNavigationConfig: NavItemConfig[] = [
   { id: 2, path: "/about", titleKey: "header.navs.nav2" },
   { id: 3, path: "/education", titleKey: "header.navs.nav3" },
   { id: 4, path: "/advanced", titleKey: "header.navs.nav4" },
-  { id: 5, path: "/aplicant2025", titleKey: "header.navs.nav5" },
-  { id: 6, path: "/news", titleKey: "header.navs.nav6" },
+  { id: 5, path: "/news", titleKey: "header.navs.nav5" },
+  { id: 6, path: "/about/laws-general", titleKey: "header.navs.nav6" },
   { id: 7, path: "/contacts", titleKey: "header.navs.nav7" },
+  { id: 8, path: "/about/cooperation", titleKey: "header.navs.nav8" },
 ];
 
 export const headerShortcutConfig: HeaderShortcutItem[] = [
+  {
+    id: "aplicant",
+    titleKey: "header.aplicant",
+    path: "/aplicant2025",
+    className: "w-44",
+    variant: "outlined",
+  },
   {
     id: "avn",
     titleKey: "header.avn",
     href: "https://avn.apap.kg/",
     className: "w-32",
-  },
-  {
-    id: "schedule",
-    titleKey: "header.schedule",
-    path: "/schedule",
-    className: "w-32",
-  },
-  {
-    id: "library",
-    titleKey: "header.library",
-    path: "/library",
-    className: "w-52",
+    variant: "filled",
   },
 ];
 
@@ -53,10 +50,9 @@ export const sidebarNavigationConfig: Record<AppSection, NavItemConfig[]> = {
     { id: 9, path: "/about/journal", titleKey: "sidebar.journal" },
     { id: 10, path: "/about/budget", titleKey: "sidebar.budget" },
     { id: 11, path: "/about/professors", titleKey: "sidebar.professors" },
-    { id: 12, path: "/about/cooperation", titleKey: "sidebar.cooperation" },
-    { id: 13, path: "/about/integrity", titleKey: "sidebar.integrity" },
-    { id: 14, path: "/about/laws-general", titleKey: "sidebar.lawsGeneral" },
-    { id: 15, path: "/about/laws-internal", titleKey: "sidebar.lawsInternal" },
+    { id: 12, path: "/about/integrity", titleKey: "sidebar.integrity" },
+    { id: 13, path: "/about/laws-general", titleKey: "sidebar.lawsGeneral" },
+    { id: 14, path: "/about/laws-internal", titleKey: "sidebar.lawsInternal" },
   ],
   education: [
     { id: 1, path: "/education", titleKey: "sidebar.education.index" },
@@ -75,11 +71,6 @@ export const sidebarNavigationConfig: Record<AppSection, NavItemConfig[]> = {
       id: 5,
       path: "/education/doctor",
       titleKey: "sidebar.education.doctor",
-    },
-    {
-      id: 6,
-      path: "/education/aspirant",
-      titleKey: "sidebar.education.aspirant",
     },
     {
       id: 7,
@@ -151,7 +142,7 @@ const standaloneRouteTitleKeys: Record<string, string> = {
   "/contacts": "header.navs.nav7",
   "/advanced": "sidebar.advanced.about",
   "/aplicant2025": "admission.blockTitle",
-  "/news": "header.navs.nav6",
+  "/news": "header.navs.nav5",
   "/library": "sidebar.library.title",
 };
 

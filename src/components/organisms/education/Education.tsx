@@ -10,11 +10,6 @@ const programs = [
     path: "/education/doctor",
   },
   {
-    titleKey: "auto2.components.organisms.education.Education.3",
-    descKey: "auto2.components.organisms.education.Education.4",
-    path: "/education/aspirant",
-  },
-  {
     titleKey: "auto2.components.organisms.education.Education.5",
     descKey: "auto2.components.organisms.education.Education.6",
     path: "/education/magistr",
@@ -23,6 +18,11 @@ const programs = [
     titleKey: "auto2.components.organisms.education.Education.7",
     descKey: "auto2.components.organisms.education.Education.8",
     path: "/education/bakalavr",
+  },
+  {
+    titleKey: "auto2.components.organisms.education.Education.3",
+    descKey: "auto2.components.organisms.education.Education.4",
+    path: "/education/spo",
   },
 ];
 

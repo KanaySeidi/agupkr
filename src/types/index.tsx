@@ -32,6 +32,7 @@ export type HeaderShortcutItem = {
   path?: string;
   href?: string;
   className: string;
+  variant?: "filled" | "outlined";
 };
 
 export type LanguageOption = {

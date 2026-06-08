@@ -128,8 +128,7 @@ const columns = [
       { labelKey: "auto2.components.organisms.footer.Footer.9", path: "/education/bakalavr" },
       { labelKey: "auto2.components.organisms.footer.Footer.10", path: "/education/magistr" },
       { labelKey: "auto2.components.organisms.footer.Footer.11", path: "/education/doctor" },
-      { labelKey: "auto2.components.organisms.footer.Footer.12", path: "/education/aspirant" },
-      { labelKey: "auto2.components.organisms.footer.Footer.13", path: "/education/spo" },
+{ labelKey: "auto2.components.organisms.footer.Footer.13", path: "/education/spo" },
     ],
   },
   {

@@ -9,16 +9,18 @@
     "line7": "UNDER THE PRESIDENT OF THE KYRGYZ REPUBLIC",
     "line8": "named after ZHUSUPA ABDRAHMANOV",
     "avn": "Enter to AVN",
+    "aplicant": "Applicant - 2026",
     "schedule": "Schedule",
     "library": "Electronic library",
     "navs": {
       "nav1": "Home",
       "nav2": "About the Academy",
-      "nav3": "Education and Science",
-      "nav4": "Professional Development",
-      "nav5": "Applicant-2025!",
-      "nav6": "News and Announcements",
-      "nav7": "Contacts"
+      "nav3": "Education",
+      "nav4": "Science and Innovation",
+      "nav5": "News",
+      "nav6": "Regulatory Acts",
+      "nav7": "Contacts",
+      "nav8": "Partners"
     },
     "abbr": "APAPKR"
   },
@@ -102,7 +104,7 @@
       "spo": "Secondary Specialized Education (SSE)",
       "bakalavr": "Bachelor’s Programs",
       "magistr": "Master’s Programs",
-      "doctor": "Doctorate",
+      "doctor": "Doctorate (PHD)",
       "aspirant": "Postgraduate (Aspirantura)",
       "kafedgmu": "Department of Public Management",
       "kafedem": "Department of Economic Management",
@@ -295,7 +297,7 @@
   },
   "admission": {
     "subtitle": "The Academy of Public Administration under the President of the Kyrgyz Republic (hereinafter APAKR) is the only specialized educational institution in the Kyrgyz Republic in the field of training managerial personnel for state bodies and local self-government bodies of the Kyrgyz Republic.",
-    "blockTitle": "APPLICANT – 2025!",
+    "blockTitle": "APPLICANT – 2026!",
     "desc": "The Academy of Public Administration under the President of the Kyrgyz Republic named after Jusup Abdrakhmanov (APAKR) announces for the contract-based master’s degree program in the following direction and profiles of full-time study (2 years, contract 56,000 – 66,000 KGS):",
     "direction": "DIRECTION: 580900 “Public and Municipal Administration”",
     "profilesTitle": "Profiles:",
@@ -315,7 +317,7 @@
     "req7": "Receipt for payment of the admission fee — 1500 KGS (copy);",
     "req8": "Receipt for payment of 50% of the annual tuition fee (annual contract: 56,000 – 66,000 KGS).",
     "finalNote": "Publication of results and enrollment. Lists of applicants recommended for enrollment are posted on the information board and on the Academy’s website:",
-    "title": "INFORMATION FOR APPLICANTS TO THE MASTER’S PROGRAM 2025"
+    "title": "INFORMATION FOR APPLICANTS TO THE MASTER’S PROGRAM 2026"
   },
   "news": {
     "announcement": "University Announcements",
@@ -885,8 +887,8 @@
           "Education": {
             "1": "Докторантура",
             "2": "Трёхлетняя программа для проведения оригинального научного исследования и получения степени доктора наук.",
-            "3": "Аспирантура",
-            "4": "Трёхлетняя программа с теорией и научными исследованиями. Подготавливает специалистов для науки и высшего образования.",
+            "3": "Vocational Education (SPO)",
+            "4": "Secondary vocational education — allows obtaining a profession or specialty on the basis of 9 or 11 school grades.",
             "5": "Магистратура",
             "6": "Двухлетняя программа углубленной подготовки. Развивает научные компетенции и позволяет провести собственное исследование.",
             "7": "Бакалавриат",
@@ -918,7 +920,7 @@
             "19": "Электронная библиотека",
             "20": "Информация",
             "21": "Новости",
-            "22": "Абитурент-2025",
+            "22": "Абитурент-2026",
             "23": "Контакты",
             "24": "Международное сотрудничество",
             "25": "Академическая честность",
