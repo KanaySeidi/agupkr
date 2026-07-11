@@ -2,7 +2,7 @@ import AboutAGU from "@/components/organisms/aboutAGU/AboutAGU";
 import Announcement from "@/components/organisms/announcement/Announcement";
 import Education from "@/components/organisms/education/Education";
 import MainSlider from "@/components/organisms/mainSlider/MainSlider";
-import NewsMain from "../news/NewsMain";
+import QuickLinks from "@/components/organisms/quickLinks/QuickLinks";
 
 const Main = () => {
   return (
@@ -11,9 +11,11 @@ const Main = () => {
         <MainSlider />
         <Announcement />
       </div>
-      <NewsMain />
       <Education />
       <AboutAGU />
+      <div className="w-11/12 mx-auto">
+        <QuickLinks />
+      </div>
     </div>
   );
 };

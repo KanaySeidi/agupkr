@@ -21,7 +21,7 @@ const NewsMain = () => {
   return (
     <div className="w-11/12 mx-auto mt-8 sm:mt-10">
       <div className="w-full flex items-center justify-between my-6 lg:my-10">
-        <Line title={t("header.navs.nav6")} />
+        <Line title={t("header.navs.nav5")} />
         <button
           onClick={() => navigate("/news")}
           className="px-3 py-1.5 flex gap-1.5 items-center border border-sinii rounded-md cursor-pointer shrink-0 ml-4"

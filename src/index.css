@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-    --color-sinii: #104385;
+    --color-sinii: #262B6C;
     --color-hover-sinii: #7bb4fff5;
 }
 

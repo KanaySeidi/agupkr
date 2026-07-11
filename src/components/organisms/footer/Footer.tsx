@@ -1,15 +1,13 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import logo from "@/assets/icon/fLogo.svg";
 import { useSiteStore } from "@/store/site.store";
+import logoRu from "@/assets/icon/logo-footer-ru.svg";
+import logoKg from "@/assets/icon/logo-footer-kg.svg";
+import logoEn from "@/assets/icon/logo-footer-en.svg";
+import uzorGolden from "@/assets/img/uzor-golden.svg";
 
-type FallbackSocial = {
-  label: string;
-  href: string;
-  iconKey: string;
-};
+type FallbackSocial = { label: string; href: string; iconKey: string };
 
 const FALLBACK_SOCIALS: FallbackSocial[] = [
   { label: "Facebook", href: "#", iconKey: "facebook" },
@@ -17,15 +15,16 @@ const FALLBACK_SOCIALS: FallbackSocial[] = [
   { label: "Instagram", href: "#", iconKey: "instagram" },
 ];
 
-type IconMapEntry = {
-  viewBox: string;
-  fill: string;
-  stroke?: string;
-  strokeWidth?: string;
-  content: React.ReactNode;
-};
-
-const ICON_MAP: Record<string, IconMapEntry> = {
+const ICON_MAP: Record<
+  string,
+  {
+    viewBox: string;
+    fill: string;
+    stroke?: string;
+    strokeWidth?: string;
+    content: React.ReactNode;
+  }
+> = {
   facebook: {
     viewBox: "0 0 24 24",
     fill: "currentColor",
@@ -76,7 +75,7 @@ const ICON_MAP: Record<string, IconMapEntry> = {
   },
 };
 
-const DEFAULT_ICON: IconMapEntry = {
+const DEFAULT_ICON = {
   viewBox: "0 0 24 24",
   fill: "none",
   stroke: "currentColor",
@@ -91,7 +90,7 @@ const DEFAULT_ICON: IconMapEntry = {
 };
 
 function SocialIcon({ iconKey }: { iconKey: string }) {
-  if (iconKey && (iconKey.startsWith("http://") || iconKey.startsWith("https://"))) {
+  if (iconKey?.startsWith("http://") || iconKey?.startsWith("https://")) {
     return <img src={iconKey} alt="" className="size-4 object-contain" />;
   }
   const entry = ICON_MAP[iconKey?.toLowerCase()] ?? DEFAULT_ICON;
@@ -113,115 +112,151 @@ const columns = [
     id: "about",
     titleKey: "auto2.components.organisms.footer.Footer.1",
     links: [
-      { labelKey: "auto2.components.organisms.footer.Footer.2", path: "/about" },
-      { labelKey: "auto2.components.organisms.footer.Footer.3", path: "/about/charter" },
-      { labelKey: "auto2.components.organisms.footer.Footer.4", path: "/about/history" },
-      { labelKey: "auto2.components.organisms.footer.Footer.5", path: "/about/structure" },
-      { labelKey: "auto2.components.organisms.footer.Footer.6", path: "/about/logotip" },
-      { labelKey: "auto2.components.organisms.footer.Footer.7", path: "/about/council" },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.2",
+        path: "/about",
+      },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.3",
+        path: "/about/charter",
+      },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.4",
+        path: "/about/history",
+      },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.5",
+        path: "/about/structure",
+      },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.6",
+        path: "/about/logotip",
+      },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.7",
+        path: "/about/council",
+      },
     ],
   },
   {
     id: "education",
     titleKey: "auto2.components.organisms.footer.Footer.8",
     links: [
-      { labelKey: "auto2.components.organisms.footer.Footer.9", path: "/education/bakalavr" },
-      { labelKey: "auto2.components.organisms.footer.Footer.10", path: "/education/magistr" },
-      { labelKey: "auto2.components.organisms.footer.Footer.11", path: "/education/doctor" },
-{ labelKey: "auto2.components.organisms.footer.Footer.13", path: "/education/spo" },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.9",
+        path: "/education/bakalavr",
+      },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.10",
+        path: "/education/magistr",
+      },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.11",
+        path: "/education/doctor",
+      },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.13",
+        path: "/education/spo",
+      },
     ],
   },
   {
     id: "advanced",
     titleKey: "auto2.components.organisms.footer.Footer.14",
     links: [
-      { labelKey: "auto2.components.organisms.footer.Footer.15", path: "/advanced" },
-      { labelKey: "auto2.components.organisms.footer.Footer.16", path: "/advanced/profdevelop" },
-      { labelKey: "auto2.components.organisms.footer.Footer.17", path: "/advanced/employees" },
-      { labelKey: "auto2.components.organisms.footer.Footer.18", path: "/schedule" },
-      { labelKey: "auto2.components.organisms.footer.Footer.19", path: "/library" },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.15",
+        path: "/advanced",
+      },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.16",
+        path: "/advanced/profdevelop",
+      },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.17",
+        path: "/advanced/employees",
+      },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.18",
+        path: "/schedule",
+      },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.19",
+        path: "/library",
+      },
     ],
   },
   {
     id: "info",
     titleKey: "auto2.components.organisms.footer.Footer.20",
     links: [
-      { labelKey: "auto2.components.organisms.footer.Footer.21", path: "/news" },
-      { labelKey: "auto2.components.organisms.footer.Footer.22", path: "/aplicant2025" },
-      { labelKey: "auto2.components.organisms.footer.Footer.23", path: "/contacts" },
-      { labelKey: "auto2.components.organisms.footer.Footer.24", path: "/about/cooperation" },
-      { labelKey: "auto2.components.organisms.footer.Footer.25", path: "/about/integrity" },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.21",
+        path: "/news",
+      },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.22",
+        path: "/aplicant2025",
+      },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.23",
+        path: "/contacts",
+      },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.24",
+        path: "/about/cooperation",
+      },
+      {
+        labelKey: "auto2.components.organisms.footer.Footer.25",
+        path: "/about/integrity",
+      },
     ],
   },
 ];
 
 const Footer = () => {
   const { t, i18n } = useTranslation();
-  const isKyrgyz = i18n.resolvedLanguage?.startsWith("ky");
   const [open, setOpen] = useState<string | null>(null);
 
-  const socialLinks = useSiteStore(s => s.socialLinks);
-  const fetchSocialLinks = useSiteStore(s => s.fetchSocialLinks);
+  const socialLinks = useSiteStore((s) => s.socialLinks);
+  const fetchSocialLinks = useSiteStore((s) => s.fetchSocialLinks);
 
-  useEffect(() => { fetchSocialLinks(); }, [fetchSocialLinks]);
+  useEffect(() => {
+    fetchSocialLinks();
+  }, [fetchSocialLinks]);
 
-  const toggle = (id: string) => setOpen((prev) => (prev === id ? null : id));
+  const lang = i18n.resolvedLanguage ?? "ru";
+  const footerLogo = lang.startsWith("ky")
+    ? logoKg
+    : lang.startsWith("en")
+    ? logoEn
+    : logoRu;
+
+  const socials = socialLinks.length > 0 ? socialLinks : FALLBACK_SOCIALS;
 
   return (
-    <footer className="bg-sinii text-white">
-      <div className="w-11/12 mx-auto py-10">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 pb-8 border-b border-white/10">
-
+    <footer style={{ backgroundColor: "#262B6C" }} className="text-white mt-10">
+      <div className="w-11/12 mx-auto pt-10 sm:pt-14">
+        {/* Main grid */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 pb-8">
           {/* Brand */}
           <div className="md:col-span-1 flex flex-col gap-5">
-            <div className="flex items-start gap-3">
-              <img src={logo} className="size-14 shrink-0 mt-0.5" alt={t("auto2.components.organisms.footer.Footer.26")} />
-              <div className="text-white leading-snug">
-                {isKyrgyz ? (
-                  <>
-                    <p className="text-xs text-white/50 uppercase tracking-tight">{t("header.line7")}</p>
-                    <p className="text-xs text-white/50 uppercase tracking-tight mb-0.5">{t("header.line8")}</p>
-                    <p className="text-sm font-bold uppercase">{t("header.line4")}</p>
-                    <p className="text-sm font-bold uppercase">{t("header.line5")}</p>
-                    <p className="text-sm font-bold uppercase">{t("header.line6")}</p>
-                  </>
-                ) : (
-                  <>
-                    <p className="text-sm font-bold uppercase">{t("header.line4")}</p>
-                    <p className="text-sm font-bold uppercase">{t("header.line5")}</p>
-                    <p className="text-sm font-bold uppercase mb-0.5">{t("header.line6")}</p>
-                    <p className="text-xs text-white/50 uppercase tracking-tight">{t("header.line7")}</p>
-                    <p className="text-xs text-white/50 uppercase tracking-tight">{t("header.line8")}</p>
-                  </>
-                )}
-              </div>
-            </div>
+            <img
+              src={footerLogo}
+              alt="АГУПКР"
+              className="w-48 object-contain"
+            />
 
-            <div className="text-sm text-white/60 leading-relaxed">
-              <p className="text-white/40 text-xs uppercase tracking-wide mb-1">{t("auto2.components.organisms.footer.Footer.27")}</p>
-              <p>{t("auto2.components.organisms.footer.Footer.28")}</p>
-              <p>{t("auto2.components.organisms.footer.Footer.29")}</p>
-            </div>
-
-            <div className="flex gap-2">
-              {(socialLinks.length > 0 ? socialLinks : FALLBACK_SOCIALS).map((s) => {
-                const isFallback = "iconKey" in s;
-                const label = isFallback ? (s as FallbackSocial).label : s.name;
-                const href = isFallback ? (s as FallbackSocial).href : s.url;
-                const iconKey = isFallback ? (s as FallbackSocial).iconKey : s.icon;
-                return (
-                  <a
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center size-9 rounded-full bg-white/10 hover:bg-white/25 transition-colors"
-                  >
-                    <SocialIcon iconKey={iconKey} />
-                  </a>
-                );
-              })}
+            <div className="flex flex-col gap-1">
+              <p className="text-white/40 text-xs uppercase tracking-wide">
+                {t("auto2.components.organisms.footer.Footer.27")}
+              </p>
+              <p className="text-sm text-white/80">
+                {t("auto2.components.organisms.footer.Footer.28")}
+              </p>
+              <p className="text-sm text-white/80">
+                {t("auto2.components.organisms.footer.Footer.29")}
+              </p>
             </div>
           </div>
 
@@ -229,10 +264,10 @@ const Footer = () => {
           <div className="hidden md:grid md:col-span-4 grid-cols-4 gap-6">
             {columns.map((col) => (
               <div key={col.id}>
-                <h3 className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-3">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-[#D0A858] mb-4">
                   {t(col.titleKey)}
                 </h3>
-                <ul className="flex flex-col gap-2">
+                <ul className="flex flex-col gap-2.5">
                   {col.links.map((link) => (
                     <li key={link.path}>
                       <Link
@@ -249,12 +284,12 @@ const Footer = () => {
           </div>
 
           {/* Nav columns — mobile accordion */}
-          <div className="md:hidden flex flex-col border-t border-white/10">
+          <div className="md:hidden flex flex-col border-t border-white/10 col-span-1">
             {columns.map((col) => (
               <div key={col.id} className="border-b border-white/10">
                 <button
-                  onClick={() => toggle(col.id)}
-                  className="w-full flex items-center justify-between py-3.5 text-sm font-semibold text-white"
+                  onClick={() => setOpen((p) => (p === col.id ? null : col.id))}
+                  className="w-full flex items-center justify-between py-3.5 text-sm font-semibold text-[#D0A858] uppercase tracking-wide"
                 >
                   <span>{t(col.titleKey)}</span>
                   <svg
@@ -262,7 +297,9 @@ const Footer = () => {
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
-                    className={`size-4 transition-transform duration-200 ${open === col.id ? "rotate-180" : ""}`}
+                    className={`size-4 transition-transform duration-200 ${
+                      open === col.id ? "rotate-180" : ""
+                    }`}
                   >
                     <polyline points="6 9 12 15 18 9" />
                   </svg>
@@ -287,11 +324,67 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="pt-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/35">
-          <p>© {new Date().getFullYear()} {t("auto2.components.organisms.footer.Footer.30")}</p>
-          <p>{t("auto2.components.organisms.footer.Footer.31")}</p>
+        {/* Social icons row */}
+        <div className="flex justify-end gap-2 pb-6">
+          {socials.map((s) => {
+            const isFallback = "iconKey" in s;
+            const label = isFallback ? (s as FallbackSocial).label : s.name;
+            const href = isFallback ? (s as FallbackSocial).href : s.url;
+            const iconKey = isFallback ? (s as FallbackSocial).iconKey : s.icon;
+            return (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center size-10 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+              >
+                <SocialIcon iconKey={iconKey} />
+              </a>
+            );
+          })}
         </div>
+
+        {/* Divider */}
+        <div className="border-t border-white/15" />
+
+        {/* Copyright */}
+        <div className="py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/35">
+          <p>
+            © {new Date().getFullYear()}{" "}
+            {t("auto2.components.organisms.footer.Footer.30")}
+          </p>
+          <a
+            href="http://www.apap.kg/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 border border-white/15 text-white/60 hover:text-white hover:bg-white/15 transition-all text-xs font-medium"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className="size-3.5 shrink-0"
+            >
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+            {t("common.oldSite")}
+          </a>
+        </div>
+      </div>
+
+      {/* Golden uzor strip */}
+      <div className="w-11/12 mx-auto pb-10">
+        <img
+          src={uzorGolden}
+          className="w-full block"
+          alt=""
+          aria-hidden="true"
+        />
       </div>
     </footer>
   );

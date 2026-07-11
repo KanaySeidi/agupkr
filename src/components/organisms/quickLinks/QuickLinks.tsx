@@ -6,8 +6,8 @@ const QuickLinks = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="w-full mt-12 mb-4">
-      <div className="w-full border-t border-slate-200 pt-8">
+    <div className="w-full mt-12 my-4">
+      <div className="w-full pt-8">
         <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-5">
           {t("quick.sectionTitle")}
         </p>

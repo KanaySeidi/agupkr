@@ -1,4 +1,4 @@
-import logo from "@/assets/icon/Vector.svg";
+import logo from "@/assets/icon/new_logo.svg";
 import { useTranslation } from "react-i18next";
 
 

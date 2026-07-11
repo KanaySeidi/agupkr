@@ -5,14 +5,16 @@ import { useSiteStore } from "@/store/site.store";
 
 const LogoLp = () => {
   const { t } = useTranslation();
-  const partners = useSiteStore(s => s.partners);
-  const fetchPartners = useSiteStore(s => s.fetchPartners);
+  const partners = useSiteStore((s) => s.partners);
+  const fetchPartners = useSiteStore((s) => s.fetchPartners);
 
-  useEffect(() => { fetchPartners(); }, [fetchPartners]);
+  useEffect(() => {
+    fetchPartners();
+  }, [fetchPartners]);
 
   if (partners.length === 0) return null;
 
-  const techLogos = partners.map(partner => {
+  const techLogos = partners.map((partner) => {
     if (partner.photo_url) {
       return {
         src: partner.photo_url,

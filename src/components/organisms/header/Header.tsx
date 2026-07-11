@@ -1,9 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { House, SquareChevronLeft, SquareChevronRight } from "lucide-react";
+import {
+  House,
+  SquareChevronLeft,
+  SquareChevronRight,
+  Facebook,
+  Instagram,
+  Youtube,
+} from "lucide-react";
 import LanguageSwitcher from "@/components/molecules/LangSwitcher";
-import logo from "@/assets/icon/Logo.svg";
+import logo from "@/assets/icon/new_logo.svg";
 import lng from "@/assets/icon/Icon.svg";
 import {
   headerShortcutConfig,
@@ -11,8 +18,8 @@ import {
 } from "@/config/siteNavigation";
 import { useNavLinks } from "@/utils/navLinks";
 
-const LOGO_H_FULL = 112;
-const LOGO_H_COMPACT = 60;
+const LOGO_H_FULL = 120;
+const LOGO_H_COMPACT = 72;
 const NAV_H = 48;
 const CRUMB_H = 56;
 
@@ -27,11 +34,10 @@ const prettify = (slug: string) =>
   decodeURIComponent(slug).replace(/[-_]/g, " ");
 
 const Header = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const navItems = useNavLinks();
   const navigate = useNavigate();
   const location = useLocation();
-  const isKyrgyz = i18n.resolvedLanguage?.startsWith("ky");
   const isHome = location.pathname === "/";
 
   const [scrolled, setScrolled] = useState(false);
@@ -108,12 +114,12 @@ const Header = () => {
   return (
     <>
       <header
-        className="w-full fixed inset-x-0 top-0 z-30 backdrop-blur-md bg-white/90 overflow-hidden transition-[height] duration-500"
+        className="w-full fixed inset-x-0 top-0 z-30 backdrop-blur-md bg-white/90 overflow-hidden transition-[height] duration-500 ease-in-out"
         style={{ height: totalH }}
       >
         {}
         <div
-          className="w-11/12 mx-auto flex justify-between items-center"
+          className="w-11/12 mx-auto flex justify-between items-center transition-[height] duration-500 ease-in-out"
           style={{
             height: isMobile
               ? LOGO_H_COMPACT
@@ -123,38 +129,14 @@ const Header = () => {
           }}
         >
           {}
-          <Link to="/" className="flex items-center gap-2 lg:gap-3 min-w-0">
+          <Link to="/" className="flex items-center min-w-0">
             <img
-              className={`shrink-0 transition-[width,height] duration-500 ${
-                scrolled || isMobile ? "size-9 lg:size-10" : "size-20"
+              className={`shrink-0 transition-[width,height] duration-500 ease-in-out ${
+                scrolled || isMobile ? "size-44" : "size-96"
               }`}
               src={logo}
               alt={t("common.logo")}
             />
-            <div className="uppercase text-sinii font-bold leading-tight overflow-hidden">
-              {isMobile ? (
-                <span className="text-sm font-bold whitespace-nowrap">
-                  {t("header.abbr")}
-                </span>
-              ) : (
-                <div className="relative">
-                  <div
-                    className="transition-opacity duration-500"
-                    style={{ opacity: scrolled ? 0 : 1 }}
-                  >
-                    <p className="text-sm">{t("header.line1")}</p>
-                    <p className="text-sm">{t("header.line2")}</p>
-                    <p className="text-sm">{t("header.line3")}</p>
-                  </div>
-                  <div
-                    className="absolute inset-0 flex items-center transition-opacity duration-500"
-                    style={{ opacity: scrolled ? 1 : 0 }}
-                  >
-                    {t("header.abbr")}
-                  </div>
-                </div>
-              )}
-            </div>
           </Link>
 
           {}
@@ -221,8 +203,8 @@ const Header = () => {
           className="hidden lg:block w-full border-b-2"
           style={{ height: NAV_H }}
         >
-          <div className="w-11/12 mx-auto h-full flex items-center">
-            <ul className="flex w-full items-center justify-between gap-1">
+          <div className="w-11/12 mx-auto h-full">
+            <ul className="w-full h-full flex items-center justify-between gap-1 xl:gap-3">
               {(() => {
                 const activeItem = navItems
                   .filter((item) =>
@@ -237,9 +219,7 @@ const Header = () => {
                   return (
                     <Link to={item.path} key={item.id}>
                       <li
-                        className={`${
-                          isKyrgyz ? "text-[10px]" : "text-xs xl:text-sm"
-                        } uppercase cursor-pointer transition-colors whitespace-nowrap bg-gray-200 px-2 py-1.5 rounded-xl ${
+                        className={`text-[9px] xl:text-xs uppercase cursor-pointer transition-colors whitespace-nowrap bg-gray-200 px-1.5 xl:px-2 py-1.5 rounded-xl ${
                           isActive
                             ? "text-sinii font-bold"
                             : "font-medium text-gray-700 hover:text-sinii"
@@ -251,6 +231,36 @@ const Header = () => {
                   );
                 });
               })()}
+
+              <div className="flex justify-between gap-2 shrink-0">
+                <a
+                  href="https://www.facebook.com/agupkr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="p-1.5 rounded-xl bg-gray-200 hover:bg-sinii text-sinii hover:text-white transition-colors"
+                >
+                  <Facebook size={18} />
+                </a>
+                <a
+                  href="https://www.instagram.com/agupkr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="p-1.5 rounded-xl bg-gray-200 hover:bg-sinii text-sinii hover:text-white transition-colors"
+                >
+                  <Instagram size={18} />
+                </a>
+                <a
+                  href="https://www.youtube.com/@agupkr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                  className="p-1.5 rounded-xl bg-gray-200 hover:bg-sinii text-sinii hover:text-white transition-colors"
+                >
+                  <Youtube size={18} />
+                </a>
+              </div>
             </ul>
           </div>
         </div>
