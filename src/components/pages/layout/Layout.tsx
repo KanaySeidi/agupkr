@@ -1,7 +1,6 @@
 import Footer from "@/components/organisms/footer/Footer";
 import Header from "@/components/organisms/header/Header";
 import Loader from "@/components/organisms/loader/Loader";
-import QuickLinks from "@/components/organisms/quickLinks/QuickLinks";
 import Sidebar from "@/components/organisms/sidebar/Sidebar";
 import { hasSidebar } from "@/config/siteNavigation";
 import { Suspense } from "react";
@@ -31,7 +30,6 @@ const Layout = () => {
                 {showSidebar ? <Sidebar /> : null}
                 <div className="flex-1 min-w-0 mb-20">
                   <Outlet />
-                  <QuickLinks />
                 </div>
               </div>
             </div>

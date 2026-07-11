@@ -7,7 +7,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import QuickLinks from "@/components/organisms/quickLinks/QuickLinks";
 import { useStructureStore } from "@/store/structure.store";
 
 const Structure = () => {
@@ -53,7 +52,6 @@ const Structure = () => {
           </div>
         ))}
       </div>
-      <QuickLinks />
     </div>
   );
 };
