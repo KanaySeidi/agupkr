@@ -1,4 +1,4 @@
-import aplicant from "@/assets/img/aplicant.img.png";
+import aplicant from "@/assets/img/aplicant.img.jpg";
 import ArrowToTop from "@/components/atoms/ArrowToTop";
 import Line from "@/components/atoms/Line";
 import { useTranslation } from "react-i18next";
