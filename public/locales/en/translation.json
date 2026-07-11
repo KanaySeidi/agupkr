@@ -321,6 +321,140 @@
     "finalNote": "Publication of results and enrollment. Lists of applicants recommended for enrollment are posted on the information board and on the Academy’s website:",
     "title": "INFORMATION FOR APPLICANTS TO THE MASTER’S PROGRAM 2026"
   },
+
+  "admission2026": {
+    "mainTitle": "The Academy of Public Administration under the President of the Kyrgyz Republic named after Zh. Abdrakhmanov announces admissions to master’s programs for the 2026–2027 academic year.",
+    "direction": "580900 Public and Municipal Administration",
+    "programsTitle": "Admissions are open for the following programs:",
+    "programs": [
+      {
+        "title": "Master of Public Management",
+        "description": "The educational program is designed to train highly qualified managerial personnel for the state and municipal administration system.",
+        "competenciesTitle": "Development of professional competencies in the following areas:",
+        "competencies": [
+          "strategic and operational management,",
+          "public management,",
+          "human resources management,",
+          "digital transformation of the public sector,",
+          "crisis management, public policy development and implementation,",
+          "effective managerial decision-making."
+        ],
+        "elementsTitle": "Key elements of the program:",
+        "elements": [
+          "Modern Public Administration,",
+          "Digital Government and Data-driven Governance,",
+          "Economics and Public Finance Management,",
+          "Public Policy and Sustainable Development, etc."
+        ],
+        "audienceTitle": "The program is designed for:",
+        "audience": [
+          "current state and municipal employees holding senior, principal, and higher-level positions (В-А, В-Б, Г-А, Г-Б, С-А),",
+          "contract-based management reserve personnel of government agencies."
+        ],
+        "duration": "Program duration: 1 year (full-time)",
+        "fundingTitle": "Tuition fee:",
+        "funding": [
+          "funded by the republican budget for applicants with at least 3 years of experience in state or municipal service,",
+          "on a contract basis."
+        ],
+        "feature": "A distinctive feature of the program is its practice-oriented format, which includes the completion of a Capstone Project aimed at solving a specific managerial, organizational, or sector-specific challenge faced by the government agency where the master’s student is employed."
+      },
+      {
+        "title": "Master in Public Policy",
+        "description": "This educational program is designed to train specialists in the development, analysis, and evaluation of public policy.",
+        "competenciesTitle": "Development of professional competencies in the following areas:",
+        "competencies": [
+          "strategic planning,",
+          "analysis of socioeconomic processes,",
+          "development of public programs and reforms,",
+          "evaluation of the effectiveness of public policy decisions,",
+          "public engagement and relations."
+        ],
+        "elementsTitle": "Key elements of the program:",
+        "elements": [
+          "Public Policy Development and Analysis,",
+          "Evidence-based Policy and Data Analytics,",
+          "Public Policy Evaluation and Regulatory Impact,",
+          "Program Management and Sustainable Development, etc."
+        ],
+        "audienceTitle": "The program is designed for:",
+        "audience": [
+          "current state and municipal employees;",
+          "contract-based management reserve personnel of government agencies;",
+          "graduates of programs in related fields."
+        ],
+        "duration": "Program duration: 1.5 years (full-time)",
+        "fundingTitle": "Tuition fee:",
+        "funding": [
+          "on a contract basis."
+        ]
+      },
+      {
+        "title": "Master of Public Administration",
+        "description": "The educational program is designed to train professional administrators and managers for the public administration system.",
+        "competenciesTitle": "Development of professional competencies in the following areas:",
+        "competencies": [
+          "public regulation,",
+          "administrative law,",
+          "budget management,",
+          "public services,",
+          "organizational development,",
+          "modern management technologies."
+        ],
+        "elementsTitle": "Key elements of the program:",
+        "elements": [
+          "Public Administration and Leadership,",
+          "Data Analysis and Decision Making,",
+          "Public Finance and Economic Policy,",
+          "Digital Transformation and Sustainable Development, etc."
+        ],
+        "audienceTitle": "The program is designed for:",
+        "audience": [
+          "current state and municipal employees holding senior and junior positions (С-Б, М-А, М-Б),",
+          "contract-based management reserve personnel of government agencies."
+        ],
+        "duration": "Program duration: 1.5 years (full-time)",
+        "fundingTitle": "Tuition fee:",
+        "funding": [
+          "on a contract basis,",
+          "based on a tripartite agreement concluded between the Academy, a government agency such as a ministry, department, or other institution, and the master’s student."
+        ]
+      }
+    ],
+    "careerTitle": "Career opportunities for graduates:",
+    "careers": [
+      "Government and administrative bodies",
+      "Local government bodies",
+      "Government agencies, public and nonprofit organizations",
+      "Organizations involved in the development and implementation of public policy",
+      "Think tanks and research centers",
+      "International organizations and development projects"
+    ],
+    "examsBeforeBold": "Entrance exams, including ",
+    "examsBold": "testing and interviews",
+    "examsAfterBold": ", are administered for applicants.",
+    "documentsBeforeBold": "Candidates who have submitted a complete ",
+    "documentsBold": "set of documents are eligible to participate in the entrance exams:",
+    "documents": [
+      "Application form;",
+      "A copy of an identity document;",
+      "Higher professional education diploma with transcript;",
+      "Four standard-size photographs;",
+      "Resume (CV) with contact information;",
+      "A copy of the employment record book certified by the human resources department;",
+      "A certificate from the employer confirming continuous employment history and specifying the category of state or municipal employee according to the state registry;",
+      "A letter of recommendation from the supervisor at the current place of employment;",
+      "Motivation letter;",
+      "Documents confirming individual achievements, if available;",
+      "Receipt for payment of the registration fee — 1,000 som (copy)."
+    ],
+    "submissionTitle": "DOCUMENT SUBMISSION PERIOD:",
+    "round1": "Round I: July 7, 2026 – July 31, 2026",
+    "round2": "Round II: August 1, 2026 – August 20, 2026",
+    "address": "Address: Bishkek, 237 Panfilova St., 1st floor",
+    "phone": "Phone: +996 755 323 530"
+  },
+
   "news": {
     "announcement": "Academy announcements",
     "pinned": "Pinned announcements",
