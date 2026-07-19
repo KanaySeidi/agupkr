@@ -10,17 +10,18 @@
     "line8": "named after ZHUSUPA ABDRAHMANOV",
     "avn": "Enter to AVN",
     "aplicant": "Applicant - 2026",
+    "digitalAcademy": "Digital Academy",
     "schedule": "Schedule",
     "library": "Electronic library",
     "navs": {
-      "nav1": "Home",
-      "nav2": "About the Academy",
-      "nav3": "Education",
-      "nav4": "Science and Innovation",
-      "nav5": "News",
-      "nav6": "Regulatory Acts",
-      "nav7": "Contacts",
-      "nav8": "Partners"
+      "nav1": "About us",
+      "nav2": "Zhusup Abdrakhmanov",
+      "nav3": "National Ideology",
+      "nav4": "Professional Development",
+      "nav5": "Education and Science",
+      "nav6": "Partners",
+      "nav7": "Board of Trustees",
+      "nav8": "Contacts"
     },
     "abbr": "APAPKR"
   },
@@ -115,6 +116,18 @@
       "about": "About us",
       "profDevelop": "Professional development",
       "employees": "State order for training of state civil servants and municipal employees"
+    },
+    "abdrakhmanov": {
+      "main": "Jusup Abdrakhmanov",
+      "biography": "Biography",
+      "works": "Works",
+      "legacy": "Legacy",
+      "gallery": "Photo Gallery"
+    },
+    "ideology": {
+      "main": "National Ideology",
+      "values": "Values",
+      "principles": "Principles"
     }
   },
   "aboutAgu": {
@@ -446,7 +459,7 @@
       "A letter of recommendation from the supervisor at the current place of employment;",
       "Motivation letter;",
       "Documents confirming individual achievements, if available;",
-      "Receipt for payment of the registration fee — 1,000 som (copy)."
+      "Receipt for payment of the registration fee — 2,000 som (copy)."
     ],
     "submissionTitle": "DOCUMENT SUBMISSION PERIOD:",
     "round1": "Round I: July 7, 2026 – July 31, 2026",
@@ -1649,6 +1662,16 @@
         "31": "Anti-Corruption and Ethics of Civil Service"
       }
     }
+  },
+  "valuesSlider": {
+    "academicFreedom": "Academic Freedom",
+    "academicIntegrity": "Academic Integrity",
+    "innovation": "Innovation",
+    "scientificForesight": "Scientific Validity and Foresight",
+    "responsibility": "Responsibility",
+    "openness": "Openness",
+    "professionalism": "Professionalism",
+    "serviceToSociety": "Service to Society"
   },
   "common": {
     "logo": "Logo",

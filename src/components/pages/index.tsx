@@ -1,4 +1,12 @@
 export { Main } from "./main/Main.async";
+export { Abdrakhmanov } from "./abdrakhmanov/Abdrakhmanov.async";
+export { AbdrakhmanovBiography } from "./abdrakhmanov/Abdrakhmanov.async";
+export { AbdrakhmanovWorks } from "./abdrakhmanov/Abdrakhmanov.async";
+export { AbdrakhmanovLegacy } from "./abdrakhmanov/Abdrakhmanov.async";
+export { AbdrakhmanovGallery } from "./abdrakhmanov/Abdrakhmanov.async";
+export { Ideology } from "./ideology/Ideology.async";
+export { IdeologyValues } from "./ideology/Ideology.async";
+export { IdeologyPrinciples } from "./ideology/Ideology.async";
 export { About } from "./about/About.async";
 export { AboutUstav } from "./about/About.async";
 export { AboutLogo } from "./about/About.async";

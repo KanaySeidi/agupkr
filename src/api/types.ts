@@ -265,3 +265,65 @@ export type Survey = {
   created_at: string;
   updated_at: string;
 };
+
+// ── New CMS API ────────────────────────────────────────────────────────────────
+
+export type PageGroup =
+  | 'home'
+  | 'about'
+  | 'abdrakhmanov'
+  | 'ideology'
+  | 'professional_development'
+  | 'education'
+  | 'science'
+  | 'international'
+  | 'contacts';
+
+export type BlockType =
+  | 'text'
+  | 'photo_text'
+  | 'link'
+  | 'pdf'
+  | 'number'
+  | 'social'
+  | 'slider';
+
+export type PageBlock = {
+  id: number;
+  block_type: BlockType;
+  title: string;
+  description: string;
+  date: string | null;
+  photo: string | null;
+  photo_url: string;
+  file: string | null;
+  file_url: string;
+  url: string;
+  value: string;
+  order: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type AdminPageList = {
+  id: number;
+  title: string;
+  slug: string;
+  group: PageGroup;
+  parent: number | null;
+  order: number;
+  main_photo: string | null;
+  main_photo_url: string;
+  description: string;
+  redirect_url: string;
+  pdf_file: string | null;
+  is_development: boolean;
+  created_at: string;
+  updated_at: string;
+};
+
+export type AdminPage = AdminPageList & {
+  pdf_file_url: string;
+  blocks: PageBlock[];
+  subpages: string;
+};

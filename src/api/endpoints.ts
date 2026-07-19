@@ -66,4 +66,10 @@ export const ENDPOINTS = {
   surveys: {
     list: '/surveys/',
   },
+  cms: {
+    pages: '/pages/',
+    pageDetail: (slug: string) => `/pages/${slug}/`,
+    blocks: '/page-blocks/',
+    blockDetail: (id: number) => `/page-blocks/${id}/`,
+  },
 } as const;

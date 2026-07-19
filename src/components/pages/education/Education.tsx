@@ -1,105 +1,100 @@
-import Line from "@/components/atoms/Line";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useEducationStore } from "@/store/education.store";
+import { useCmsStore } from "@/store/cms.store";
 
 const Education = () => {
   const { t } = useTranslation();
-  const { allPrograms, status, fetchAll } = useEducationStore();
+  const { pagesByGroup, pageDetails, groupStatus, fetchGroupWithDetail } = useCmsStore();
 
   useEffect(() => {
-    fetchAll();
-  }, [fetchAll]);
+    fetchGroupWithDetail("education");
+  }, []);
 
-  const isLoading = status["all"] === "loading" && allPrograms.length === 0;
+  const isLoading =
+    !groupStatus.education ||
+    groupStatus.education === "idle" ||
+    groupStatus.education === "loading";
+
+  const pages = pagesByGroup["education"] ?? [];
+  const mainPage = pages[0];
+  const detail = mainPage ? pageDetails[mainPage.slug] : undefined;
+
+  const blocks = detail ? [...detail.blocks].sort((a, b) => a.order - b.order) : [];
+  const textBlocks = blocks.filter(b => b.block_type === "text");
+  const photoBlocks = blocks.filter(b => b.block_type === "photo_text");
+
+  const title = detail?.title || mainPage?.title || t("sidebar.education.index");
+  const heroPhoto = detail?.main_photo_url || mainPage?.main_photo_url || null;
+
+  if (isLoading) {
+    return (
+      <div className="w-full flex flex-col gap-10 animate-pulse">
+        <div className="w-full h-64 bg-gray-200 rounded-2xl" />
+        <div className="h-8 bg-gray-200 rounded w-3/4" />
+        <div className="h-4 bg-gray-200 rounded w-full" />
+        <div className="h-4 bg-gray-200 rounded w-5/6" />
+      </div>
+    );
+  }
 
   return (
-    <>
-      <div className="w-full">
-        <Line title={t("sidebar.education.index")} />
-        <main className="w-full p-4 sm:p-6 md:p-10">
-          {isLoading && (
-            <div className="text-slate-500 text-sm py-4">{t("sidebar.education.index")}…</div>
+    <div className="w-full flex flex-col gap-10 sm:gap-14">
+      {heroPhoto ? (
+        <div className="relative w-full rounded-2xl overflow-hidden" style={{ minHeight: "260px" }}>
+          <img
+            src={heroPhoto}
+            alt={title}
+            className="w-full h-full object-cover"
+            style={{ minHeight: "260px", maxHeight: "420px" }}
+          />
+          <div className="absolute inset-0 bg-black/45" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold drop-shadow-lg text-center px-4">
+              {title}
+            </h1>
+          </div>
+        </div>
+      ) : (
+        <h1 className="text-2xl sm:text-3xl font-bold text-sinii">{title}</h1>
+      )}
+
+      {textBlocks.map(b => (
+        <div key={b.id} className="flex flex-col gap-3">
+          {b.title && <h2 className="text-lg sm:text-xl font-semibold text-sinii">{b.title}</h2>}
+          {b.description && (
+            <div
+              className="text-sm sm:text-base text-[#4C4C4C] leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: b.description }}
+            />
           )}
+        </div>
+      ))}
 
-          {allPrograms.length > 0 ? (
-            <section className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {allPrograms.map((program) => (
-                <article
-                  key={program.id}
-                  className="bg-white rounded-lg shadow-sm p-5 flex flex-col gap-3"
-                >
-                  {program.photo_url && (
-                    <img
-                      src={program.photo_url}
-                      alt={program.title}
-                      className="w-full h-40 object-cover rounded-md"
-                    />
-                  )}
-                  <h3 className="text-base font-semibold text-slate-900">{program.title}</h3>
-                  {program.description && (
-                    <div
-                      className="text-sm text-slate-600 line-clamp-3"
-                      dangerouslySetInnerHTML={{ __html: program.description }}
-                    />
-                  )}
-                  {program.link && (
-                    <a
-                      href={program.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-auto inline-block text-sm text-white bg-sinii hover:bg-sky-700 rounded-md px-3 py-1 self-start"
-                    >
-                      {t("sidebar.education.index")}
-                    </a>
-                  )}
-                </article>
-              ))}
-            </section>
-          ) : !isLoading ? (
-            <>
-              <header className="mb-8">
-                <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-700">
-                  {t("auto.components.pages.education.Education.1")}</h1>
-                <p className="mt-5 text-lg text-sinii ">
-                  {t("auto.components.pages.education.Education.2")}</p>
-              </header>
+      {photoBlocks.map(b => (
+        <div key={b.id} className="flex flex-col md:flex-row gap-6 items-start">
+          {b.photo_url && (
+            <img
+              src={b.photo_url}
+              alt={b.title || ""}
+              className="w-full md:w-72 rounded-xl object-cover flex-shrink-0"
+            />
+          )}
+          <div className="flex flex-col gap-2">
+            {b.title && <h3 className="text-lg font-semibold text-sinii">{b.title}</h3>}
+            {b.description && (
+              <div
+                className="text-sm sm:text-base text-[#4C4C4C]"
+                dangerouslySetInnerHTML={{ __html: b.description }}
+              />
+            )}
+          </div>
+        </div>
+      ))}
 
-              <section className="mb-8 bg-white shadow-sm rounded-lg p-6">
-                <h2 className="text-lg sm:text-2xl font-semibold text-slate-900 mb-4">
-                  {t("auto.components.pages.education.Education.3")}</h2>
-                <ul className="space-y-3 list-inside">
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1 text-sky-600">•</span>
-                    <span>{t("auto.components.pages.education.Education.4")}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1 text-sky-600">•</span>
-                    <span>{t("auto.components.pages.education.Education.5")}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1 text-sky-600">•</span>
-                    <span>{t("auto.components.pages.education.Education.6")}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1 text-sky-600">•</span>
-                    <span>{t("auto.components.pages.education.Education.7")}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1 text-sky-600">•</span>
-                    <span>{t("auto.components.pages.education.Education.8")}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1 text-sky-600">•</span>
-                    <span>{t("auto.components.pages.education.Education.9")}</span>
-                  </li>
-                </ul>
-              </section>
-            </>
-          ) : null}
-        </main>
-      </div>
-    </>
+      {!detail && (
+        <p className="text-gray-400 text-sm">{t("sidebar.education.index")}</p>
+      )}
+    </div>
   );
 };
 

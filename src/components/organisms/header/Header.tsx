@@ -5,13 +5,15 @@ import {
   House,
   SquareChevronLeft,
   SquareChevronRight,
-  Facebook,
-  Instagram,
-  Youtube,
+  Globe,
+  Search,
 } from "lucide-react";
 import LanguageSwitcher from "@/components/molecules/LangSwitcher";
-import logo from "@/assets/icon/new_logo.svg";
-import lng from "@/assets/icon/Icon.svg";
+import logoRu from "@/assets/icon/logo-header-ru.svg";
+import logoKg from "@/assets/icon/logo-header-kg.svg";
+import logoEn from "@/assets/icon/logo-header-eng.svg";
+import logoMobile from "@/assets/icon/new_logo.svg";
+import uzorBg from "@/assets/img/uzor.svg";
 import {
   headerShortcutConfig,
   getRouteTitleKey,
@@ -20,7 +22,7 @@ import { useNavLinks } from "@/utils/navLinks";
 
 const LOGO_H_FULL = 120;
 const LOGO_H_COMPACT = 72;
-const NAV_H = 48;
+const NAV_H = 96;
 const CRUMB_H = 56;
 
 function getHeaderH(isHome: boolean, scrolled: boolean, isMobile: boolean) {
@@ -34,17 +36,21 @@ const prettify = (slug: string) =>
   decodeURIComponent(slug).replace(/[-_]/g, " ");
 
 const Header = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navItems = useNavLinks();
   const navigate = useNavigate();
   const location = useLocation();
   const isHome = location.pathname === "/";
+
+  const lang = i18n.resolvedLanguage ?? "ru";
+  const headerLogo = lang === "ky" ? logoKg : lang === "en" ? logoEn : logoRu;
 
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(() =>
     typeof window !== "undefined" ? window.innerWidth < 1024 : false
   );
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const segments = location.pathname.split("/").filter(Boolean);
   const crumbs = segments.map((seg, i) => {
@@ -101,7 +107,6 @@ const Header = () => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
     return () => {
@@ -114,12 +119,14 @@ const Header = () => {
   return (
     <>
       <header
-        className="w-full fixed inset-x-0 top-0 z-30 backdrop-blur-md bg-white/90 overflow-hidden transition-[height] duration-500 ease-in-out"
+        className="w-full fixed inset-x-0 top-0 z-30 overflow-hidden transition-[height] duration-500 ease-in-out"
         style={{ height: totalH }}
       >
-        {}
+        {/* Row 1: Logo + buttons — dark navy on desktop, white on mobile */}
         <div
-          className="w-11/12 mx-auto flex justify-between items-center transition-[height] duration-500 ease-in-out"
+          className={`w-full transition-[height] duration-500 ease-in-out relative overflow-hidden ${
+            isMobile ? "bg-white/90 backdrop-blur-md" : "bg-sinii"
+          }`}
           style={{
             height: isMobile
               ? LOGO_H_COMPACT
@@ -128,83 +135,86 @@ const Header = () => {
               : LOGO_H_FULL,
           }}
         >
-          {}
-          <Link to="/" className="flex items-center min-w-0">
+          {/* Subtle ornament pattern for desktop */}
+          {!isMobile && (
             <img
-              className={`shrink-0 transition-[width,height] duration-500 ease-in-out ${
-                scrolled || isMobile ? "size-44" : "size-96"
-              }`}
-              src={logo}
-              alt={t("common.logo")}
+              src={uzorBg}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-cover opacity-[0.07] pointer-events-none select-none"
             />
-          </Link>
+          )}
 
-          {}
-          <div className="hidden lg:flex items-center gap-2 shrink-0">
-            {headerShortcutConfig.map((item) => (
+          <div className="w-11/12 mx-auto h-full flex justify-between items-center relative">
+            {/* Logo */}
+            <Link to="/" className="flex items-center h-full py-2 min-w-0">
+              <img
+                className="h-full w-auto object-contain shrink-0 transition-all duration-500 ease-in-out"
+                src={isMobile ? logoMobile : headerLogo}
+                alt={t("common.logo")}
+              />
+            </Link>
+
+            {/* Desktop: shortcut buttons + language switcher */}
+            <div className="hidden lg:flex items-center gap-2 shrink-0">
+              {headerShortcutConfig.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() =>
+                    item.href
+                      ? window.open(item.href, "_blank", "noopener,noreferrer")
+                      : navigate(item.path!)
+                  }
+                  className={`${
+                    item.className
+                  } h-10 flex justify-center items-center rounded-xl cursor-pointer transition-all duration-300 text-sm font-medium  text-sinii bg-white hover:bg-white/80 ${
+                    scrolled ? "scale-90" : "scale-100"
+                  }`}
+                >
+                  {t(item.titleKey)}
+                </button>
+              ))}
+              <div className="flex gap-1.5 items-center ml-2">
+                <Globe size={16} color="white" />
+                <LanguageSwitcher variant="light" />
+              </div>
+            </div>
+
+            {/* Mobile: language switcher + hamburger */}
+            <div className="flex lg:hidden items-center gap-3 shrink-0">
+              <div className="flex gap-1 items-center">
+                <Globe size={14} color="#262B6C" />
+                <LanguageSwitcher />
+              </div>
               <button
-                key={item.id}
-                onClick={() =>
-                  item.href
-                    ? window.open(item.href, "_blank", "noopener,noreferrer")
-                    : navigate(item.path!)
-                }
-                className={`${
-                  item.className
-                } h-11 flex justify-center items-center rounded-xl cursor-pointer transition-transform duration-500 text-sm ${
-                  scrolled ? "scale-90" : "scale-100"
-                } ${
-                  item.variant === "outlined"
-                    ? "bg-gray-200 text-sinii hover:bg-gray-300 font-semibold"
-                    : "bg-sinii text-white hover:bg-hover-sinii"
-                }`}
+                onClick={() => setMobileMenuOpen((v) => !v)}
+                className="flex flex-col gap-1.5 p-1.5"
+                aria-label={t("auto2.components.organisms.header.Header.1")}
               >
-                {t(item.titleKey)}
+                <span
+                  className={`block w-5 h-0.5 bg-sinii transition-transform duration-300 origin-center ${
+                    mobileMenuOpen ? "rotate-45 translate-y-2" : ""
+                  }`}
+                />
+                <span
+                  className={`block w-5 h-0.5 bg-sinii transition-opacity duration-300 ${
+                    mobileMenuOpen ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`block w-5 h-0.5 bg-sinii transition-transform duration-300 origin-center ${
+                    mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+                  }`}
+                />
               </button>
-            ))}
-            <div className="flex gap-1 items-center ml-1">
-              <img src={lng} alt={t("common.language")} />
-              <LanguageSwitcher />
             </div>
-          </div>
-
-          {}
-          <div className="flex lg:hidden items-center gap-3 shrink-0">
-            <div className="flex gap-1 items-center">
-              <img src={lng} alt={t("common.language")} className="size-4" />
-              <LanguageSwitcher />
-            </div>
-            <button
-              onClick={() => setMobileMenuOpen((v) => !v)}
-              className="flex flex-col gap-1.5 p-1.5"
-              aria-label={t("auto2.components.organisms.header.Header.1")}
-            >
-              <span
-                className={`block w-5 h-0.5 bg-sinii transition-transform duration-300 origin-center ${
-                  mobileMenuOpen ? "rotate-45 translate-y-2" : ""
-                }`}
-              />
-              <span
-                className={`block w-5 h-0.5 bg-sinii transition-opacity duration-300 ${
-                  mobileMenuOpen ? "opacity-0" : ""
-                }`}
-              />
-              <span
-                className={`block w-5 h-0.5 bg-sinii transition-transform duration-300 origin-center ${
-                  mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
-                }`}
-              />
-            </button>
           </div>
         </div>
 
-        {}
-        <div
-          className="hidden lg:block w-full border-b-2"
-          style={{ height: NAV_H }}
-        >
+        {/* Row 2: Nav items + search */}
+        <div className="hidden lg:block w-full bg-sinii h-24">
           <div className="w-11/12 mx-auto h-full">
-            <ul className="w-full h-full flex items-center justify-between gap-1 xl:gap-3">
+            <ul className="w-full h-full flex items-center justify-between gap-1 xl:gap-2">
               {(() => {
                 const activeItem = navItems
                   .filter((item) =>
@@ -219,10 +229,10 @@ const Header = () => {
                   return (
                     <Link to={item.path} key={item.id}>
                       <li
-                        className={`text-[9px] xl:text-xs uppercase cursor-pointer transition-colors whitespace-nowrap bg-gray-200 px-1.5 xl:px-2 py-1.5 rounded-xl ${
+                        className={`text-[16px] text-center cursor-pointer transition-colors whitespace-pre-wrap bg-white px-2 xl:px-3 py-1.5 rounded-xl leading-tight w-auto h-16 flex justify-center items-center ${
                           isActive
                             ? "text-sinii font-bold"
-                            : "font-medium text-gray-700 hover:text-sinii"
+                            : "font-medium text-sinii hover:bg-white/90"
                         }`}
                       >
                         {item.title}
@@ -232,34 +242,16 @@ const Header = () => {
                 });
               })()}
 
-              <div className="flex justify-between gap-2 shrink-0">
-                <a
-                  href="https://www.facebook.com/agupkr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                  className="p-1.5 rounded-xl bg-gray-200 hover:bg-sinii text-sinii hover:text-white transition-colors"
-                >
-                  <Facebook size={18} />
-                </a>
-                <a
-                  href="https://www.instagram.com/agupkr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="p-1.5 rounded-xl bg-gray-200 hover:bg-sinii text-sinii hover:text-white transition-colors"
-                >
-                  <Instagram size={18} />
-                </a>
-                <a
-                  href="https://www.youtube.com/@agupkr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="YouTube"
-                  className="p-1.5 rounded-xl bg-gray-200 hover:bg-sinii text-sinii hover:text-white transition-colors"
-                >
-                  <Youtube size={18} />
-                </a>
+              {/* Search */}
+              <div className="shrink-0 flex items-center gap-1.5 bg-white rounded-xl px-2 py-1.5 h-16">
+                <Search size={25} className="text-sinii shrink-0" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Поиск"
+                  className="bg-transparent text-xs outline-none w-24 xl:w-32 text-gray-700 placeholder:text-gray-400"
+                />
               </div>
             </ul>
           </div>
@@ -267,48 +259,53 @@ const Header = () => {
 
         {/* Row 3: Breadcrumbs */}
         {!isHome && (
-          <div
-            className="w-11/12 mx-auto flex gap-2 items-center"
-            style={{ height: CRUMB_H }}
-          >
-            <div className="flex gap-1.5">
-              {navControls.map((ctrl) => (
-                <button
-                  key={ctrl.id}
-                  type="button"
-                  title={ctrl.title}
-                  onClick={ctrl.onClick}
-                  className="w-8 h-8 bg-[#E5F0FF] flex justify-center items-center rounded-md"
-                >
-                  {ctrl.icon}
-                </button>
-              ))}
-            </div>
-
-            {parentCrumbs.length > 0 && (
-              <nav
-                aria-label={t("common.breadcrumbs")}
-                className="hidden h-8 bg-[#E5F0FF] px-3 rounded-md sm:flex items-center gap-1 overflow-hidden"
-              >
-                {parentCrumbs.map((c) => (
-                  <div key={c.to} className="flex items-center gap-1 shrink-0">
-                    <span className="text-slate-300">/</span>
-                    <Link
-                      to={c.to}
-                      className="text-xs text-sinii hover:underline whitespace-nowrap"
-                    >
-                      {c.label}
-                    </Link>
-                  </div>
+          <div className="w-full bg-white border-b">
+            <div
+              className="w-11/12 mx-auto flex gap-2 items-center"
+              style={{ height: CRUMB_H }}
+            >
+              <div className="flex gap-1.5">
+                {navControls.map((ctrl) => (
+                  <button
+                    key={ctrl.id}
+                    type="button"
+                    title={ctrl.title}
+                    onClick={ctrl.onClick}
+                    className="w-8 h-8 bg-[#E5F0FF] flex justify-center items-center rounded-md"
+                  >
+                    {ctrl.icon}
+                  </button>
                 ))}
-              </nav>
-            )}
-
-            {currentLabel && (
-              <div className="h-8 bg-[#E5F0FF] px-3 rounded-md flex items-center text-xs font-semibold text-slate-600 truncate max-w-[180px] sm:max-w-xs lg:max-w-none">
-                {currentLabel}
               </div>
-            )}
+
+              {parentCrumbs.length > 0 && (
+                <nav
+                  aria-label={t("common.breadcrumbs")}
+                  className="hidden h-8 bg-[#E5F0FF] px-3 rounded-md sm:flex items-center gap-1 overflow-hidden"
+                >
+                  {parentCrumbs.map((c) => (
+                    <div
+                      key={c.to}
+                      className="flex items-center gap-1 shrink-0"
+                    >
+                      <span className="text-slate-300">/</span>
+                      <Link
+                        to={c.to}
+                        className="text-xs text-sinii hover:underline whitespace-nowrap"
+                      >
+                        {c.label}
+                      </Link>
+                    </div>
+                  ))}
+                </nav>
+              )}
+
+              {currentLabel && (
+                <div className="h-8 bg-[#E5F0FF] px-3 rounded-md flex items-center text-xs font-semibold text-slate-600 truncate max-w-[180px] sm:max-w-xs lg:max-w-none">
+                  {currentLabel}
+                </div>
+              )}
+            </div>
           </div>
         )}
       </header>
@@ -351,11 +348,7 @@ const Header = () => {
                       ? window.open(item.href, "_blank", "noopener,noreferrer")
                       : navigate(item.path!);
                   }}
-                  className={`w-full h-12 flex justify-center items-center rounded-md font-medium ${
-                    item.variant === "outlined"
-                      ? "border border-gray-300 bg-white text-sinii hover:bg-gray-50"
-                      : "bg-sinii text-white hover:bg-hover-sinii"
-                  }`}
+                  className="w-full h-12 flex justify-center items-center rounded-md font-medium border border-sinii text-sinii hover:bg-sinii hover:text-white transition-colors"
                 >
                   {t(item.titleKey)}
                 </button>

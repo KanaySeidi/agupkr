@@ -6,6 +6,7 @@ import logoRu from "@/assets/icon/logo-footer-ru.svg";
 import logoKg from "@/assets/icon/logo-footer-kg.svg";
 import logoEn from "@/assets/icon/logo-footer-en.svg";
 import uzorGolden from "@/assets/img/uzor-golden.svg";
+import uzor from "@/assets/img/uzor.svg";
 
 type FallbackSocial = { label: string; href: string; iconKey: string };
 
@@ -235,158 +236,176 @@ const Footer = () => {
   const socials = socialLinks.length > 0 ? socialLinks : FALLBACK_SOCIALS;
 
   return (
-    <footer style={{ backgroundColor: "#262B6C" }} className="text-white mt-10">
-      <div className="w-11/12 mx-auto pt-10 sm:pt-14">
-        {/* Main grid */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 pb-8">
-          {/* Brand */}
-          <div className="md:col-span-1 flex flex-col gap-5">
-            <img
-              src={footerLogo}
-              alt="АГУПКР"
-              className="w-48 object-contain"
-            />
+    <div>
+      <div>
+        <img
+          src={uzor}
+          className="w-full block mb-10"
+          alt=""
+          aria-hidden="true"
+        />
+      </div>
 
-            <div className="flex flex-col gap-1">
-              <p className="text-white/40 text-xs uppercase tracking-wide">
-                {t("auto2.components.organisms.footer.Footer.27")}
-              </p>
-              <p className="text-sm text-white/80">
-                {t("auto2.components.organisms.footer.Footer.28")}
-              </p>
-              <p className="text-sm text-white/80">
-                {t("auto2.components.organisms.footer.Footer.29")}
-              </p>
-            </div>
-          </div>
+      <footer
+        style={{ backgroundColor: "#262B6C" }}
+        className="text-white mt-10"
+      >
+        <div className="w-11/12 mx-auto pt-10 sm:pt-14">
+          {/* Main grid */}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 pb-8">
+            {/* Brand */}
+            <div className="md:col-span-1 flex flex-col gap-5">
+              <img
+                src={footerLogo}
+                alt="АГУПКР"
+                className="w-48 object-contain"
+              />
 
-          {/* Nav columns — desktop */}
-          <div className="hidden md:grid md:col-span-4 grid-cols-4 gap-6">
-            {columns.map((col) => (
-              <div key={col.id}>
-                <h3 className="text-xs font-bold uppercase tracking-widest text-[#D0A858] mb-4">
-                  {t(col.titleKey)}
-                </h3>
-                <ul className="flex flex-col gap-2.5">
-                  {col.links.map((link) => (
-                    <li key={link.path}>
-                      <Link
-                        to={link.path}
-                        className="text-sm text-white/70 hover:text-white transition-colors"
-                      >
-                        {t(link.labelKey)}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+              <div className="flex flex-col gap-1">
+                <p className="text-white/40 text-xs uppercase tracking-wide">
+                  {t("auto2.components.organisms.footer.Footer.27")}
+                </p>
+                <p className="text-sm text-white/80">
+                  {t("auto2.components.organisms.footer.Footer.28")}
+                </p>
+                <p className="text-sm text-white/80">
+                  {t("auto2.components.organisms.footer.Footer.29")}
+                </p>
               </div>
-            ))}
-          </div>
+            </div>
 
-          {/* Nav columns — mobile accordion */}
-          <div className="md:hidden flex flex-col border-t border-white/10 col-span-1">
-            {columns.map((col) => (
-              <div key={col.id} className="border-b border-white/10">
-                <button
-                  onClick={() => setOpen((p) => (p === col.id ? null : col.id))}
-                  className="w-full flex items-center justify-between py-3.5 text-sm font-semibold text-[#D0A858] uppercase tracking-wide"
-                >
-                  <span>{t(col.titleKey)}</span>
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className={`size-4 transition-transform duration-200 ${
-                      open === col.id ? "rotate-180" : ""
-                    }`}
-                  >
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
-                </button>
-                {open === col.id && (
-                  <ul className="pb-4 flex flex-col gap-2.5 pl-1">
+            {/* Nav columns — desktop */}
+            <div className="hidden md:grid md:col-span-4 grid-cols-4 gap-6">
+              {columns.map((col) => (
+                <div key={col.id}>
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-[#D0A858] mb-4">
+                    {t(col.titleKey)}
+                  </h3>
+                  <ul className="flex flex-col gap-2.5">
                     {col.links.map((link) => (
                       <li key={link.path}>
                         <Link
                           to={link.path}
-                          className="text-sm text-white/70 hover:text-white transition-colors block"
-                          onClick={() => setOpen(null)}
+                          className="text-sm text-white/70 hover:text-white transition-colors"
                         >
                           {t(link.labelKey)}
                         </Link>
                       </li>
                     ))}
                   </ul>
-                )}
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
+
+            {/* Nav columns — mobile accordion */}
+            <div className="md:hidden flex flex-col border-t border-white/10 col-span-1">
+              {columns.map((col) => (
+                <div key={col.id} className="border-b border-white/10">
+                  <button
+                    onClick={() =>
+                      setOpen((p) => (p === col.id ? null : col.id))
+                    }
+                    className="w-full flex items-center justify-between py-3.5 text-sm font-semibold text-[#D0A858] uppercase tracking-wide"
+                  >
+                    <span>{t(col.titleKey)}</span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      className={`size-4 transition-transform duration-200 ${
+                        open === col.id ? "rotate-180" : ""
+                      }`}
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </button>
+                  {open === col.id && (
+                    <ul className="pb-4 flex flex-col gap-2.5 pl-1">
+                      {col.links.map((link) => (
+                        <li key={link.path}>
+                          <Link
+                            to={link.path}
+                            className="text-sm text-white/70 hover:text-white transition-colors block"
+                            onClick={() => setOpen(null)}
+                          >
+                            {t(link.labelKey)}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Social icons row */}
+          <div className="flex justify-end gap-2 pb-6">
+            {socials.map((s) => {
+              const isFallback = "iconKey" in s;
+              const label = isFallback ? (s as FallbackSocial).label : s.name;
+              const href = isFallback ? (s as FallbackSocial).href : s.url;
+              const iconKey = isFallback
+                ? (s as FallbackSocial).iconKey
+                : s.icon;
+              return (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center size-10 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+                >
+                  <SocialIcon iconKey={iconKey} />
+                </a>
+              );
+            })}
+          </div>
+
+          {/* Divider */}
+          <div className="border-t border-white/15" />
+
+          {/* Copyright */}
+          <div className="py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/35">
+            <p>
+              © {new Date().getFullYear()}{" "}
+              {t("auto2.components.organisms.footer.Footer.30")}
+            </p>
+            <a
+              href="http://www.apap.kg/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 border border-white/15 text-white/60 hover:text-white hover:bg-white/15 transition-all text-xs font-medium"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                className="size-3.5 shrink-0"
+              >
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+              {t("common.oldSite")}
+            </a>
           </div>
         </div>
 
-        {/* Social icons row */}
-        <div className="flex justify-end gap-2 pb-6">
-          {socials.map((s) => {
-            const isFallback = "iconKey" in s;
-            const label = isFallback ? (s as FallbackSocial).label : s.name;
-            const href = isFallback ? (s as FallbackSocial).href : s.url;
-            const iconKey = isFallback ? (s as FallbackSocial).iconKey : s.icon;
-            return (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center size-10 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
-              >
-                <SocialIcon iconKey={iconKey} />
-              </a>
-            );
-          })}
+        {/* Golden uzor strip */}
+        <div className="w-11/12 mx-auto pb-10">
+          <img
+            src={uzorGolden}
+            className="w-full block"
+            alt=""
+            aria-hidden="true"
+          />
         </div>
-
-        {/* Divider */}
-        <div className="border-t border-white/15" />
-
-        {/* Copyright */}
-        <div className="py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/35">
-          <p>
-            © {new Date().getFullYear()}{" "}
-            {t("auto2.components.organisms.footer.Footer.30")}
-          </p>
-          <a
-            href="http://www.apap.kg/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 border border-white/15 text-white/60 hover:text-white hover:bg-white/15 transition-all text-xs font-medium"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="size-3.5 shrink-0"
-            >
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-            {t("common.oldSite")}
-          </a>
-        </div>
-      </div>
-
-      {/* Golden uzor strip */}
-      <div className="w-11/12 mx-auto pb-10">
-        <img
-          src={uzorGolden}
-          className="w-full block"
-          alt=""
-          aria-hidden="true"
-        />
-      </div>
-    </footer>
+      </footer>
+    </div>
   );
 };
 

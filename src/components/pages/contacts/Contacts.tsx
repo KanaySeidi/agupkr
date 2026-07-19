@@ -1,112 +1,135 @@
 import { useEffect } from "react";
-import Line from "@/components/atoms/Line";
 import { useTranslation } from "react-i18next";
-import { useContactsStore } from "@/store/contacts.store";
+import { useCmsStore } from "@/store/cms.store";
+import type { PageBlock } from "@/api/types";
+import Line from "@/components/atoms/Line";
 import Loader from "@/components/organisms/loader/Loader";
+
+function ContactTextBlock({ block }: { block: PageBlock }) {
+  return (
+    <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col sm:flex-row gap-5">
+      {block.photo_url && (
+        <img
+          src={block.photo_url}
+          alt={block.title || ""}
+          className="w-full sm:w-40 sm:h-40 rounded-lg object-cover flex-shrink-0"
+        />
+      )}
+      <div className="flex flex-col gap-3">
+        {block.title && (
+          <h2 className="text-xl sm:text-2xl font-semibold text-sinii">{block.title}</h2>
+        )}
+        {block.description && (
+          <div
+            className="text-sm sm:text-base text-[#4C4C4C] leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: block.description }}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
+function ContactLinkBlock({ block }: { block: PageBlock }) {
+  if (!block.url) return null;
+  return (
+    <a
+      href={block.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-2 text-sinii hover:underline text-sm sm:text-base"
+    >
+      {block.title || block.url}
+    </a>
+  );
+}
+
+function ContactSocialBlock({ block }: { block: PageBlock }) {
+  if (!block.url) return null;
+  return (
+    <a
+      href={block.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-2 text-sinii hover:underline text-sm sm:text-base"
+    >
+      {block.title || block.url}
+    </a>
+  );
+}
 
 const Contacts = () => {
   const { t } = useTranslation();
-  const { items, status, fetchList } = useContactsStore();
+  const { pagesByGroup, pageDetails, groupStatus, fetchGroupWithDetail } = useCmsStore();
 
   useEffect(() => {
-    fetchList();
-  }, [fetchList]);
+    fetchGroupWithDetail("contacts");
+  }, []);
 
-  if (status === 'idle' || status === 'loading') return <Loader />;
+  const isLoading =
+    !groupStatus.contacts ||
+    groupStatus.contacts === "idle" ||
+    groupStatus.contacts === "loading";
+
+  if (isLoading) return <Loader />;
+
+  const pages = pagesByGroup["contacts"] ?? [];
 
   return (
-    <>
-      <div className="py-6 sm:py-10">
-        <Line title={t("header.navs.nav7")} />
-      </div>
+    <div className="py-6 sm:py-10 flex flex-col gap-10">
+      <Line title={t("header.navs.nav8")} />
 
-      <div className="flex flex-col gap-10">
-        {items.map((contact, idx) => (
-          <div key={contact.id} className="flex flex-col gap-6 sm:gap-8">
+      {pages.map((p, idx) => {
+        const detail = pageDetails[p.slug];
+        if (!detail) return null;
+
+        const blocks = [...detail.blocks].sort((a, b) => a.order - b.order);
+        const textBlocks = blocks.filter(b => b.block_type === "text" || b.block_type === "photo_text");
+        const linkBlocks = blocks.filter(b => b.block_type === "link");
+        const socialBlocks = blocks.filter(b => b.block_type === "social");
+        const hasLinks = linkBlocks.length > 0 || socialBlocks.length > 0;
+
+        return (
+          <div key={p.id} className="flex flex-col gap-6">
             {idx > 0 && <hr className="border-slate-200" />}
 
-            <div className="bg-white rounded-md shadow-lg">
-              <div className="flex flex-col gap-4 rounded-md p-4 sm:p-5">
-                {contact.title && (
-                  <h1 className="text-xl sm:text-2xl">{contact.title}</h1>
-                )}
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-5">
-                  {contact.photo_url && (
-                    <img
-                      src={contact.photo_url}
-                      alt={contact.title}
-                      className="rounded-md w-full sm:w-auto sm:h-48 object-cover"
-                    />
-                  )}
-                  <div className="flex flex-col gap-4">
-                    {contact.description && (
-                      <h2
-                        className="text-xl sm:text-2xl md:text-3xl leading-tight"
-                        dangerouslySetInnerHTML={{ __html: contact.description }}
-                      />
-                    )}
-                    {(contact.phone || contact.email || contact.address) && (
-                      <div className="rounded-md bg-[#F7F9FF] flex flex-col gap-3 p-4 sm:p-5">
-                        <p className="font-bold">{t("auto.components.pages.contacts.Contacts.5")}</p>
-                        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-                          {contact.phone && (
-                            <div>
-                              <p className="text-gray-500">{t("auto.components.pages.contacts.Contacts.6")}</p>
-                              <p>{contact.phone}</p>
-                            </div>
-                          )}
-                          {contact.email && (
-                            <div>
-                              <p className="text-gray-500">{t("auto.components.pages.contacts.Contacts.8")}</p>
-                              <p>{contact.email}</p>
-                            </div>
-                          )}
-                          {contact.address && (
-                            <div>
-                              <p className="text-gray-500 text-sm">{contact.address}</p>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {contact.departments && contact.departments.length > 0 && (
-              <div className="rounded-md py-6 sm:py-8 px-4 sm:px-6 shadow-md bg-white">
-                <h2 className="text-lg sm:text-xl font-semibold mb-4">
-                  {t("contacts.reception_and_departments")}
-                </h2>
-                <div className="flex flex-col gap-4">
-                  {contact.departments.map((dept, i) => (
-                    <div key={dept.id}>
-                      {i > 0 && <div className="w-full h-px bg-gray-100 mb-4" />}
-                      <div className="flex flex-col gap-1">
-                        <h3 className="font-medium text-sinii text-sm sm:text-base">
-                          {dept.title}
-                        </h3>
-                        {dept.description && (
-                          <p className="text-xs sm:text-sm text-slate-600">{dept.description}</p>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {contact.map_embed && (
-              <div
-                className="w-full rounded-md overflow-hidden shadow-md"
-                dangerouslySetInnerHTML={{ __html: contact.map_embed }}
+            {detail.main_photo_url && (
+              <img
+                src={detail.main_photo_url}
+                alt={detail.title}
+                className="w-full rounded-xl object-cover max-h-72"
               />
             )}
+
+            {detail.title && (
+              <h2 className="text-xl sm:text-2xl font-bold text-sinii">{detail.title}</h2>
+            )}
+
+            {detail.description && (
+              <div
+                className="text-sm sm:text-base text-[#4C4C4C] leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: detail.description }}
+              />
+            )}
+
+            {textBlocks.map(b => (
+              <ContactTextBlock key={b.id} block={b} />
+            ))}
+
+            {hasLinks && (
+              <div className="bg-[#F7F9FF] rounded-xl p-5 flex flex-col gap-3">
+                {linkBlocks.map(b => <ContactLinkBlock key={b.id} block={b} />)}
+                {socialBlocks.map(b => <ContactSocialBlock key={b.id} block={b} />)}
+              </div>
+            )}
           </div>
-        ))}
-      </div>
-    </>
+        );
+      })}
+
+      {pages.length === 0 && (
+        <p className="text-gray-400 text-sm">{t("header.navs.nav8")}</p>
+      )}
+    </div>
   );
 };
 

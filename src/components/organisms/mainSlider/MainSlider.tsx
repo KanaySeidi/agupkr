@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   type CarouselApi,
@@ -8,41 +8,55 @@ import {
 } from "@/components/ui/carousel";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
-import agu from "@/assets/img/agu1.webp";
-import agu1 from "@/assets/img/agu2.webp";
-import agu2 from "@/assets/img/agu3.webp";
 import { useTranslation } from "react-i18next";
+import { useCmsStore } from "@/store/cms.store";
 
 const MainSlider = () => {
   const { t } = useTranslation();
-  const infoSlider = [
-    {
-      id: 1,
-      date: `9 ${t("announcement.mounth")} 2024`,
-      title: `${t("announcement.announ1")}`,
-      img: agu,
-    },
-    {
-      id: 2,
-      date: `12 ${t("announcement.mounth")} 2024`,
-      title: `${t("announcement.announ2")}`,
-      img: agu1,
-    },
-    {
-      id: 3,
-      date: `18 ${t("announcement.mounth")} 2024`,
-      title: `${t("announcement.announ3")}`,
-      img: agu2,
-    },
-  ];
-
   const emblaRef = useRef<CarouselApi | null>(null);
-  const autoplay = useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: true })
-  );
+  const autoplay = useRef(Autoplay({ delay: 4000, stopOnInteraction: true }));
+
+  const { pagesByGroup, pageDetails, fetchGroupWithDetail, groupStatus } =
+    useCmsStore();
+
+  useEffect(() => {
+    if (!groupStatus.home) fetchGroupWithDetail("home");
+  }, []);
+
+  const isLoading =
+    !groupStatus.home ||
+    groupStatus.home === "idle" ||
+    groupStatus.home === "loading";
+
+  const homePages = pagesByGroup.home ?? [];
+  const sliderBlocks = homePages.flatMap((p) => {
+    const detail = pageDetails[p.slug];
+    if (!detail) return [];
+    return detail.blocks
+      .filter((b) => b.block_type === "slider")
+      .sort((a, b) => a.order - b.order);
+  });
+
+  const slides = sliderBlocks.map((b) => ({
+    id: b.id,
+    title: b.title,
+    photo_url: b.photo_url || "",
+    date: b.date ?? "",
+  }));
 
   const handlePrev = () => emblaRef.current?.scrollPrev();
   const handleNext = () => emblaRef.current?.scrollNext();
+
+  if (isLoading) {
+    return (
+      <section className="w-full lg:w-3/4">
+        <div
+          className="relative w-full rounded-2xl overflow-hidden bg-gray-200 animate-pulse"
+          style={{ height: "clamp(220px, 45vw, 600px)" }}
+        />
+      </section>
+    );
+  }
 
   return (
     <section className="w-full lg:w-3/4">
@@ -61,36 +75,49 @@ const MainSlider = () => {
           plugins={[autoplay.current]}
         >
           <CarouselContent>
-            {infoSlider.map((item) => (
+            {slides.map((item) => (
               <CarouselItem key={item.id}>
-                <div className="relative w-full h-full" style={{ height: "clamp(220px, 45vw, 600px)" }}>
+                <div
+                  className="relative w-full h-full"
+                  style={{ height: "clamp(220px, 45vw, 600px)" }}
+                >
                   <img
-                    src={item.img}
+                    src={item.photo_url}
                     alt={item.title}
                     className="h-full w-full object-cover blur-sm transition-all duration-300"
                     loading="lazy"
                     onLoad={(e) => e.currentTarget.classList.remove("blur-sm")}
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />
-                  <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5">
-                    <div className="bg-black/55 backdrop-blur-[2px] rounded-xl p-3 sm:p-5 shadow-xl">
-                      <p className="text-gray-200 text-xs sm:text-sm mb-1">{item.date}</p>
-                      <h2 className="text-white text-sm sm:text-xl lg:text-2xl xl:text-3xl font-semibold leading-tight">
-                        {item.title}
-                      </h2>
+                  {(item.title || item.date) && (
+                    <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5">
+                      <div className="bg-black/55 backdrop-blur-[2px] rounded-xl p-3 sm:p-5 shadow-xl">
+                        {item.date && (
+                          <p className="text-gray-200 text-xs sm:text-sm mb-1">
+                            {item.date}
+                          </p>
+                        )}
+                        {item.title && (
+                          <h2 className="text-white text-sm sm:text-xl lg:text-2xl xl:text-3xl font-semibold leading-tight">
+                            {item.title}
+                          </h2>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
 
-          <div className="absolute bottom-3 right-3 flex gap-2">
+          <div className="absolute bottom-6 right-6 flex gap-2">
             <Button
               onClick={handlePrev}
               size="icon"
               className="rounded-full bg-white/85 hover:bg-white text-gray-900 shadow-md size-8 sm:size-10"
-              aria-label={t("auto.components.organisms.mainSlider.MainSlider.1")}
+              aria-label={t(
+                "auto.components.organisms.mainSlider.MainSlider.1"
+              )}
             >
               <ArrowLeft className="h-3 w-3 sm:h-4 sm:w-4" />
             </Button>
@@ -98,7 +125,9 @@ const MainSlider = () => {
               onClick={handleNext}
               size="icon"
               className="rounded-full bg-white/85 hover:bg-white text-gray-900 shadow-md size-8 sm:size-10"
-              aria-label={t("auto.components.organisms.mainSlider.MainSlider.2")}
+              aria-label={t(
+                "auto.components.organisms.mainSlider.MainSlider.2"
+              )}
             >
               <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
             </Button>
